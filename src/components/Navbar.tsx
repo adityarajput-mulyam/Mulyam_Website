@@ -1,5 +1,5 @@
 import { useState } from "react";
-import mulyamLogo from "../assets/mulyam_logo_en.png";
+import mulyamLogo from "../assets/mulyam_logo_transparent.png";
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState("HOME");
