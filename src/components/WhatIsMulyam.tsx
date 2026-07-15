@@ -16,7 +16,7 @@ export default function WhatIsMulyam() {
           header.style.setProperty("border-bottom-color", "rgba(255, 255, 255, 0.1)", "important");
 
           // Strip white background and shadow classes programmatically
-          header.classList.remove("bg-white/95", "shadow-sm", "border-slate-100");
+          header.classList.remove("bg-white/80", "backdrop-blur-md", "shadow-sm", "border-b", "border-slate-200/50");
 
           // Force white text options for active navigation tabs
           const navButtons = header.querySelectorAll("nav button");
@@ -63,7 +63,7 @@ export default function WhatIsMulyam() {
   }, []);
 
   const hoverAnimation = { y: -8 };
-  const springTransition = { type: "spring", stiffness: 300, damping: 24 };
+  const springTransition = { type: "spring" as const, stiffness: 300, damping: 24 };
 
   const cards = [
     {
