@@ -18,12 +18,15 @@ export default function HeroVanguard() {
       {/* 1. Full-Bleed Media Canvas Layer */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
-        src="/videos/hero-logistics.mp4"
         muted
         loop
         autoPlay
         playsInline
-      />
+        preload="auto"
+      >
+        <source src="/videos/hero-logistics.webm" type="video/webm" />
+        <source src="/videos/hero-logistics.mp4" type="video/mp4" />
+      </video>
 
       {/* 2. Center-Stage Interactive Typography Layer */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">

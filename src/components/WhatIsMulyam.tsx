@@ -1,5 +1,49 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+
+interface LazyVideoProps extends React.VideoHTMLAttributes<HTMLVideoElement> {
+  webmSrc: string;
+  mp4Src: string;
+}
+
+function LazyVideo({ webmSrc, mp4Src, className, ...props }: LazyVideoProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsIntersecting(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      className={className}
+      preload="none"
+      {...props}
+    >
+      {isIntersecting && (
+        <>
+          <source src={webmSrc} type="video/webm" />
+          <source src={mp4Src} type="video/mp4" />
+        </>
+      )}
+    </video>
+  );
+}
 
 export default function WhatIsMulyam() {
   // Global header transparency controller
@@ -137,13 +181,14 @@ export default function WhatIsMulyam() {
           >
             {/* Video Container */}
             <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-neutral-900 border border-white/10 shadow-2xl">
-              <video
+              <LazyVideo
                 autoPlay
                 loop
                 muted
                 playsInline
                 className="object-cover w-full h-full pointer-events-none group-hover:scale-[1.02] transition-transform duration-500"
-                src={card.src}
+                webmSrc={card.src.replace(".mp4", ".webm")}
+                mp4Src={card.src}
               />
             </div>
 
