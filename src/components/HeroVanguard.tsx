@@ -1,0 +1,64 @@
+import { useState, useRef } from "react";
+
+export default function HeroVanguard() {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    setMousePos({ x, y });
+  };
+
+  return (
+    <section className="w-screen h-screen overflow-hidden relative bg-black select-none">
+      {/* 1. Full-Bleed Media Canvas Layer */}
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
+        src="/videos/hero-logistics.mp4"
+        muted
+        loop
+        autoPlay
+        playsInline
+      />
+
+      {/* 2. Center-Stage Interactive Typography Layer */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+        <div
+          ref={containerRef}
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="relative cursor-pointer pointer-events-auto"
+        >
+          {/* Background Layer: Hollow text outline + soft semi-transparent backing fill */}
+          <h1
+            className="font-sans font-extrabold text-7xl sm:text-8xl md:text-[11rem] tracking-tighter text-white/25 uppercase leading-none"
+            style={{
+              WebkitTextStroke: "2px rgba(255, 255, 255, 0.85)",
+            }}
+          >
+            Mulyam
+          </h1>
+
+          {/* Foreground Layer: Filled text revealed by clip-path circle spotlight */}
+          <h1
+            className="absolute inset-0 font-sans font-extrabold text-7xl sm:text-8xl md:text-[11rem] tracking-tighter text-white uppercase leading-none pointer-events-none select-none"
+            style={{
+              WebkitTextStroke: "2px #ffffff",
+              clipPath: isHovered
+                ? `circle(120px at ${mousePos.x}px ${mousePos.y}px)`
+                : "circle(0px at 0px 0px)",
+              transition: isHovered ? "none" : "clip-path 0.3s ease-out",
+            }}
+          >
+            Mulyam
+          </h1>
+        </div>
+      </div>
+    </section>
+  );
+}
