@@ -22,10 +22,11 @@ export default function HeroVanguard() {
         loop
         autoPlay
         playsInline
-        preload="auto"
+        preload="metadata"
+        poster="/videos/hero-logistics-poster.jpg"
       >
-        <source src="/videos/hero-logistics.mp4" type="video/mp4" />
         <source src="/videos/hero-logistics.webm" type="video/webm" />
+        <source src="/videos/hero-logistics.mp4" type="video/mp4" />
       </video>
 
       {/* 2. Center-Stage Interactive Typography Layer */}
@@ -54,8 +55,8 @@ export default function HeroVanguard() {
               WebkitTextStroke: "2px #ffffff",
               clipPath: isHovered
                 ? `circle(120px at ${mousePos.x}px ${mousePos.y}px)`
-                : "circle(0px at 0px 0px)",
-              transition: isHovered ? "none" : "clip-path 0.3s ease-out",
+                : `circle(0px at ${mousePos.x}px ${mousePos.y}px)`,
+              transition: isHovered ? "none" : "clip-path 0.15s ease-out",
             }}
           >
             Mulyam

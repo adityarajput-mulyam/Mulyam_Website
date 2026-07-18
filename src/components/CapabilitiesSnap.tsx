@@ -1,5 +1,53 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+
+interface CounterProps {
+  value: number;
+  active: boolean;
+  suffix?: string;
+}
+
+function Counter({ value, active, suffix = "" }: CounterProps) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!active) {
+      setCount(0);
+      return;
+    }
+
+    let start = 0;
+    const end = value;
+    const duration = 1200; // 1.2s
+    const startTime = performance.now();
+    let animationFrameId: number;
+
+    const updateCount = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing out quad
+      const easeProgress = progress * (2 - progress);
+      const current = Math.floor(easeProgress * (end - start) + start);
+      
+      setCount(current);
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(updateCount);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(updateCount);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [value, active]);
+
+  return (
+    <span>
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+}
 
 export default function CapabilitiesSnap() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -10,13 +58,41 @@ export default function CapabilitiesSnap() {
     offset: ["start start", "end end"],
   });
 
+  // Create a smoothed spring version of the scroll progress for visual transforms
+  const smoothProgress = useSpring(scrollYProgress, {
+    damping: 45,
+    stiffness: 140,
+    mass: 0.6,
+  });
+
+  const [isSlide2Active, setIsSlide2Active] = useState(false);
+
+  useEffect(() => {
+    return scrollYProgress.on("change", (latest) => {
+      // Slide 2 is active/visible between 28% and 82% of the scroll track
+      setIsSlide2Active(latest >= 0.28 && latest <= 0.82);
+    });
+  }, [scrollYProgress]);
+
   // Slide transitions with plateaus:
   // Slide 1: Static base layer (visible immediately, no empty black space).
   // Slide 2: Slides up over Slide 1 between 15% and 50% scroll progress.
-  // Slide 2: 50% to 60% static.
   // Slide 3: Slides up over Slide 2 between 60% and 95% scroll progress.
   const y2 = useTransform(scrollYProgress, [0.15, 0.5], ["100%", "0%"]);
   const y3 = useTransform(scrollYProgress, [0.6, 0.95], ["100%", "0%"]);
+
+  // --- Scroll-bound Heading Animations (Elegant Slide + Fade Transitions) ---
+  // Slide 1 Heading: slides up slightly and fades out as user scrolls down
+  const s1HeadingY = useTransform(smoothProgress, [0, 0.25], [0, -35]);
+  const s1HeadingOpacity = useTransform(smoothProgress, [0.05, 0.25], [1, 0]);
+
+  // Slide 2 Heading: slides up + fades in on entry, then slides up + fades out on exit
+  const s2HeadingY = useTransform(smoothProgress, [0.15, 0.38, 0.6, 0.85], [35, 0, 0, -35]);
+  const s2HeadingOpacity = useTransform(smoothProgress, [0.15, 0.32, 0.62, 0.82], [0, 1, 1, 0]);
+
+  // Slide 3 Heading: slides up + fades in on entry
+  const s3HeadingY = useTransform(smoothProgress, [0.6, 0.85], [35, 0]);
+  const s3HeadingOpacity = useTransform(smoothProgress, [0.6, 0.78], [0, 1]);
 
   const reviews = [
     {
@@ -56,7 +132,7 @@ export default function CapabilitiesSnap() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[250vh] bg-[#0a0a0a] select-none"
+      className="relative w-full h-[250vh] bg-[#0a0a0a]"
     >
       {/* Pinned Sticky Viewport Shell */}
       <div className="sticky top-0 w-full h-screen overflow-hidden bg-transparent">
@@ -67,18 +143,22 @@ export default function CapabilitiesSnap() {
             
             {/* Left Column: Text & Specs */}
             <div className="flex flex-col gap-6">
-              <span className="font-sans font-black text-5xl leading-none text-mulyam-yellow select-none block w-fit">
-                01
-              </span>
+              {/* Grouped Heading Block with Scroll Parallax */}
+              <motion.div 
+                style={{ y: s1HeadingY, opacity: s1HeadingOpacity }}
+                className="flex flex-col gap-4"
+              >
+                <span className="font-sans font-black text-5xl leading-none text-mulyam-yellow select-none block w-fit">
+                  01
+                </span>
+                <h2 className="font-black text-4xl md:text-5xl text-mulyam-blue tracking-tighter uppercase leading-[1.1] font-sans">
+                  Most Trusted B2B Partner <br />
+                  for Quick Commerce
+                </h2>
+                <div className="h-1.5 w-24 bg-mulyam-green rounded-full" />
+              </motion.div>
               
-              <h2 className="font-black text-4xl md:text-5xl text-mulyam-blue tracking-tighter uppercase leading-[0.95] font-sans">
-                Most Trusted B2B Partner <br />
-                for Quick Commerce
-              </h2>
-              
-              <div className="h-1.5 w-24 bg-mulyam-green rounded-full" />
-              
-              <p className="text-slate-655 text-sm md:text-base leading-relaxed max-w-xl font-medium">
+              <p className="text-slate-655 text-sm md:text-base leading-relaxed max-w-xl font-medium mt-2">
                 Mulyam is the leading fresh produce procurement partner for top-tier quick commerce networks, modern trade chains, and bulk institutional buyers. We eliminate supply bottlenecks by managing high-volume daily shipments directly from farms to dark stores with absolute precision.
               </p>
 
@@ -119,41 +199,76 @@ export default function CapabilitiesSnap() {
           className="absolute inset-0 w-full h-full bg-slate-50 flex items-center justify-center z-20 px-6 shadow-[0_-30px_60px_rgba(0,0,0,0.12)]"
         >
           <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
+
             {/* Left Column: Metrics Info */}
-            <div className="flex flex-col gap-6">
-              <span className="font-sans font-black text-5xl leading-none text-mulyam-yellow select-none block w-fit">
-                02
-              </span>
-              
-              <h2 className="font-black text-4xl md:text-5xl text-mulyam-blue tracking-tighter uppercase leading-[0.95] font-sans">
-                Our Impact in Numbers
-              </h2>
-              
-              <div className="h-1.5 w-24 bg-mulyam-yellow rounded-full" />
-              
+            <div className="flex flex-col gap-6 z-10">
+              {/* Grouped Heading Block with Scroll Parallax */}
+              <motion.div 
+                style={{ y: s2HeadingY, opacity: s2HeadingOpacity }}
+                className="flex flex-col gap-4"
+              >
+                <span className="font-sans font-black text-5xl leading-none text-mulyam-yellow select-none block w-fit">
+                  02
+                </span>
+                <h2 className="font-black text-4xl md:text-5xl text-mulyam-blue tracking-tighter uppercase leading-[1.1] font-sans">
+                  Our Impact <br />in Numbers
+                </h2>
+                <div className="h-1.5 w-24 bg-mulyam-yellow rounded-full" />
+              </motion.div>
+
               {/* Dashboard Grid */}
               <div className="grid grid-cols-2 gap-4 mt-2 max-w-md">
-                <div className="p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
-                  <span className="font-sans font-black text-2xl text-mulyam-green block">4,950+ MT</span>
-                  <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Monthly Volume</span>
+                {/* Card 1 */}
+                <div 
+                  className="p-4 bg-white border border-slate-100 rounded-xl shadow-sm"
+                >
+                  <span className="font-sans font-black text-2xl text-mulyam-green block">
+                    <Counter value={4950} active={isSlide2Active} suffix="+ MT" />
+                  </span>
+                  <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">
+                    Monthly Volume
+                  </span>
                 </div>
-                <div className="p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
-                  <span className="font-sans font-black text-2xl text-mulyam-blue block">3,000+</span>
-                  <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Suppliers Network</span>
+
+                {/* Card 2 */}
+                <div 
+                  className="p-4 bg-white border border-slate-100 rounded-xl shadow-sm"
+                >
+                  <span className="font-sans font-black text-2xl text-mulyam-blue block">
+                    <Counter value={3000} active={isSlide2Active} suffix="+" />
+                  </span>
+                  <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">
+                    Suppliers Network
+                  </span>
                 </div>
-                <div className="p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
-                  <span className="font-sans font-black text-2xl text-mulyam-green block">25+</span>
-                  <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Cities Covered</span>
+
+                {/* Card 3 */}
+                <div 
+                  className="p-4 bg-white border border-slate-100 rounded-xl shadow-sm"
+                >
+                  <span className="font-sans font-black text-2xl text-mulyam-green block">
+                    <Counter value={25} active={isSlide2Active} suffix="+" />
+                  </span>
+                  <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">
+                    Cities Covered
+                  </span>
                 </div>
-                <div className="p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
-                  <span className="font-sans font-black text-2xl text-mulyam-blue block">1,000+</span>
-                  <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Retailer Partners</span>
+
+                {/* Card 4 */}
+                <div 
+                  className="p-4 bg-white border border-slate-100 rounded-xl shadow-sm"
+                >
+                  <span className="font-sans font-black text-2xl text-mulyam-blue block">
+                    <Counter value={1000} active={isSlide2Active} suffix="+" />
+                  </span>
+                  <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">
+                    Retailer Partners
+                  </span>
                 </div>
               </div>
 
               {/* Structured Specs */}
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200 max-w-md">
+              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-100 max-w-md">
                 <div className="flex flex-col gap-0.5">
                   <span className="text-[10px] font-mono uppercase text-slate-400 tracking-wider">Active Cities</span>
                   <span className="text-xs font-bold text-mulyam-blue">National Scope</span>
@@ -185,21 +300,62 @@ export default function CapabilitiesSnap() {
               {/* Simulated Vector Graph */}
               <div className="relative w-full h-44 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden flex items-end p-4">
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 300 120" preserveAspectRatio="none">
+                  {/* Grid Lines */}
                   <line x1="0" y1="30" x2="300" y2="30" stroke="#f1f5f9" strokeWidth="1" />
                   <line x1="0" y1="60" x2="300" y2="60" stroke="#f1f5f9" strokeWidth="1" />
                   <line x1="0" y1="90" x2="300" y2="90" stroke="#f1f5f9" strokeWidth="1" />
-                  
-                  <path
+
+                  {/* Dynamic Line Drawing */}
+                  <motion.path
                     d="M 10 110 Q 75 95 150 65 T 290 20"
                     fill="none"
                     stroke="#00BD67"
                     strokeWidth="3.5"
                     strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    animate={isSlide2Active ? { pathLength: 1 } : { pathLength: 0 }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
                   />
-                  
-                  <circle cx="10" cy="110" r="4.5" fill="#004B8B" />
-                  <circle cx="150" cy="65" r="4.5" fill="#004B8B" />
-                  <circle cx="290" cy="20" r="5.5" fill="#00BD67" className="animate-pulse" />
+
+                  {/* Nodes */}
+                  <motion.circle 
+                    cx="10" 
+                    cy="110" 
+                    r="4.5" 
+                    fill="#004B8B"
+                    initial={{ scale: 0 }}
+                    animate={isSlide2Active ? { scale: 1 } : { scale: 0 }}
+                    transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                  />
+
+                  <motion.circle 
+                    cx="150" 
+                    cy="65" 
+                    r="4.5" 
+                    fill="#004B8B"
+                    initial={{ scale: 0 }}
+                    animate={isSlide2Active ? { scale: 1 } : { scale: 0 }}
+                    transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
+                  />
+
+                  <motion.circle 
+                    cx="290" 
+                    cy="20" 
+                    r="5.5" 
+                    fill="#00BD67" 
+                    initial={{ scale: 0 }}
+                    animate={isSlide2Active ? { scale: [1, 1.4, 1] } : { scale: 0 }}
+                    transition={{ 
+                      scale: {
+                        delay: 1.4, 
+                        type: "spring", 
+                        stiffness: 200 
+                      },
+                      default: {
+                        delay: 1.4
+                      }
+                    }}
+                  />
                 </svg>
 
                 <div className="absolute top-3 left-4 text-[10px] font-mono font-bold text-slate-400">1,200 MT Sourcing Base</div>
@@ -210,11 +366,20 @@ export default function CapabilitiesSnap() {
               <div className="flex flex-col gap-2 bg-slate-50 border border-slate-100 rounded-xl p-3 text-[11px] font-mono text-slate-500">
                 <div className="flex justify-between">
                   <span>[SCM ROOT ADAPTOR]</span>
-                  <span className="text-slate-800">CONNECTING... OK</span>
+                  <motion.span
+                    animate={isSlide2Active ? { opacity: [0.5, 1, 0.5] } : { opacity: 0.5 }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                    className="text-slate-800 font-bold"
+                  >
+                    CONNECTING... OK
+                  </motion.span>
                 </div>
                 <div className="flex justify-between">
                   <span>[FLEET DISPATCH LEDGER]</span>
-                  <span className="text-mulyam-green">42 ACTIVE REEFERS ON-ROUTE</span>
+                  <span className="text-mulyam-green flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 bg-mulyam-green rounded-full animate-pulse" />
+                    <span>42 ACTIVE REEFERS ON-ROUTE</span>
+                  </span>
                 </div>
               </div>
             </div>
@@ -229,19 +394,26 @@ export default function CapabilitiesSnap() {
         >
           <div className="w-full max-w-7xl mx-auto flex flex-col gap-8">
             
-            {/* Header Block */}
-            <div className="flex flex-col gap-4 text-center items-center">
+            {/* Header Block with Scroll Parallax */}
+            <motion.div 
+              style={{ y: s3HeadingY, opacity: s3HeadingOpacity }}
+              className="flex flex-col gap-4 text-center items-center"
+            >
               <span className="font-sans font-black text-5xl leading-none text-mulyam-yellow select-none block w-fit">
                 03
               </span>
               <h2 className="font-black text-4xl md:text-5xl text-mulyam-blue tracking-tighter uppercase leading-none font-sans">
                 What People Say About Mulyam
               </h2>
-              <div className="h-1.5 w-24 bg-mulyam-blue rounded-full" />
-            </div>
+              <div className="h-1.5 w-24 bg-mulyam-blue rounded-full mt-2" />
+            </motion.div>
 
-            {/* Testimonials Marquee Track (clean white cards) */}
+            {/* Testimonials Marquee Track (clean white cards with side fade overlays) */}
             <div className="w-full overflow-hidden relative mt-4">
+              {/* Fade Overlays / Left and Right Walls */}
+              <div className="absolute top-0 bottom-0 left-0 w-16 md:w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
+              <div className="absolute top-0 bottom-0 right-0 w-16 md:w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+
               <div className="flex w-max gap-6 animate-marquee-reviews hover:[animation-play-state:paused] py-4">
                 
                 {/* Track 1: First iteration */}

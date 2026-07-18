@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 interface LazyVideoProps extends React.VideoHTMLAttributes<HTMLVideoElement> {
   webmSrc: string;
   mp4Src: string;
+  posterSrc?: string;
 }
 
-function LazyVideo({ webmSrc, mp4Src, className, ...props }: LazyVideoProps) {
+function LazyVideo({ webmSrc, mp4Src, posterSrc, className, ...props }: LazyVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
 
@@ -33,6 +34,7 @@ function LazyVideo({ webmSrc, mp4Src, className, ...props }: LazyVideoProps) {
       ref={videoRef}
       className={className}
       preload="none"
+      poster={posterSrc}
       {...props}
     >
       {isIntersecting && (
@@ -112,6 +114,7 @@ export default function WhatIsMulyam() {
   const cards = [
     {
       src: "/videos/droneshot.mp4",
+      poster: "/videos/droneshot-poster.jpg",
       tag: "01 . COMMODITY BRAND",
       title: "I'mFresh Premium Produce",
       desc: "Our retail and quick-commerce facing brand. Under the I'mFresh guarantee, every batch undergoes strict selection to promise crop excellence, raw freshness, and complete chemical safety.",
@@ -123,6 +126,7 @@ export default function WhatIsMulyam() {
     },
     {
       src: "/videos/macroinspection.mp4",
+      poster: "/videos/macroinspection-poster.jpg",
       tag: "02 . FARMER ADVISORY",
       title: "ImKisan Digital Ecosystem",
       desc: "Empowering growers with science-backed crop advisory, localized crop calendars, and real-time market pricing ledger updates to maximize productivity and harvest value.",
@@ -134,6 +138,7 @@ export default function WhatIsMulyam() {
     },
     {
       src: "/videos/sortingbelt.mp4",
+      poster: "/videos/sortingbelt-poster.jpg",
       tag: "03 . YIELD LIQUIDATION",
       title: "Assured Crop Offtake",
       desc: "Eliminating post-harvest crop wastage by assuring farmers a complete liquidation of all grades (A, B, and C) to our diverse institutional bulk buyer network.",
@@ -145,6 +150,7 @@ export default function WhatIsMulyam() {
     },
     {
       src: "/videos/truck_vegetable.mp4",
+      poster: "/videos/truck_vegetable-poster.jpg",
       tag: "04 . FULFILLMENT NETWORK",
       title: "Smart Cold-Chain Logistics",
       desc: "Managing temperature-controlled active reefer fleets to transport produce from farm gates directly to distribution centers and dark stores with zero temperature spikes.",
@@ -189,6 +195,7 @@ export default function WhatIsMulyam() {
                 className="object-cover w-full h-full pointer-events-none group-hover:scale-[1.02] transition-transform duration-500"
                 webmSrc={card.src.replace(".mp4", ".webm")}
                 mp4Src={card.src}
+                posterSrc={card.poster}
               />
             </div>
 
