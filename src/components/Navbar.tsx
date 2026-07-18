@@ -75,12 +75,12 @@ export default function Navbar() {
 
         {/* Right side: Get In Button */}
         <div className="flex items-center transition-all duration-300">
-          <button 
-            type="button"
-            className="px-5 py-2.5 bg-mulyam-green hover:bg-mulyam-green/90 text-white hover:text-mulyam-blue font-bold text-xs uppercase tracking-wider rounded-lg shadow-sm hover:shadow transition-all duration-200 cursor-pointer"
+          <a 
+            href="mailto:connect@mulyam.in"
+            className="px-5 py-2.5 bg-mulyam-green hover:bg-mulyam-green/90 text-white hover:text-mulyam-blue font-bold text-xs uppercase tracking-wider rounded-lg shadow-sm hover:shadow transition-all duration-200 cursor-pointer inline-block"
           >
             Get In
-          </button>
+          </a>
         </div>
 
       </div>

@@ -48,65 +48,6 @@ function LazyVideo({ webmSrc, mp4Src, posterSrc, className, ...props }: LazyVide
 }
 
 export default function WhatIsMulyam() {
-  // Global header transparency controller
-  useEffect(() => {
-    const header = document.querySelector("header");
-    if (!header) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // Force transparency and dark layout properties
-          header.style.backgroundColor = "transparent";
-          header.style.setProperty("background-color", "transparent", "important");
-          header.style.setProperty("border-bottom-color", "rgba(255, 255, 255, 0.1)", "important");
-
-          // Strip white background and shadow classes programmatically
-          header.classList.remove("bg-white/80", "backdrop-blur-md", "shadow-sm", "border-b", "border-slate-200/50");
-
-          // Force white text options for active navigation tabs
-          const navButtons = header.querySelectorAll("nav button");
-          navButtons.forEach((btn) => {
-            (btn as HTMLElement).style.setProperty("color", "rgba(255, 255, 255, 0.7)", "important");
-            if (btn.classList.contains("font-extrabold")) {
-              (btn as HTMLElement).style.setProperty("color", "#ffffff", "important");
-              (btn as HTMLElement).style.setProperty("background-color", "rgba(255, 255, 255, 0.15)", "important");
-            }
-          });
-        } else {
-          // Restore normal header state when scrolling away
-          header.style.backgroundColor = "";
-          header.style.removeProperty("background-color");
-          header.style.removeProperty("border-bottom-color");
-
-          const navButtons = header.querySelectorAll("nav button");
-          navButtons.forEach((btn) => {
-            (btn as HTMLElement).style.removeProperty("color");
-            (btn as HTMLElement).style.removeProperty("background-color");
-          });
-        }
-      },
-      { threshold: 0.1, rootMargin: "-80px 0px 0px 0px" } // Offset matching navbar height footprint
-    );
-
-    const section = document.getElementById("what-is-mulyam");
-    if (section) {
-      observer.observe(section);
-    }
-
-    return () => {
-      observer.disconnect();
-      // Enforce total cleanup of overridden styles on unmount
-      header.style.backgroundColor = "";
-      header.style.removeProperty("background-color");
-      header.style.removeProperty("border-bottom-color");
-      const navButtons = header.querySelectorAll("nav button");
-      navButtons.forEach((btn) => {
-        (btn as HTMLElement).style.removeProperty("color");
-        (btn as HTMLElement).style.removeProperty("background-color");
-      });
-    };
-  }, []);
 
   const hoverAnimation = { y: -8 };
   const springTransition = { type: "spring" as const, stiffness: 300, damping: 24 };

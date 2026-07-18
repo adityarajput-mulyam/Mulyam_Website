@@ -155,7 +155,7 @@ export default function ScmGrid() {
         {/* Static 3-Card Grid */}
         <div className="cards-grid">
           {/* Card 1: Smart Routing */}
-          <div className="p-8 bg-[#111827]/40 border border-slate-800/80 rounded-2xl shadow-xl hover:border-mulyam-green/40 hover:bg-[#111827]/60 transition-all duration-350 group backdrop-blur-md flex flex-col gap-6">
+          <div className="p-8 bg-[#111827]/40 border border-slate-800/80 rounded-2xl shadow-xl hover:border-mulyam-green/40 hover:bg-[#111827]/60 transition-all duration-300 group backdrop-blur-md flex flex-col gap-6">
             <div className="p-4 bg-mulyam-green/10 text-mulyam-green rounded-xl w-fit group-hover:bg-mulyam-green/20 group-hover:scale-105 transition-all duration-300">
               <Truck className="w-6 h-6" />
             </div>
@@ -173,7 +173,7 @@ export default function ScmGrid() {
           </div>
 
           {/* Card 2: AI Quality Grading */}
-          <div className="p-8 bg-[#111827]/40 border border-slate-800/80 rounded-2xl shadow-xl hover:border-mulyam-yellow/40 hover:bg-[#111827]/60 transition-all duration-350 group backdrop-blur-md flex flex-col gap-6">
+          <div className="p-8 bg-[#111827]/40 border border-slate-800/80 rounded-2xl shadow-xl hover:border-mulyam-yellow/40 hover:bg-[#111827]/60 transition-all duration-300 group backdrop-blur-md flex flex-col gap-6">
             <div className="p-4 bg-mulyam-yellow/10 text-mulyam-yellow rounded-xl w-fit group-hover:bg-mulyam-yellow/20 group-hover:scale-105 transition-all duration-300">
               <Cpu className="w-6 h-6" />
             </div>
@@ -191,7 +191,7 @@ export default function ScmGrid() {
           </div>
 
           {/* Card 3: Direct Liquidation */}
-          <div className="p-8 bg-[#111827]/40 border border-slate-800/80 rounded-2xl shadow-xl hover:border-mulyam-green/40 hover:bg-[#111827]/60 transition-all duration-350 group backdrop-blur-md flex flex-col gap-6">
+          <div className="p-8 bg-[#111827]/40 border border-slate-800/80 rounded-2xl shadow-xl hover:border-mulyam-green/40 hover:bg-[#111827]/60 transition-all duration-300 group backdrop-blur-md flex flex-col gap-6">
             <div className="p-4 bg-mulyam-green/10 text-mulyam-green rounded-xl w-fit group-hover:bg-mulyam-green/20 group-hover:scale-105 transition-all duration-300">
               <Landmark className="w-6 h-6" />
             </div>
