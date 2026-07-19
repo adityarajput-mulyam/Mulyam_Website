@@ -1,19 +1,11 @@
-import Navbar from "../components/Navbar";
 import HeroVanguard from "../components/HeroVanguard";
 import WhatIsMulyam from "../components/WhatIsMulyam";
 import CapabilitiesSnap from "../components/CapabilitiesSnap";
-import Preloader from "../components/Preloader";
 import ScmGrid from "../components/ScmGrid";
 
 export default function Home() {
   return (
-    <div className="bg-white min-h-screen font-sans antialiased text-slate-800 selection:bg-mulyam-green selection:text-white">
-
-      {/* Page Preloader */}
-      <Preloader />
-
-      {/* Standalone Navigation Bar */}
-      <Navbar />
+    <div className="bg-white dark:bg-[#0C0F12] min-h-screen font-sans antialiased text-slate-800 dark:text-slate-200 selection:bg-mulyam-green selection:text-white transition-colors duration-300">
 
       {/* Block 1: Hero Entry & Associated Brands Anchor */}
       <HeroVanguard />

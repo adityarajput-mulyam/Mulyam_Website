@@ -1,9 +1,21 @@
 import { useState, useEffect } from "react";
+import { Sun, Moon } from "lucide-react";
 import mulyamLogo from "../assets/mulyam_logo_transparent.png";
 
-export default function Navbar() {
-  const [activeTab, setActiveTab] = useState("HOME");
+interface NavbarProps {
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+}
+
+export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== "undefined") {
+      return document.documentElement.classList.contains("dark") || 
+             localStorage.getItem("theme") === "dark";
+    }
+    return false;
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +30,24 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.add("theme-transition");
+    
+    if (isDarkMode) {
+      root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+
+    const timer = setTimeout(() => {
+      root.classList.remove("theme-transition");
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [isDarkMode]);
+
   const menuItems = [
     "HOME",
     "ABOUT US",
@@ -27,11 +57,13 @@ export default function Navbar() {
     "CAREERS",
   ];
 
+  const isSolidNavbar = isScrolled || activeTab !== "HOME";
+
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/80 backdrop-blur-md py-3 md:py-4 shadow-sm border-b border-slate-200/50"
+        isSolidNavbar
+          ? "bg-white/85 dark:bg-[#0C0F12]/85 backdrop-blur-md py-3 md:py-4 shadow-md border-b border-slate-200/50 dark:border-slate-800/50"
           : "bg-gradient-to-b from-black/50 to-transparent py-4 md:py-6"
       }`}
     >
@@ -40,13 +72,18 @@ export default function Navbar() {
         
         {/* Transparent Logo on the left with clear space padding — always normal colored, no filters */}
         <div className="flex items-center">
-          <a href="#" className="group flex items-center gap-3 cursor-pointer">
+          <button 
+            onClick={() => setActiveTab("HOME")} 
+            className="group flex items-center gap-3 cursor-pointer border-none bg-transparent p-0"
+          >
             <img 
               src={mulyamLogo} 
               alt="Mulyam Logo" 
-              className="h-10 w-auto object-contain transition-all duration-300" 
+              className={`h-10 w-auto object-contain transition-all duration-300 ${
+                isDarkMode && !isSolidNavbar ? "brightness-125" : ""
+              }`} 
             />
-          </a>
+          </button>
         </div>
 
         {/* Center menu sections */}
@@ -58,10 +95,10 @@ export default function Navbar() {
                 key={item}
                 onClick={() => setActiveTab(item)}
                 className={`px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
-                  isScrolled
+                  isSolidNavbar
                     ? isActive
-                      ? "bg-[#edf4fc] text-mulyam-blue font-extrabold"
-                      : "text-slate-600 hover:text-mulyam-blue hover:bg-slate-100"
+                      ? "bg-mulyam-blue/10 dark:bg-mulyam-green/20 text-mulyam-blue dark:text-mulyam-green font-extrabold"
+                      : "text-slate-600 dark:text-slate-300 hover:text-mulyam-blue dark:hover:text-mulyam-green hover:bg-slate-100 dark:hover:bg-slate-800"
                     : isActive
                       ? "bg-white/20 text-white font-extrabold"
                       : "text-white/90 hover:text-white hover:bg-white/10"
@@ -73,8 +110,25 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right side: Get In Button */}
-        <div className="flex items-center transition-all duration-300">
+        {/* Right side: Dark Mode Toggle & Get In Button */}
+        <div className="flex items-center gap-4 transition-all duration-300">
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={() => setIsDarkMode((prev) => !prev)}
+            className={`p-2 rounded-lg border transition-all duration-200 cursor-pointer flex items-center justify-center ${
+              isSolidNavbar
+                ? "border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                : "border-white/20 bg-white/10 text-white hover:bg-white/20"
+            }`}
+            aria-label="Toggle theme"
+          >
+            {isDarkMode ? (
+              <Sun className="h-4.5 w-4.5 text-mulyam-yellow" />
+            ) : (
+              <Moon className="h-4.5 w-4.5" />
+            )}
+          </button>
+
           <a 
             href="mailto:connect@mulyam.in"
             className="px-5 py-2.5 bg-mulyam-green hover:bg-mulyam-green/90 text-white hover:text-mulyam-blue font-bold text-xs uppercase tracking-wider rounded-lg shadow-sm hover:shadow transition-all duration-200 cursor-pointer inline-block"
