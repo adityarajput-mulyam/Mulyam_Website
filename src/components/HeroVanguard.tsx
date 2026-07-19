@@ -30,8 +30,8 @@ export default function HeroVanguard() {
         preload="metadata"
         poster="/videos/hero-logistics-poster.jpg"
       >
-        <source src="/videos/hero-logistics.webm" type="video/webm" />
         <source src="/videos/hero-logistics.mp4" type="video/mp4" />
+        <source src="/videos/hero-logistics.webm" type="video/webm" />
       </video>
 
       {/* 2. Center-Stage Interactive Typography Layer */}
