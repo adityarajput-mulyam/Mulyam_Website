@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import mulyamLogoEn from "../assets/mulyam_logo_en.png";
+import mulyamLogoEn from "../assets/logos/mulyam_logo_en.png";
 
 export default function Preloader() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -172,6 +172,8 @@ export default function Preloader() {
             <img
               src={mulyamLogoEn}
               alt="Mulyam Logo"
+              loading="eager"
+              decoding="async"
               className="logo-img"
             />
           </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import mulyamLogo from "../assets/mulyam_logo_transparent.png";
+import mulyamLogo from "../assets/logos/mulyam_logo_transparent.png";
 
 interface NavbarProps {
   activeTab: string;
@@ -58,6 +58,9 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
             <img 
               src={mulyamLogo} 
               alt="Mulyam Logo" 
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
               className="h-10 w-auto object-contain transition-all duration-300" 
             />
           </button>

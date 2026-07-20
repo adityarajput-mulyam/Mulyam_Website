@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import { cn } from '../lib/utils';
-import mulyamLogoEn from '../assets/mulyam_logo_en.png';
+import mulyamLogoEn from '../assets/logos/mulyam_logo_en.png';
 
 export interface LogoRevealProps {
   state: 'idle' | 'pulsing' | 'merging' | 'revealed';
@@ -177,6 +177,8 @@ export function LogoReveal({ state, className }: LogoRevealProps) {
         <img
           src={mulyamLogoEn}
           alt="Mulyam Logo"
+          loading="eager"
+          decoding="async"
           className="h-16 w-auto object-contain select-none pointer-events-none"
         />
       </motion.div>

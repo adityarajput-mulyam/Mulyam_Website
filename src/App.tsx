@@ -5,12 +5,20 @@ import About from "./pages/About";
 import Solutions from "./pages/Solutions";
 import Navbar from "./components/Navbar";
 import Preloader from "./components/Preloader";
+import mulyamLogo from "./assets/logos/mulyam_logo_transparent.png";
+import mulyamLogoEn from "./assets/logos/mulyam_logo_en.png";
 
 function App() {
   useLenis();
   const [activeTab, setActiveTab] = useState("HOME");
 
   useEffect(() => {
+    [mulyamLogo, mulyamLogoEn].forEach((src) => {
+      const image = new Image();
+      image.decoding = "async";
+      image.src = src;
+    });
+
     if ((window as any).lenis) {
       (window as any).lenis.scrollTo(0, { immediate: true });
     } else {

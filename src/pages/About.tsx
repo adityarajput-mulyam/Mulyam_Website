@@ -3,20 +3,20 @@ import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from 
 import { Quote, TrendingUp, Calendar, Activity } from "lucide-react";
 
 // Import local WebP and PNG assets
-import farmParallax from "../assets/farm_parallax.png";
-import leaderYogesh from "../assets/leader_yogesh.webp";
-import leaderMahesh from "../assets/leader_mahesh.webp";
-import leaderPreetesh from "../assets/leader_preetesh.webp";
-import leaderSameer from "../assets/leader_sameer.webp";
-import leaderRishabh from "../assets/leader_rishabh.webp";
-import leaderVivek from "../assets/leader_vivek.webp";
-import leaderRahul from "../assets/leader_rahul.webp";
-import foundersImage from "../assets/founders.webp";
-import distributionIcon from "../assets/distribution.png";
-import seedlingIcon from "../assets/seedling.png";
-import technologyIcon from "../assets/technology.png";
-import financeIcon from "../assets/finance.png";
-import mulyamLogoNotext from "../assets/mulyam_logo_transparent_notext.png";
+import farmParallax from "../assets/images/farm_parallax.png";
+import leaderYogesh from "../assets/team/leader_yogesh.webp";
+import leaderMahesh from "../assets/team/leader_mahesh.webp";
+import leaderPreetesh from "../assets/team/leader_preetesh.webp";
+import leaderSameer from "../assets/team/leader_sameer.webp";
+import leaderRishabh from "../assets/team/leader_rishabh.webp";
+import leaderVivek from "../assets/team/leader_vivek.webp";
+import leaderRahul from "../assets/team/leader_rahul.webp";
+import foundersImage from "../assets/images/founders.webp";
+import distributionIcon from "../assets/icons/distribution.png";
+import seedlingIcon from "../assets/icons/seedling.png";
+import technologyIcon from "../assets/icons/technology.png";
+import financeIcon from "../assets/icons/finance.png";
+import mulyamLogoNotext from "../assets/logos/mulyam_logo_transparent_notext.png";
 
 
 

@@ -2,20 +2,20 @@ import { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 // Import custom category assets
-import hero1Image from "../assets/hero1.jpg";
-import hero2Image from "../assets/hero2.jpg";
-import farmerImage from "../assets/farmer.jpg";
-import traderImage from "../assets/trader.jpg";
-import transporterImage from "../assets/transporter.jpg";
-import handshakeIcon from "../assets/handshake.png";
-import pricingIcon from "../assets/pricing.png";
-import mobileTransferIcon from "../assets/mobile_transfer.png";
-import qualityAssuranceIcon from "../assets/quality_assurance.png";
-import distributionIcon from "../assets/distribution.png";
-import supplyLogisticsIcon from "../assets/supply_logistics.png";
-import streamlineDeliveryIcon from "../assets/streamline_delivery.png";
-import routeIcon from "../assets/route.png";
-import increasedBusinessIcon from "../assets/increased_business.png";
+import hero1Image from "../assets/images/hero1.jpg";
+import hero2Image from "../assets/images/hero2.jpg";
+import farmerImage from "../assets/images/farmer.jpg";
+import traderImage from "../assets/images/trader.jpg";
+import transporterImage from "../assets/images/transporter.jpg";
+import handshakeIcon from "../assets/icons/handshake.png";
+import pricingIcon from "../assets/icons/pricing.png";
+import mobileTransferIcon from "../assets/icons/mobile_transfer.png";
+import qualityAssuranceIcon from "../assets/icons/quality_assurance.png";
+import distributionIcon from "../assets/icons/distribution.png";
+import supplyLogisticsIcon from "../assets/icons/supply_logistics.png";
+import streamlineDeliveryIcon from "../assets/icons/streamline_delivery.png";
+import routeIcon from "../assets/icons/route.png";
+import increasedBusinessIcon from "../assets/icons/increased_business.png";
 
 export default function Solutions() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -51,6 +51,9 @@ export default function Solutions() {
             <img 
               src={hero1Image} 
               alt="Vibrant agricultural fields" 
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
               className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-[1.5s] group-hover:scale-[1.03]"
             />
           </div>
@@ -60,6 +63,9 @@ export default function Solutions() {
             <img 
               src={hero2Image} 
               alt="Fresh produce storage logistics" 
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
               className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-[1.5s] group-hover:scale-[1.03]"
             />
           </div>
@@ -98,7 +104,7 @@ export default function Solutions() {
       <section ref={containerRef} className="w-full relative z-10 h-[250vh] border-t border-slate-950 dark:border-slate-800 bg-[#F9F9F6] dark:bg-[#0C0F12]">
         <div className="sticky top-16 w-full h-[calc(100vh-4rem)] overflow-hidden bg-transparent">
           {/* Slide 1: Farmers */}
-          <div className="absolute inset-0 w-full h-full bg-white dark:bg-[#0E1216] overflow-hidden">
+          <div className="absolute inset-0 w-full h-full bg-white dark:bg-[#0E1216] overflow-hidden" style={{ contentVisibility: "auto", containIntrinsicSize: "100vh" }}>
             <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800">
               <div className="lg:col-span-7 p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full text-left">
                 <motion.div style={{ y: s1HeadingY, opacity: s1HeadingOpacity }} className="flex flex-col gap-4">
@@ -151,6 +157,9 @@ export default function Solutions() {
                 <img
                   src={farmerImage}
                   alt="Farmer crop yield"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
@@ -158,12 +167,15 @@ export default function Solutions() {
           </div>
 
           {/* Slide 2: Buyers */}
-          <motion.div style={{ y: y2 }} className="absolute inset-0 w-full h-full bg-white dark:bg-[#0E1216] overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
+          <motion.div style={{ y: y2, contentVisibility: "auto", containIntrinsicSize: "100vh" }} className="absolute inset-0 w-full h-full bg-white dark:bg-[#0E1216] overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
             <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800">
               <div className="lg:col-span-5 relative h-full bg-slate-50 dark:bg-slate-900 flex border-b lg:border-b-0 border-slate-950 dark:border-slate-800 overflow-hidden lg:order-1">
                 <img
                   src={traderImage}
                   alt="Fresh vegetables warehouse sorting"
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
@@ -218,7 +230,7 @@ export default function Solutions() {
           </motion.div>
 
           {/* Slide 3: Transporters */}
-          <motion.div style={{ y: y3 }} className="absolute inset-0 w-full h-full bg-white dark:bg-[#0E1216] overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
+          <motion.div style={{ y: y3, contentVisibility: "auto", containIntrinsicSize: "100vh" }} className="absolute inset-0 w-full h-full bg-white dark:bg-[#0E1216] overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
             <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800">
               <div className="lg:col-span-7 p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full text-left">
                 <motion.div style={{ y: s3HeadingY, opacity: 1 }} className="flex flex-col gap-4">
@@ -271,6 +283,9 @@ export default function Solutions() {
                 <img
                   src={transporterImage}
                   alt="Logistics transportation"
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
