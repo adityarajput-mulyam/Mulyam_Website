@@ -49,7 +49,7 @@ export default function ConvergenceFooter() {
           <motion.span
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-xs font-extrabold tracking-widest text-[#004B8B] uppercase bg-white px-4 py-1.5 rounded-full border border-slate-200 shadow-sm inline-block mb-4"
           >
             ECOSYSTEM SCALE & IMPACT
@@ -58,7 +58,7 @@ export default function ConvergenceFooter() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ delay: 0.1 }}
             className="text-3xl sm:text-5xl font-extrabold text-[#004B8B] tracking-tight mb-4"
           >
@@ -68,7 +68,7 @@ export default function ConvergenceFooter() {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ delay: 0.2 }}
             className="text-slate-600 text-base sm:text-lg leading-relaxed"
           >
@@ -83,7 +83,7 @@ export default function ConvergenceFooter() {
               key={stat.label}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col justify-between h-full min-h-[330px] group"
             >
@@ -125,7 +125,7 @@ export default function ConvergenceFooter() {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="bg-gradient-to-br from-[#004B8B] via-[#003B6F] to-[#002A50] rounded-3xl p-8 sm:p-14 text-white shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8"
         >
           {/* Subtle background glow circle */}

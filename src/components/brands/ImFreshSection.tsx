@@ -37,7 +37,7 @@ function ParallaxProduceCard({
       ref={cardRef}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: false, margin: "-60px" }}
       transition={{ duration: 0.6 }}
       className="group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col justify-between"
     >
@@ -156,7 +156,7 @@ export default function ImFreshSection() {
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.8 }}
               className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 shadow-[0_15px_40px_rgba(0,0,0,0.05)] text-center relative overflow-hidden"
             >
@@ -229,7 +229,7 @@ export default function ImFreshSection() {
                       key={item.title}
                       initial={{ opacity: 0, y: 25 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: false }}
                       transition={{ duration: 0.5, delay: idx * 0.1 }}
                       className="bg-white/95 backdrop-blur-md rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-all duration-300"
                     >

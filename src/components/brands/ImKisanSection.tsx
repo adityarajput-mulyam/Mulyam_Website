@@ -72,11 +72,11 @@ export default function ImKisanSection() {
             <motion.div 
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.8 }}
               className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 shadow-[0_15px_40px_rgba(0,0,0,0.05)] text-center relative overflow-hidden"
             >
-              {/* Logo Container */}
+              {/* Logo Container (100% Identical Classes to I'mFresh Card) */}
               <div className="w-full h-24 sm:h-28 flex items-center justify-center p-2 rounded-2xl bg-white mb-4 overflow-hidden border border-slate-100">
                 <img 
                   src={imKisanLogo} 
@@ -141,7 +141,7 @@ export default function ImKisanSection() {
                   key={card.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
+                  viewport={{ once: false, margin: "-60px" }}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
                   className="group bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.07)] transition-all duration-300 relative overflow-hidden"
                 >
