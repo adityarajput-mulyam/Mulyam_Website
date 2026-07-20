@@ -58,30 +58,46 @@ export default function WhatIsMulyam() {
       poster: "/videos/droneshot-poster.jpg",
       tag: "01 . COMMODITY BRAND",
       title: "I'mFresh Premium Produce",
-      desc: "Our retail and quick-commerce facing brand. Under the I'mFresh guarantee, every batch undergoes strict selection to promise crop excellence, raw freshness, and complete chemical safety.",
+      desc: (
+        <>
+          Our retail and quick-commerce facing brand. Under the I'mFresh guarantee, every batch undergoes strict selection to promise crop excellence, <span className="text-mulyam-yellow font-medium">raw freshness</span>, and complete chemical safety.
+        </>
+      ),
     },
     {
       src: "/videos/macroinspection.mp4",
       poster: "/videos/macroinspection-poster.jpg",
       tag: "02 . FARMER ADVISORY",
       title: "ImKisan Digital Ecosystem",
-      desc: "Empowering growers with science-backed crop advisory, localized crop calendars, and real-time market pricing ledger updates to maximize productivity and harvest value.",
+      desc: (
+        <>
+          Empowering growers with science-backed crop advisory, localized crop calendars, and <span className="text-mulyam-yellow font-medium">real-time market pricing</span> ledger updates to maximize productivity and harvest value.
+        </>
+      ),
     },
     {
       src: "/videos/sortingbelt.mp4",
       poster: "/videos/sortingbelt-poster.jpg",
       tag: "03 . YIELD LIQUIDATION",
       title: "Assured Crop Offtake",
-      desc: "Eliminating post-harvest crop wastage by assuring farmers a complete liquidation of all grades (A, B, and C) to our diverse institutional bulk buyer network.",
+      desc: (
+        <>
+          Eliminating post-harvest crop wastage by assuring farmers a <span className="text-mulyam-yellow font-medium">complete liquidation</span> of all grades (A, B, and C) to our diverse institutional bulk buyer network.
+        </>
+      ),
     },
     {
       src: "/videos/truck_vegetable.mp4",
       poster: "/videos/truck_vegetable-poster.jpg",
       tag: "04 . FULFILLMENT NETWORK",
       title: "Smart Cold-Chain Logistics",
-      desc: "Managing temperature-controlled active reefer fleets to transport produce from farm gates directly to distribution centers and dark stores with zero temperature spikes.",
+      desc: (
+        <>
+          Managing temperature-controlled active reefer fleets to transport produce from farm gates <span className="text-mulyam-yellow font-medium">directly to distribution centers</span> and dark stores with zero temperature spikes.
+        </>
+      ),
     },
-  ] as const;
+  ];
 
   return (
     <section
@@ -92,7 +108,7 @@ export default function WhatIsMulyam() {
       {/* ── Section Header (Solid White Typography Above) ──────────────────── */}
       <div className="text-center mb-20 z-10 flex flex-col items-center">
         <h2 className="font-black text-5xl md:text-7xl text-white tracking-tight uppercase leading-none font-sans">
-          What Is Mulyam?
+          What Is <span className="text-mulyam-yellow">Mulyam?</span>
         </h2>
         <div className="h-1.5 w-24 bg-mulyam-green mt-6 rounded-full" />
       </div>

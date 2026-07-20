@@ -316,22 +316,22 @@ export default function About() {
     {
       icon: <img src={distributionIcon} className="h-6 w-6 object-contain" alt="Distribution" />,
       title: "Restructuring Ag-Trade Distribution",
-      desc: "We eliminate highly fragmented, multi-tiered intermediary networks, securing fair value distribution directly for farm-gate growers and stable pricing for commercial buyers."
+      desc: <>We eliminate highly fragmented intermediary networks, securing <span className="text-mulyam-yellow font-semibold">fair value distribution</span> directly for farm-gate growers.</>
     },
     {
       icon: <img src={seedlingIcon} className="h-6 w-6 object-contain" alt="Sourcing" />,
       title: "Direct Sourcing Assurance",
-      desc: "By cutting intermediate traders, we link institutional demand straight to growers, executing strict multi-stage quality checks at our fulfillment centers."
+      desc: <>By cutting intermediate traders, we link institutional demand straight to growers, executing strict <span className="text-mulyam-yellow font-semibold">multi-stage quality checks</span>.</>
     },
     {
       icon: <img src={technologyIcon} className="h-6 w-6 object-contain" alt="Technology" />,
       title: "Tech-Driven Logistics Engine",
-      desc: "Our customized SaaS coordinates real-time dispatch, route optimization, and tracking to compress transit windows and keep post-harvest losses below 5%."
+      desc: <>Our customized SaaS coordinates real-time dispatch, route optimization, and tracking to keep post-harvest losses <span className="text-mulyam-yellow font-semibold">below 5%</span>.</>
     },
     {
       icon: <img src={financeIcon} className="h-6 w-6 object-contain" alt="Finance" />,
       title: "Trade Finance & Credit Solutions",
-      desc: "We clear liquidity bottlenecks for farmers and retailers alike by providing transparent credit terms, digital invoice discounting, and secure trade financing."
+      desc: <>We clear liquidity bottlenecks for farmers and retailers alike by providing <span className="text-mulyam-yellow font-semibold">transparent credit terms</span>.</>
     }
   ];
 
@@ -361,7 +361,7 @@ export default function About() {
                 Our Origins
               </span>
               <h1 className="font-sans font-black text-4xl sm:text-5xl lg:text-6xl text-mulyam-blue dark:text-white leading-[1.1] tracking-tight mb-8">
-                Roots of <span className="text-mulyam-green">Mulyam</span>
+                Roots of <span className="text-mulyam-yellow">Mulyam</span>
               </h1>
               
               <div className="space-y-6 text-slate-600 dark:text-slate-350 text-base md:text-lg font-light leading-relaxed max-w-2xl">
@@ -371,8 +371,8 @@ export default function About() {
                 <p>
                   After several years of gaining valuable corporate experience, they felt a strong pull to return to their roots. They decided to combine their professional expertise with their innate understanding of agriculture to tackle one of India's most critical problems: the inefficient supply chain for perishable commodities.
                 </p>
-                <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 border-l-2 border-mulyam-green pl-4 italic">
-                  This is where the idea for Mulyam was born—a mission to restore <span className="text-mulyam-green font-semibold">"मूल्य"</span> or <span className="text-mulyam-green font-semibold">"value"</span> where it matters most: back to the soil and the hands that till it.
+                <p className="text-sm md:text-base text-slate-505 dark:text-slate-400 border-l-2 border-mulyam-green pl-4 italic">
+                  This is where the idea for Mulyam was born—a mission to restore <span className="text-mulyam-yellow font-semibold">"मूल्य"</span> or <span className="text-mulyam-yellow font-semibold">"value"</span> where it matters most: back to the soil and the hands that till it.
                 </p>
               </div>
             </div>
