@@ -373,7 +373,7 @@ export default function CapabilitiesSnap() {
         <motion.div
           style={{
             y: y3,
-            background: "linear-gradient(135deg, #fefcf3 0%, #f8f5eb 40%, #f0eed9 100%)",
+            background: "#ffffff",
           }}
           className="absolute inset-0 w-full h-full flex flex-col justify-center z-30 px-6 overflow-hidden"
           role="region"
@@ -423,9 +423,9 @@ export default function CapabilitiesSnap() {
             <div className="w-full overflow-hidden relative mt-4">
               {/* Fade Overlays — matching cream background */}
               <div className="absolute top-0 bottom-0 left-0 w-16 md:w-32 z-10 pointer-events-none"
-                style={{ background: "linear-gradient(to right, #f8f5eb, transparent)" }} />
+                style={{ background: "linear-gradient(to right, #ffffff, transparent)" }} />
               <div className="absolute top-0 bottom-0 right-0 w-16 md:w-32 z-10 pointer-events-none"
-                style={{ background: "linear-gradient(to left, #f8f5eb, transparent)" }} />
+                style={{ background: "linear-gradient(to left, #ffffff, transparent)" }} />
 
               <div className="flex w-max gap-6 animate-marquee-reviews hover:[animation-play-state:paused] py-4">
                 

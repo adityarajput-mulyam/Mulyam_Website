@@ -1,4 +1,5 @@
-import { Sprout, Store, ShieldCheck, TrendingUp, Navigation, CheckCircle } from "lucide-react";
+import { useRef } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 // Import custom category assets
 import hero1Image from "../assets/hero1.jpg";
@@ -6,8 +7,39 @@ import hero2Image from "../assets/hero2.jpg";
 import farmerImage from "../assets/farmer.jpg";
 import traderImage from "../assets/trader.jpg";
 import transporterImage from "../assets/transporter.jpg";
+import handshakeIcon from "../assets/handshake.png";
+import pricingIcon from "../assets/pricing.png";
+import mobileTransferIcon from "../assets/mobile_transfer.png";
+import qualityAssuranceIcon from "../assets/quality_assurance.png";
+import distributionIcon from "../assets/distribution.png";
+import supplyLogisticsIcon from "../assets/supply_logistics.png";
+import streamlineDeliveryIcon from "../assets/streamline_delivery.png";
+import routeIcon from "../assets/route.png";
+import increasedBusinessIcon from "../assets/increased_business.png";
 
 export default function Solutions() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const smoothScrollYProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 24,
+    mass: 0.8,
+  });
+
+  const y2 = useTransform(smoothScrollYProgress, [0.15, 0.5], ["100%", "0%"]); 
+  const y3 = useTransform(smoothScrollYProgress, [0.64, 0.95], ["100%", "0%"]); 
+
+  const s1HeadingY = useTransform(smoothScrollYProgress, [0, 0.25], [0, -35]);
+  const s1HeadingOpacity = useTransform(smoothScrollYProgress, [0.05, 0.25], [1, 0]);
+  const s2HeadingY = useTransform(smoothScrollYProgress, [0.15, 0.38, 0.6, 0.85], [35, 0, 0, -35]);
+  const s2HeadingOpacity = useTransform(smoothScrollYProgress, [0.15, 0.32, 0.62, 0.82], [0, 1, 1, 0]);
+  const s3HeadingY = useTransform(smoothScrollYProgress, [0.64, 0.8], [28, 0]);
+
   return (
     <div className="bg-[#F9F9F6] dark:bg-[#0C0F12] min-h-screen antialiased text-slate-900 dark:text-slate-100 transition-colors duration-300 relative border-t-0">
       
@@ -63,187 +95,188 @@ export default function Solutions() {
       </section>
 
       {/* Main Content Modules with Sticky Slide-like behavior */}
-      <section className="w-full relative z-10 border-t border-slate-950 dark:border-slate-800 bg-[#F9F9F6] dark:bg-[#0C0F12]">
-        
-        {/* Module 1: Growers (Farmers) - Wrapped in taller scroll track */}
-        <div className="relative w-full h-[150vh]">
-          <div className="sticky top-16 h-[calc(100vh-4rem)] w-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800 bg-white dark:bg-[#0E1216] overflow-hidden">
-            {/* Left Text Column */}
-            <div className="lg:col-span-7 p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full text-left">
-              <span className="font-mono text-xs font-bold text-mulyam-green uppercase tracking-widest block mb-3">
-                01 / Sourcing
-              </span>
-              <h2 className="font-sans font-black text-3xl sm:text-4xl lg:text-5xl text-mulyam-blue dark:text-white uppercase tracking-tight mb-4">
-                Empowering <span className="text-mulyam-yellow">Farmers</span>
-              </h2>
-              <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed mb-8 max-w-xl">
-                We connect farmers directly to a wide network of buyers, eliminating unnecessary intermediaries and ensuring they get the value their produce deserves.
-              </p>
+      <section ref={containerRef} className="w-full relative z-10 h-[250vh] border-t border-slate-950 dark:border-slate-800 bg-[#F9F9F6] dark:bg-[#0C0F12]">
+        <div className="sticky top-16 w-full h-[calc(100vh-4rem)] overflow-hidden bg-transparent">
+          {/* Slide 1: Farmers */}
+          <div className="absolute inset-0 w-full h-full bg-white dark:bg-[#0E1216] overflow-hidden">
+            <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800">
+              <div className="lg:col-span-7 p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full text-left">
+                <motion.div style={{ y: s1HeadingY, opacity: s1HeadingOpacity }} className="flex flex-col gap-4">
+                  <span className="font-mono text-xs font-bold text-mulyam-green uppercase tracking-widest block mb-1">
+                    01 / Sourcing
+                  </span>
+                  <h2 className="font-sans font-black text-3xl sm:text-4xl lg:text-5xl text-mulyam-blue dark:text-white uppercase tracking-tight mb-2">
+                    Empowering <span className="text-mulyam-yellow">Farmers</span>
+                  </h2>
+                  <div className="h-1 w-24 bg-mulyam-green rounded-full" />
+                </motion.div>
+                <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed my-8 max-w-xl">
+                  We connect farmers directly to a wide network of buyers, eliminating unnecessary intermediaries and ensuring they get the value their produce deserves.
+                </p>
 
-              <div className="space-y-6 max-w-2xl">
-                <div className="flex gap-4">
-                  <div className="p-2.5 h-11 w-11 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
-                    <Sprout className="h-5.5 w-5.5 text-mulyam-green" />
+                <div className="space-y-6 max-w-2xl">
+                  <div className="flex gap-4">
+                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
+                      <img src={handshakeIcon} alt="Direct market linkage" className="h-8 w-8 object-contain" />
+                    </div>
+                    <div>
+                      <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Direct market linkage with assured offtake</h4>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Large network of buyers from all the categories ensure complete liquidation of all the grades</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Direct market linkage with assured offtake</h4>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Large network of buyers from all the categories ensure complete liquidation of all the grades</p>
+
+                  <div className="flex gap-4">
+                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
+                      <img src={pricingIcon} alt="Fair and transparent pricing" className="h-8 w-8 object-contain" />
+                    </div>
+                    <div>
+                      <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Fair & Transparent Pricing</h4>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Complete liquidation gives a better price realisation. This price is always better than market. No hidden fees</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
+                      <img src={mobileTransferIcon} alt="Hassle free payment terms" className="h-8 w-8 object-contain" />
+                    </div>
+                    <div>
+                      <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Hassle-free Payment terms</h4>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">We ensure fastest payment cycles with least deductions. All the digital payments, credited directly to bank accounts.</p>
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                <div className="flex gap-4">
-                  <div className="p-2.5 h-11 w-11 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
-                    <TrendingUp className="h-5.5 w-5.5 text-mulyam-green" />
-                  </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Fair & Transparent Pricing</h4>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Complete liquidation gives a better price realisation. This price is always better than market. No hidden fees</p>
-                  </div>
-                </div>
+              <div className="lg:col-span-5 relative h-full bg-slate-50 dark:bg-slate-900 flex lg:border-l border-slate-950 dark:border-slate-800 overflow-hidden">
+                <img
+                  src={farmerImage}
+                  alt="Farmer crop yield"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
 
-                <div className="flex gap-4">
-                  <div className="p-2.5 h-11 w-11 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
-                    <CheckCircle className="h-5.5 w-5.5 text-mulyam-green" />
+          {/* Slide 2: Buyers */}
+          <motion.div style={{ y: y2 }} className="absolute inset-0 w-full h-full bg-white dark:bg-[#0E1216] overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
+            <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800">
+              <div className="lg:col-span-5 relative h-full bg-slate-50 dark:bg-slate-900 flex border-b lg:border-b-0 border-slate-950 dark:border-slate-800 overflow-hidden lg:order-1">
+                <img
+                  src={traderImage}
+                  alt="Fresh vegetables warehouse sorting"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+
+              <div className="lg:col-span-7 p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full text-left lg:border-l border-slate-950 dark:border-slate-800 lg:order-2">
+                <motion.div style={{ y: s2HeadingY, opacity: s2HeadingOpacity }} className="flex flex-col gap-4">
+                  <span className="font-mono text-xs font-bold text-mulyam-green uppercase tracking-widest block mb-1">
+                    02 / Procurement
+                  </span>
+                  <h2 className="font-sans font-black text-3xl sm:text-4xl lg:text-5xl text-mulyam-blue dark:text-white uppercase tracking-tight mb-2">
+                    Freshness & Quality for <span className="text-mulyam-yellow">Buyers</span>
+                  </h2>
+                  <div className="h-1 w-24 bg-mulyam-yellow rounded-full" />
+                </motion.div>
+                <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed my-8 max-w-xl">
+                  Our commitment to freshness is backed by technology and operational excellence, ensuring consistent quality at scale.
+                </p>
+
+                <div className="space-y-6 max-w-2xl">
+                  <div className="flex gap-4">
+                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
+                      <img src={qualityAssuranceIcon} alt="Consistent quality" className="h-8 w-8 object-contain" />
+                    </div>
+                    <div>
+                      <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Consistent Quality</h4>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Operation excellence and strong quality checks ensure that we deliver best and consistent quality throughout the year.</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Hassle-free Payment terms</h4>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">We ensure fastest payment cycles with least deductions. All the digital payments, credited directly to bank accounts.</p>
+
+                  <div className="flex gap-4">
+                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
+                      <img src={distributionIcon} alt="Traceability" className="h-8 w-8 object-contain" />
+                    </div>
+                    <div>
+                      <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Traceability</h4>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Complete origin traceability for enhanced food safety and trust using innovative technology including blockchains.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
+                      <img src={supplyLogisticsIcon} alt="Reliable and efficient supply" className="h-8 w-8 object-contain" />
+                    </div>
+                    <div>
+                      <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Reliable & Efficient Supply</h4>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">99% fulfillment rate with less than 3% rejection in the last year.</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+          </motion.div>
 
-            {/* Right Image Column */}
-            <div className="lg:col-span-5 relative h-full bg-slate-50 dark:bg-slate-900 flex lg:border-l border-slate-950 dark:border-slate-800 overflow-hidden">
-              <img 
-                src={farmerImage} 
-                alt="Farmer crop yield" 
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
+          {/* Slide 3: Transporters */}
+          <motion.div style={{ y: y3 }} className="absolute inset-0 w-full h-full bg-white dark:bg-[#0E1216] overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
+            <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800">
+              <div className="lg:col-span-7 p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full text-left">
+                <motion.div style={{ y: s3HeadingY, opacity: 1 }} className="flex flex-col gap-4">
+                  <span className="font-mono text-xs font-bold text-mulyam-green uppercase tracking-widest block mb-1">
+                    03 / Logistics
+                  </span>
+                  <h2 className="font-sans font-black text-3xl sm:text-4xl lg:text-5xl text-mulyam-blue dark:text-white uppercase tracking-tight mb-2">
+                    For <span className="text-mulyam-yellow">Transporters</span>
+                  </h2>
+                  <div className="h-1 w-24 bg-mulyam-green rounded-full" />
+                </motion.div>
+                <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed my-8 max-w-xl font-bold">
+                  More business, less hassle.
+                </p>
 
-        {/* Module 2: Buyers (Traders) - Wrapped in taller scroll track */}
-        <div className="relative w-full h-[150vh]">
-          <div className="sticky top-16 h-[calc(100vh-4rem)] w-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800 bg-white dark:bg-[#0E1216] overflow-hidden">
-            {/* Left Image Column */}
-            <div className="lg:col-span-5 relative h-full bg-slate-50 dark:bg-slate-900 flex border-b lg:border-b-0 border-slate-950 dark:border-slate-800 overflow-hidden lg:order-1">
-              <img 
-                src={traderImage} 
-                alt="Fresh vegetables warehouse sorting" 
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Right Text Column */}
-            <div className="lg:col-span-7 p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full text-left lg:border-l border-slate-950 dark:border-slate-800 lg:order-2">
-              <span className="font-mono text-xs font-bold text-mulyam-green uppercase tracking-widest block mb-4">
-                02 / Procurement
-              </span>
-              <h2 className="font-sans font-black text-3xl sm:text-4xl lg:text-5xl text-mulyam-blue dark:text-white uppercase tracking-tight mb-4">
-                Freshness & Quality for <span className="text-mulyam-yellow">Buyers</span>
-              </h2>
-              <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed mb-8 max-w-xl">
-                Our commitment to freshness is backed by technology and operational excellence, ensuring consistent quality at scale.
-              </p>
-
-              <div className="space-y-6 max-w-2xl">
-                <div className="flex gap-4">
-                  <div className="p-2.5 h-11 w-11 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
-                    <Store className="h-5.5 w-5.5 text-mulyam-blue" />
+                <div className="space-y-6 max-w-2xl">
+                  <div className="flex gap-4">
+                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
+                      <img src={streamlineDeliveryIcon} alt="Streamlined deliveries" className="h-8 w-8 object-contain" />
+                    </div>
+                    <div>
+                      <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Streamlined Deliveries</h4>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Efficiently manage trips from farm to mandi or dark stores.</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Consistent Quality</h4>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Operation excellence and strong quality checks ensure that we deliver best and consistent quality throughout the year.</p>
-                  </div>
-                </div>
 
-                <div className="flex gap-4">
-                  <div className="p-2.5 h-11 w-11 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
-                    <ShieldCheck className="h-5.5 w-5.5 text-mulyam-blue" />
+                  <div className="flex gap-4">
+                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
+                      <img src={routeIcon} alt="Optimized routes" className="h-8 w-8 object-contain" />
+                    </div>
+                    <div>
+                      <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Optimized Routes</h4>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Reduce idle time and fuel costs with better route planning.</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Traceability</h4>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Complete origin traceability for enhanced food safety and trust using innovative technology including blockchains.</p>
-                  </div>
-                </div>
 
-                <div className="flex gap-4">
-                  <div className="p-2.5 h-11 w-11 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
-                    <CheckCircle className="h-5.5 w-5.5 text-mulyam-blue" />
-                  </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Reliable & Efficient Supply</h4>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                      99% fulfillment rate with less than 3% rejection in the last year.
-                    </p>
+                  <div className="flex gap-4">
+                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
+                      <img src={increasedBusinessIcon} alt="Increased business" className="h-8 w-8 object-contain" />
+                    </div>
+                    <div>
+                      <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Increased Business</h4>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Get access to a steady flow of delivery orders through our network.</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
 
-        {/* Module 3: Logistics (Transporters) - Wrapped in taller scroll track */}
-        <div className="relative w-full h-[150vh]">
-          <div className="sticky top-16 h-[calc(100vh-4rem)] w-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800 bg-white dark:bg-[#0E1216] overflow-hidden">
-            {/* Left Text Column */}
-            <div className="lg:col-span-7 p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full text-left">
-              <span className="font-mono text-xs font-bold text-mulyam-green uppercase tracking-widest block mb-4">
-                03 / Logistics
-              </span>
-              <h2 className="font-sans font-black text-3xl sm:text-4xl lg:text-5xl text-mulyam-blue dark:text-white uppercase tracking-tight mb-4">
-                For <span className="text-mulyam-yellow">Transporters</span>
-              </h2>
-              <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed mb-8 max-w-xl font-bold">
-                More business, less hassle.
-              </p>
-
-              <div className="space-y-6 max-w-2xl">
-                <div className="flex gap-4">
-                  <div className="p-2.5 h-11 w-11 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
-                    <Navigation className="h-5.5 w-5.5 text-mulyam-green" />
-                  </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Streamlined Deliveries</h4>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Efficiently manage trips from farm to mandi or dark stores.</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="p-2.5 h-11 w-11 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
-                    <TrendingUp className="h-5.5 w-5.5 text-mulyam-green" />
-                  </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Optimized Routes</h4>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Reduce idle time and fuel costs with better route planning.</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="p-2.5 h-11 w-11 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
-                    <CheckCircle className="h-5.5 w-5.5 text-mulyam-green" />
-                  </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Increased Business</h4>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">Get access to a steady flow of delivery orders through our network.</p>
-                  </div>
-                </div>
+              <div className="lg:col-span-5 relative h-full bg-slate-50 dark:bg-slate-900 flex lg:border-l border-slate-950 dark:border-slate-800 overflow-hidden">
+                <img
+                  src={transporterImage}
+                  alt="Logistics transportation"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
               </div>
             </div>
-
-            {/* Right Image Column */}
-            <div className="lg:col-span-5 relative h-full bg-slate-50 dark:bg-slate-900 flex lg:border-l border-slate-950 dark:border-slate-800 overflow-hidden">
-              <img 
-                src={transporterImage} 
-                alt="Logistics transportation" 
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-          </div>
+          </motion.div>
         </div>
-
       </section>
 
     </div>
