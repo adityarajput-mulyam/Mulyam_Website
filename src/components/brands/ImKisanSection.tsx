@@ -3,9 +3,7 @@ import {
   Calendar, 
   TrendingUp, 
   Sparkles, 
-  ShieldCheck, 
   Cloud,
-  CheckCircle2,
   Users,
   Award
 } from "lucide-react";
