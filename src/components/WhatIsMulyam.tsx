@@ -59,11 +59,6 @@ export default function WhatIsMulyam() {
       tag: "01 . COMMODITY BRAND",
       title: "I'mFresh Premium Produce",
       desc: "Our retail and quick-commerce facing brand. Under the I'mFresh guarantee, every batch undergoes strict selection to promise crop excellence, raw freshness, and complete chemical safety.",
-      specs: [
-        { label: "Sourcing", val: "FPO Partner Networks" },
-        { label: "Compliance", val: "Q-Commerce Ready" },
-        { label: "Traceability", val: "Origin Code Scan" },
-      ],
     },
     {
       src: "/videos/macroinspection.mp4",
@@ -71,11 +66,6 @@ export default function WhatIsMulyam() {
       tag: "02 . FARMER ADVISORY",
       title: "ImKisan Digital Ecosystem",
       desc: "Empowering growers with science-backed crop advisory, localized crop calendars, and real-time market pricing ledger updates to maximize productivity and harvest value.",
-      specs: [
-        { label: "Partnership", val: "ICAR-DOGR Advisor" },
-        { label: "Updates", val: "Real-Time Mandi Rates" },
-        { label: "Scheduling", val: "Predictive Crop Cycle" },
-      ],
     },
     {
       src: "/videos/sortingbelt.mp4",
@@ -83,11 +73,6 @@ export default function WhatIsMulyam() {
       tag: "03 . YIELD LIQUIDATION",
       title: "Assured Crop Offtake",
       desc: "Eliminating post-harvest crop wastage by assuring farmers a complete liquidation of all grades (A, B, and C) to our diverse institutional bulk buyer network.",
-      specs: [
-        { label: "Wastage", val: "Under 3% Grading Losses" },
-        { label: "Payment", val: "Fastest Direct Transfer" },
-        { label: "Pricing", val: "Better-than-Market Rates" },
-      ],
     },
     {
       src: "/videos/truck_vegetable.mp4",
@@ -95,11 +80,6 @@ export default function WhatIsMulyam() {
       tag: "04 . FULFILLMENT NETWORK",
       title: "Smart Cold-Chain Logistics",
       desc: "Managing temperature-controlled active reefer fleets to transport produce from farm gates directly to distribution centers and dark stores with zero temperature spikes.",
-      specs: [
-        { label: "Fleet", val: "Reefer Logistics Trucks" },
-        { label: "Speed", val: "Direct Farm to Hub Transit" },
-        { label: "Efficiency", val: "Quick Decanting Windows" },
-      ],
     },
   ] as const;
 
@@ -155,19 +135,7 @@ export default function WhatIsMulyam() {
                 {card.desc}
               </p>
 
-              {/* Structured Specifications (CarmoFarm Elegant Layout) */}
-              <div className="grid grid-cols-3 gap-2 mt-2 pt-4 border-t border-white/5">
-                {card.specs.map((spec, sIdx) => (
-                  <div key={sIdx} className="flex flex-col gap-0.5">
-                    <span className="text-[10px] font-mono uppercase text-neutral-500 tracking-wider">
-                      {spec.label}
-                    </span>
-                    <span className="text-xs font-semibold text-white truncate">
-                      {spec.val}
-                    </span>
-                  </div>
-                ))}
-              </div>
+
             </div>
           </motion.div>
         ))}

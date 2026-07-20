@@ -15,6 +15,7 @@ export function useLenis() {
       orientation: "vertical",
       smoothWheel: true,
     });
+    (window as any).lenis = lenis;
 
     function raf(time: number) {
       lenis.raf(time);
@@ -26,6 +27,7 @@ export function useLenis() {
     return () => {
       cancelAnimationFrame(id);
       lenis.destroy();
+      (window as any).lenis = null;
     };
   }, []);
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLenis } from "./hooks/useLenis";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -8,6 +8,14 @@ import Preloader from "./components/Preloader";
 function App() {
   useLenis();
   const [activeTab, setActiveTab] = useState("HOME");
+
+  useEffect(() => {
+    if ((window as any).lenis) {
+      (window as any).lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [activeTab]);
 
   return (
     <div className="min-h-screen bg-[#F9F9F6] dark:bg-[#0C0F12] text-slate-800 dark:text-slate-100 transition-colors duration-300">
