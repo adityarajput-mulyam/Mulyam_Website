@@ -7,15 +7,15 @@ export default function Preloader() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // Phase 1: Let the gooey loader swirl for 2s, then trigger the reveal sequence
+    // Phase 1: Let the gooey loader swirl for 0.8s, then trigger the reveal sequence
     const tLoad = setTimeout(() => {
       setIsLoaded(true);
-    }, 2000);
+    }, 800);
 
     // Phase 2: After the logo spring animation settles, slide the preloader up
     const tDismiss = setTimeout(() => {
       setVisible(false);
-    }, 3800);
+    }, 1800);
 
     return () => {
       clearTimeout(tLoad);
@@ -32,7 +32,7 @@ export default function Preloader() {
           }`}
           initial={{ opacity: 1 }}
           exit={{ y: "-100%" }}
-          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
         >
           {/* Encapsulated styling for custom CSS filters, keyframe physics, and transitions */}
           <style>{`

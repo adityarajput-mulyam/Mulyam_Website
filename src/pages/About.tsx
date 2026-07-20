@@ -361,7 +361,7 @@ export default function About() {
                 Our Origins
               </span>
               <h1 className="font-sans font-black text-4xl sm:text-5xl lg:text-6xl text-mulyam-blue dark:text-white leading-[1.1] tracking-tight mb-8">
-                Roots of <span className="text-mulyam-yellow">Mulyam</span>
+                Roots of <span className="text-mulyam-green">Mulyam</span>
               </h1>
               
               <div className="space-y-6 text-slate-600 dark:text-slate-350 text-base md:text-lg font-light leading-relaxed max-w-2xl">
@@ -372,7 +372,7 @@ export default function About() {
                   After several years of gaining valuable corporate experience, they felt a strong pull to return to their roots. They decided to combine their professional expertise with their innate understanding of agriculture to tackle one of India's most critical problems: the inefficient supply chain for perishable commodities.
                 </p>
                 <p className="text-sm md:text-base text-slate-505 dark:text-slate-400 border-l-2 border-mulyam-green pl-4 italic">
-                  This is where the idea for Mulyam was born—a mission to restore <span className="text-mulyam-yellow font-semibold">"मूल्य"</span> or <span className="text-mulyam-yellow font-semibold">"value"</span> where it matters most: back to the soil and the hands that till it.
+                  This is where the idea for Mulyam was born—a mission to restore <span className="text-mulyam-green font-semibold">"मूल्य"</span> or <span className="text-mulyam-green font-semibold">"value"</span> where it matters most: back to the soil and the hands that till it.
                 </p>
               </div>
             </div>

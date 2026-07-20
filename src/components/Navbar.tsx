@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import mulyamLogo from "../assets/logos/mulyam_logo_transparent.png";
 
-interface NavbarProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
-}
-
-export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -28,15 +26,15 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
   }, []);
 
   const menuItems = [
-    "HOME",
-    "ABOUT US",
-    "SOLUTIONS",
-    "OUR BRANDS",
-    "MEDIA",
-    "CAREERS",
+    { name: "HOME", path: "/home" },
+    { name: "ABOUT US", path: "/about-us" },
+    { name: "SOLUTIONS", path: "/solutions" },
+    { name: "OUR BRANDS", path: "/our-brands" },
+    { name: "MEDIA", path: "/media" },
+    { name: "CAREERS", path: "/careers" },
   ];
 
-  const isSolidNavbar = isScrolled || activeTab !== "HOME";
+  const isSolidNavbar = isScrolled || (location.pathname !== "/" && location.pathname !== "/home");
 
   return (
     <header
@@ -51,8 +49,8 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
         
         {/* Transparent Logo on the left with clear space padding — always normal colored, no filters */}
         <div className="flex items-center">
-          <button 
-            onClick={() => setActiveTab("HOME")} 
+          <Link 
+            to="/" 
             className="group flex items-center gap-3 cursor-pointer border-none bg-transparent p-0"
           >
             <img 
@@ -63,17 +61,21 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
               fetchPriority="high"
               className="h-10 w-auto object-contain transition-all duration-300" 
             />
-          </button>
+          </Link>
         </div>
 
         {/* Center menu sections */}
         <nav className="hidden lg:flex items-center gap-1 transition-all duration-300">
           {menuItems.map((item) => {
-            const isActive = activeTab === item;
+            const isActive =
+              item.path === "/home"
+                ? location.pathname === "/" || location.pathname === "/home"
+                : location.pathname === item.path ||
+                  (item.path === "/about-us" && location.pathname === "/about");
             return (
-              <button
-                key={item}
-                onClick={() => setActiveTab(item)}
+              <Link
+                key={item.name}
+                to={item.path}
                 className={`px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
                   isSolidNavbar
                     ? isActive
@@ -84,8 +86,8 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
                       : "text-white/90 hover:text-white hover:bg-white/10"
                 }`}
               >
-                {item}
-              </button>
+                {item.name}
+              </Link>
             );
           })}
         </nav>

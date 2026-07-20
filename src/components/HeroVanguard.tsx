@@ -42,12 +42,11 @@ export default function HeroVanguard() {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           className="relative cursor-pointer pointer-events-auto"
-          initial={{ opacity: 0, y: 40, letterSpacing: "0.15em" }}
-          animate={{ opacity: 1, y: 0, letterSpacing: "-0.05em" }}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 1.8,
-            ease: [0.16, 1, 0.3, 1],
-            delay: 3.8, // Triggers exactly as preloader finishes sliding out
+            duration: 0.4,
+            ease: "easeOut",
           }}
         >
           {/* Background Layer: Hollow text outline + soft semi-transparent backing fill */}
