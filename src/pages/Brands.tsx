@@ -22,20 +22,6 @@ export default function Brands() {
 
       {/* 4. Convergence Stats & Footer CTA */}
       <ConvergenceFooter />
-
-      {/* Site Footer Bottom Note */}
-      <footer className="bg-slate-900 text-slate-400 py-10 border-t border-slate-800 text-center text-xs">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} Mulyam Digital Agriculture Private Limited. All rights reserved.</p>
-          <div className="flex items-center gap-6 text-slate-300 font-semibold">
-            <span className="text-[#FFC400]">I'mFresh</span>
-            <span>·</span>
-            <span className="text-[#00BD67]">ImKisan</span>
-            <span>·</span>
-            <span>Mulyam Infrastructure</span>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

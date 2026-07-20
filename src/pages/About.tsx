@@ -258,7 +258,7 @@ export default function About() {
       tags: ["Business", "Finance & Leadership"],
       image: leaderYogesh,
       badge: "Founder",
-      linkedin: "https://linkedin.com/in/yogesh-kedari-mulyam"
+      linkedin: "https://www.linkedin.com/in/yogesh-kedari/"
     },
     {
       name: "Mahesh Kedari",
@@ -268,7 +268,7 @@ export default function About() {
       tags: ["Software Development", "Platform Building", "Scalability"],
       image: leaderMahesh,
       badge: "Co-Founder",
-      linkedin: "https://linkedin.com/in/mahesh-kedari-mulyam"
+      linkedin: "https://www.linkedin.com/in/maheshkedari/"
     },
     {
       name: "Preetesh Dutt",
@@ -278,7 +278,7 @@ export default function About() {
       tags: ["Business Development", "Agri Industry"],
       image: leaderPreetesh,
       badge: "Co-Founder",
-      linkedin: "https://linkedin.com/in/preetesh-dutt-mulyam"
+      linkedin: "https://www.linkedin.com/in/preetesh-dutt-50483824/"
     }
   ];
 
@@ -292,7 +292,7 @@ export default function About() {
       tags: ["Food Retail", "Food Services", "Client Serving"],
       image: leaderVivek,
       badge: "Executive",
-      linkedin: "https://linkedin.com/in/vivek-dhoble-mulyam"
+      linkedin: "https://www.linkedin.com/in/vivek-dhoble-181833220/"
     },
     {
       name: "Rishabh Bilala",
@@ -302,7 +302,7 @@ export default function About() {
       tags: ["Marketing", "Brand Building", "Management"],
       image: leaderRishabh,
       badge: "Leadership",
-      linkedin: "https://linkedin.com/in/rishabh-bilala-mulyam"
+      linkedin: "https://www.linkedin.com/in/rishabh-bilala/"
     },
     {
       name: "Sameer Waghchoure",
@@ -312,7 +312,7 @@ export default function About() {
       tags: ["Retail", "Marketing", "Agri Operations"],
       image: leaderSameer,
       badge: "Leadership",
-      linkedin: "https://linkedin.com/in/sameer-waghchoure-mulyam"
+      linkedin: "https://www.linkedin.com/in/sameer-waghchoure-96aa3b127/"
     },
     {
       name: "Rahul Singh",
@@ -322,7 +322,7 @@ export default function About() {
       tags: ["Business Development", "Banking Industry"],
       image: leaderRahul,
       badge: "Leadership",
-      linkedin: "https://linkedin.com/in/rahul-singh-mulyam"
+      linkedin: "https://www.linkedin.com/in/rahul-singh-24476212a/"
     }
   ];
 
@@ -524,8 +524,8 @@ export default function About() {
                         animate={isActive ? "active" : "inactive"}
                         className="p-5 rounded-2xl bg-white dark:bg-[#12161A] border-2 shadow-md dark:shadow-none transition-colors duration-300 flex flex-col justify-center select-none"
                       >
-                        <div className="flex items-center gap-4 mb-3">
-                          <div className={`p-2.5 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 transition-all duration-300 ${isActive ? "scale-110 rotate-3 border-mulyam-green/30" : ""}`}>
+                        <div className="flex items-center gap-3.5 mb-3">
+                          <div className={`w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 flex items-center justify-center shrink-0 shadow-sm transition-all duration-300 ${isActive ? "scale-105 border-[#00BD67]" : ""}`}>
                             {node.icon}
                           </div>
                           <h4 className="font-sans font-extrabold text-base text-mulyam-blue dark:text-white leading-tight">
@@ -556,7 +556,7 @@ export default function About() {
                   {/* Card content */}
                   <div className="p-5 rounded-xl bg-white dark:bg-[#12161A] border border-slate-200/60 dark:border-slate-800 shadow-sm">
                     <div className="flex items-center gap-3 mb-2.5">
-                      <div className="p-2 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-100 dark:border-slate-800">
+                      <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 flex items-center justify-center shrink-0 shadow-sm">
                         {node.icon}
                       </div>
                       <h4 className="font-sans font-extrabold text-sm text-mulyam-blue dark:text-white leading-tight">

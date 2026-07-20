@@ -46,7 +46,7 @@ export default function ImKisanSection() {
   ];
 
   return (
-    <section className="relative bg-gradient-to-b from-[#F4F9F6] via-[#F8FAF7] to-[#F4F8FA] py-16 md:py-24 border-t border-slate-200/60">
+    <section className="relative bg-gradient-to-b from-[#F4F9F6] via-[#F8FAF7] to-[#F4F8FA] pt-16 pb-6 md:pt-20 md:pb-8 border-t border-slate-200/60">
       {/* Subtle Ambient Radial Glows Container */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute top-1/4 -right-20 w-80 h-80 bg-[#00BD67]/8 rounded-full blur-3xl pointer-events-none" />

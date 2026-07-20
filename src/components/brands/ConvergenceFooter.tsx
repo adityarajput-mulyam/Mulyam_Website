@@ -41,7 +41,7 @@ export default function ConvergenceFooter() {
   ];
 
   return (
-    <section className="relative bg-gradient-to-b from-[#F4F8FA] via-[#F9FBFA] to-[#EFF5FA] py-20 md:py-32 border-t border-slate-200/80 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-[#F4F8FA] via-[#F9FBFA] to-[#EFF5FA] pt-10 pb-16 md:pt-12 md:pb-24 border-t border-slate-200/80 overflow-hidden">
       {/* Subtle Background Radial Glows */}
       <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#004B8B]/6 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#00BD67]/6 rounded-full blur-3xl pointer-events-none" />
@@ -97,14 +97,14 @@ export default function ConvergenceFooter() {
                 <div className="flex-1 flex flex-col justify-between">
                   {/* Vector Icon Header */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-slate-50 p-2.5 flex items-center justify-center border border-slate-100 group-hover:border-[#00BD67]/30 transition-colors shadow-inner shrink-0">
+                    <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
                       <img 
                         src={stat.icon} 
                         alt={stat.iconAlt} 
-                        className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                        className="w-full h-full object-contain"
                       />
                     </div>
-                    <CheckCircle2 className="w-5 h-5 text-[#00BD67] shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-[#00BD67]" />
                   </div>
                   
                   {/* Stat Number / Value */}

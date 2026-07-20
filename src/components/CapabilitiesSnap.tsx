@@ -102,17 +102,18 @@ export default function CapabilitiesSnap() {
 
   useEffect(() => {
     return scrollYProgress.on("change", (latest) => {
-      setIsSlide2Active(latest >= 0.28 && latest <= 0.82);
+      setIsSlide2Active(latest >= 0.22 && latest <= 0.68);
     });
   }, [scrollYProgress]);
 
-  const y2 = useTransform(scrollYProgress, [0.15, 0.5], ["100%", "0%"]);
-  const y3 = useTransform(scrollYProgress, [0.6, 0.95], ["100%", "0%"]);
+  const y2 = useTransform(scrollYProgress, [0.18, 0.42], ["100%", "0%"]);
+  const y3 = useTransform(scrollYProgress, [0.55, 0.78], ["100%", "0%"]);
 
   // --- Scroll-bound Heading Animations ---
   const s1HeadingY = useTransform(scrollYProgress, [0, 0.25], [0, -35]);
-  const s1HeadingOpacity = useTransform(scrollYProgress, [0.05, 0.25], [1, 0]);  const s2HeadingY = useTransform(scrollYProgress, [0.15, 0.38, 0.6, 0.85], [35, 0, 0, -35]);
-  const s2HeadingOpacity = useTransform(scrollYProgress, [0.15, 0.32, 0.62, 0.82], [0, 1, 1, 0]);
+  const s1HeadingOpacity = useTransform(scrollYProgress, [0.05, 0.25], [1, 0]);
+  const s2HeadingY = useTransform(scrollYProgress, [0.20, 0.38, 0.55, 0.72], [35, 0, 0, -35]);
+  const s2HeadingOpacity = useTransform(scrollYProgress, [0.20, 0.32, 0.55, 0.70], [0, 1, 1, 0]);
   const reviews: readonly ReviewData[] = [
     {
       initials: "SC",
@@ -151,7 +152,7 @@ export default function CapabilitiesSnap() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[250vh] bg-[#0a0a0a]"
+      className="relative w-full h-[340vh] bg-[#0a0a0a]"
     >
       {/* Pinned Sticky Viewport Shell */}
       <div className="sticky top-0 w-full h-screen overflow-hidden bg-transparent">

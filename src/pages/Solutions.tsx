@@ -31,14 +31,14 @@ export default function Solutions() {
     mass: 0.8,
   });
 
-  const y2 = useTransform(smoothScrollYProgress, [0.15, 0.5], ["100%", "0%"]); 
-  const y3 = useTransform(smoothScrollYProgress, [0.64, 0.95], ["100%", "0%"]); 
+  const y2 = useTransform(smoothScrollYProgress, [0.18, 0.42], ["100%", "0%"]); 
+  const y3 = useTransform(smoothScrollYProgress, [0.55, 0.78], ["100%", "0%"]); 
 
   const s1HeadingY = useTransform(smoothScrollYProgress, [0, 0.25], [0, -35]);
   const s1HeadingOpacity = useTransform(smoothScrollYProgress, [0.05, 0.25], [1, 0]);
-  const s2HeadingY = useTransform(smoothScrollYProgress, [0.15, 0.38, 0.6, 0.85], [35, 0, 0, -35]);
-  const s2HeadingOpacity = useTransform(smoothScrollYProgress, [0.15, 0.32, 0.62, 0.82], [0, 1, 1, 0]);
-  const s3HeadingY = useTransform(smoothScrollYProgress, [0.64, 0.8], [28, 0]);
+  const s2HeadingY = useTransform(smoothScrollYProgress, [0.18, 0.38, 0.55, 0.72], [35, 0, 0, -35]);
+  const s2HeadingOpacity = useTransform(smoothScrollYProgress, [0.18, 0.32, 0.55, 0.70], [0, 1, 1, 0]);
+  const s3HeadingY = useTransform(smoothScrollYProgress, [0.55, 0.72], [28, 0]);
 
   return (
     <div className="bg-[#F9F9F6] dark:bg-[#0C0F12] min-h-screen antialiased text-slate-900 dark:text-slate-100 transition-colors duration-300 relative border-t-0">
@@ -101,7 +101,7 @@ export default function Solutions() {
       </section>
 
       {/* Main Content Modules with Sticky Slide-like behavior */}
-      <section ref={containerRef} className="w-full relative z-10 h-[250vh] border-t border-slate-950 dark:border-slate-800 bg-[#F9F9F6] dark:bg-[#0C0F12]">
+      <section ref={containerRef} className="w-full relative z-10 h-[340vh] border-t border-slate-950 dark:border-slate-800 bg-[#F9F9F6] dark:bg-[#0C0F12]">
         <div className="sticky top-16 w-full h-[calc(100vh-4rem)] overflow-hidden bg-transparent">
           {/* Slide 1: Farmers */}
           <div className="absolute inset-0 w-full h-full bg-white dark:bg-[#0E1216] overflow-hidden" style={{ contentVisibility: "auto", containIntrinsicSize: "100vh" }}>
@@ -121,9 +121,9 @@ export default function Solutions() {
                 </p>
 
                 <div className="space-y-6 max-w-2xl">
-                  <div className="flex gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
-                      <img src={handshakeIcon} alt="Direct market linkage" className="h-8 w-8 object-contain" />
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
+                      <img src={handshakeIcon} alt="Direct market linkage" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Direct market linkage with assured offtake</h4>
@@ -131,9 +131,9 @@ export default function Solutions() {
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
-                      <img src={pricingIcon} alt="Fair and transparent pricing" className="h-8 w-8 object-contain" />
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
+                      <img src={pricingIcon} alt="Fair and transparent pricing" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Fair & Transparent Pricing</h4>
@@ -141,9 +141,9 @@ export default function Solutions() {
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
-                      <img src={mobileTransferIcon} alt="Hassle free payment terms" className="h-8 w-8 object-contain" />
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
+                      <img src={mobileTransferIcon} alt="Hassle free payment terms" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Hassle-free Payment terms</h4>
@@ -195,9 +195,9 @@ export default function Solutions() {
                 </p>
 
                 <div className="space-y-6 max-w-2xl">
-                  <div className="flex gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
-                      <img src={qualityAssuranceIcon} alt="Consistent quality" className="h-8 w-8 object-contain" />
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
+                      <img src={qualityAssuranceIcon} alt="Consistent quality" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Consistent Quality</h4>
@@ -205,9 +205,9 @@ export default function Solutions() {
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
-                      <img src={distributionIcon} alt="Traceability" className="h-8 w-8 object-contain" />
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
+                      <img src={distributionIcon} alt="Traceability" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Traceability</h4>
@@ -215,9 +215,9 @@ export default function Solutions() {
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
-                      <img src={supplyLogisticsIcon} alt="Reliable and efficient supply" className="h-8 w-8 object-contain" />
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
+                      <img src={supplyLogisticsIcon} alt="Reliable and efficient supply" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Reliable & Efficient Supply</h4>
@@ -247,9 +247,9 @@ export default function Solutions() {
                 </p>
 
                 <div className="space-y-6 max-w-2xl">
-                  <div className="flex gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
-                      <img src={streamlineDeliveryIcon} alt="Streamlined deliveries" className="h-8 w-8 object-contain" />
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
+                      <img src={streamlineDeliveryIcon} alt="Streamlined deliveries" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Streamlined Deliveries</h4>
@@ -257,9 +257,9 @@ export default function Solutions() {
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
-                      <img src={routeIcon} alt="Optimized routes" className="h-8 w-8 object-contain" />
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
+                      <img src={routeIcon} alt="Optimized routes" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Optimized Routes</h4>
@@ -267,9 +267,9 @@ export default function Solutions() {
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center shrink-0">
-                      <img src={increasedBusinessIcon} alt="Increased business" className="h-8 w-8 object-contain" />
+                  <div className="flex gap-4 items-start">
+                    <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
+                      <img src={increasedBusinessIcon} alt="Increased business" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Increased Business</h4>
