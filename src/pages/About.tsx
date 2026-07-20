@@ -248,67 +248,81 @@ export default function About() {
 
   const timelineHeight = useTransform(timelinePathLength, [0, 1], ["0%", "100%"]);
 
-  // Core leadership (Top Row)
+  // Core leadership (Top Row - Founders & C-Suite)
   const coreLeaders = [
     {
       name: "Yogesh Kedari",
       title: "Founder & CEO",
-      roleDesc: "18+ years of agribusiness experience across agritech, supply chain category operations, and trade financing. Ex-DeHaat (procurement/sourcing lead), Ex-NCDEX, and Ex-StarAgri. Drives corporate strategy.",
+      experience: "19+ Years",
+      roleDesc: "Visionary leader with deep roots in agriculture and extensive experience in building scalable businesses. Drives strategic direction and ensures sustainable growth.",
+      tags: ["Business", "Finance & Leadership"],
       image: leaderYogesh,
       badge: "Founder",
       linkedin: "https://linkedin.com/in/yogesh-kedari-mulyam"
     },
     {
       name: "Mahesh Kedari",
-      title: "Co-Founder & COO",
-      roleDesc: "12+ years managing high-volume warehouse operations, cold chain logistics grids, and food safety compliance. Spearheads daily ground logistics and sourcing fulfillment.",
+      title: "Co-founder & CTO",
+      experience: "17+ Years",
+      roleDesc: "Technology expert driving innovation in agricultural supply chain through AI and data-driven solutions. Focuses on platform scalability and technical excellence.",
+      tags: ["Software Development", "Platform Building", "Scalability"],
       image: leaderMahesh,
-      badge: "Founder",
+      badge: "Co-Founder",
       linkedin: "https://linkedin.com/in/mahesh-kedari-mulyam"
     },
     {
       name: "Preetesh Dutt",
-      title: "Head of Tech & Product",
-      roleDesc: "10+ years designing enterprise B2B SaaS, automated agricultural bidding engines, and logistics dashboards. Alumnus of DeHaat and Snapdeal. Directs the product roadmap.",
+      title: "Co-founder & Head of Sales",
+      experience: "16+ Years",
+      roleDesc: "Strategic expert with proven track record in scaling businesses and building strategic partnerships in the agricultural sector.",
+      tags: ["Business Development", "Agri Industry"],
       image: leaderPreetesh,
-      badge: "Core Team",
+      badge: "Co-Founder",
       linkedin: "https://linkedin.com/in/preetesh-dutt-mulyam"
     }
   ];
 
-  // Key operations & division leaders (Bottom Row)
+  // Strategic leadership & division heads (Bottom Row)
   const strategicLeaders = [
     {
-      name: "Sameer",
-      title: "Head of Sourcing & FPO Relations",
-      roleDesc: "Specializes in building deep relationships with Farmer Producer Organizations (FPOs). Oversees direct farm-gate sourcing programs and collection center networking.",
-      image: leaderSameer,
-      badge: "Core Team",
-      linkedin: "https://linkedin.com/in/sameer-mulyam"
-    },
-    {
-      name: "Vivek",
-      title: "Head of BizDev & Partnerships",
-      roleDesc: "Manages B2B institutional relationships, modern trade contracts, and quick-commerce dark store linkages. Expands Mulyam's buyer and sales footprint.",
+      name: "Vivek Dhoble",
+      title: "Chief Business Officer",
+      experience: "19+ Years",
+      roleDesc: "Seasoned professional with extensive experience in food retail and client services, ensuring operational excellence and customer satisfaction.",
+      tags: ["Food Retail", "Food Services", "Client Serving"],
       image: leaderVivek,
-      badge: "Core Team",
-      linkedin: "https://linkedin.com/in/vivek-mulyam"
+      badge: "Executive",
+      linkedin: "https://linkedin.com/in/vivek-dhoble-mulyam"
     },
     {
-      name: "Rishabh",
-      title: "Head of Supply Chain & Fulfillment",
-      roleDesc: "Coordinates automated warehousing systems, sorting compliance lines, and last-mile dispatch networks to guarantee daily freshness and under 2% transit loss.",
+      name: "Rishabh Bilala",
+      title: "Head of Marketing",
+      experience: "10+ Years",
+      roleDesc: "Marketing specialist focused on brand building and management, creating strong market presence and customer engagement strategies.",
+      tags: ["Marketing", "Brand Building", "Management"],
       image: leaderRishabh,
-      badge: "Core Team",
-      linkedin: "https://linkedin.com/in/rishabh-mulyam"
+      badge: "Leadership",
+      linkedin: "https://linkedin.com/in/rishabh-bilala-mulyam"
     },
     {
-      name: "Rahul",
-      title: "Head of Finance & Credit Enablement",
-      roleDesc: "Manages trade finance solutions, transparent invoice discounting, working capital facilities, and audit systems for both growers and institutional partners.",
+      name: "Sameer Waghchoure",
+      title: "Head of Operations",
+      experience: "28+ Years",
+      roleDesc: "Operations expert with decades of experience in retail and agricultural operations, optimizing processes for maximum efficiency.",
+      tags: ["Retail", "Marketing", "Agri Operations"],
+      image: leaderSameer,
+      badge: "Leadership",
+      linkedin: "https://linkedin.com/in/sameer-waghchoure-mulyam"
+    },
+    {
+      name: "Rahul Singh",
+      title: "Head of GT Business",
+      experience: "6+ Years",
+      roleDesc: "Business development professional with expertise in banking and financial services, driving growth in new markets and partnerships.",
+      tags: ["Business Development", "Banking Industry"],
       image: leaderRahul,
-      badge: "Core Team",
-      linkedin: "https://linkedin.com/in/rahul-mulyam"
+      badge: "Leadership",
+      linkedin: "https://linkedin.com/in/rahul-singh-mulyam"
     }
   ];
 
@@ -682,29 +696,30 @@ export default function About() {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     whileHover={{ 
                       y: -6,
-                      // Hard Neo-brutalist shadow expansion (tighter)
                       boxShadow: "6px 6px 0px 0px rgba(0, 189, 103, 0.95)"
                     }}
                     className="group bg-white dark:bg-[#12161A] border-2 border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,75,139,1)] dark:shadow-[4px_4px_0px_0px_rgba(18,22,26,1)] transition-all duration-300 flex flex-col h-full"
                   >
-                    {/* Headshot container (changed to aspect-[4/3] landscape for compact vertical fit) */}
+                    {/* Headshot container with experience pill */}
                     <div className="aspect-[4/3] w-full overflow-hidden bg-slate-100 dark:bg-slate-900 relative">
                       <img 
                         src={leader.image} 
                         alt={`Portrait of ${leader.name}`} 
                         className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-103" 
                       />
-                      {/* Badge indicator removed */}
+                      <span className="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-mulyam-green text-white text-[10px] font-extrabold shadow-md z-10">
+                        {leader.experience}
+                      </span>
                     </div>
 
-                    {/* Content Panel (reduced padding to p-4) */}
+                    {/* Content Panel */}
                     <div className="p-4 flex flex-col flex-grow">
-                      <div className="flex items-start justify-between gap-2 mb-2">
+                      <div className="flex items-start justify-between gap-2 mb-1">
                         <div>
                           <h3 className="font-sans font-extrabold text-base md:text-lg text-mulyam-blue dark:text-white leading-tight">
                             {leader.name}
                           </h3>
-                          <span className="text-[11px] text-mulyam-green font-semibold tracking-wider block mt-1">
+                          <span className="text-[11px] text-mulyam-green font-semibold tracking-wider block mt-0.5">
                             {leader.title}
                           </span>
                         </div>
@@ -725,6 +740,15 @@ export default function About() {
                       <p className="text-[11px] text-slate-500 dark:text-slate-400 font-light leading-relaxed mt-2 flex-grow">
                         {leader.roleDesc}
                       </p>
+
+                      {/* Expertise Tags */}
+                      <div className="flex flex-wrap gap-1 mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+                        {leader.tags.map((tag, tagIdx) => (
+                          <span key={tagIdx} className="px-2 py-0.5 rounded text-[9px] font-medium bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </motion.div>
                 ))}
@@ -750,17 +774,19 @@ export default function About() {
                     }}
                     className="group bg-white dark:bg-[#12161A] border-2 border-slate-200 dark:border-slate-800/80 rounded-xl overflow-hidden shadow-[3px_3px_0px_0px_rgba(0,75,139,1)] dark:shadow-[3px_3px_0px_0px_rgba(18,22,26,1)] transition-all duration-300 flex flex-col h-full"
                   >
-                    {/* Headshot container (changed to aspect-[4/3] landscape for compact vertical fit) */}
+                    {/* Headshot container with experience pill */}
                     <div className="aspect-[4/3] w-full overflow-hidden bg-slate-100 dark:bg-slate-900 relative">
                       <img 
                         src={leader.image} 
                         alt={`Portrait of ${leader.name}`} 
                         className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-103" 
                       />
-                      {/* Badge indicator removed */}
+                      <span className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-mulyam-green text-white text-[9px] font-extrabold shadow-md z-10">
+                        {leader.experience}
+                      </span>
                     </div>
 
-                    {/* Content Panel (reduced padding to p-4) */}
+                    {/* Content Panel */}
                     <div className="p-4 flex flex-col flex-grow">
                       <div className="flex items-start justify-between gap-1 mb-1">
                         <div>
@@ -780,7 +806,7 @@ export default function About() {
                           aria-label={`${leader.name}'s LinkedIn profile`}
                         >
                           <svg className="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75-1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                           </svg>
                         </a>
                       </div>
@@ -788,6 +814,15 @@ export default function About() {
                       <p className="text-[10px] text-slate-500 dark:text-slate-400 font-light leading-relaxed mt-2 flex-grow">
                         {leader.roleDesc}
                       </p>
+
+                      {/* Expertise Tags */}
+                      <div className="flex flex-wrap gap-1 mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+                        {leader.tags.map((tag, tagIdx) => (
+                          <span key={tagIdx} className="px-1.5 py-0.5 rounded text-[9px] font-medium bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </motion.div>
                 ))}
