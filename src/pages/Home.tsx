@@ -1,7 +1,7 @@
 import HeroVanguard from "../components/HeroVanguard";
 import WhatIsMulyam from "../components/WhatIsMulyam";
 import CapabilitiesSnap from "../components/CapabilitiesSnap";
-import ScmGrid from "../components/ScmGrid";
+
 
 export default function Home() {
   return (
@@ -16,8 +16,7 @@ export default function Home() {
       {/* Block 3: Capabilities Vertical Snap Slider — 3 editorial slides */}
       <CapabilitiesSnap />
 
-      {/* Block 4: Scm Grid — Scroll-Triggered Grid with background depth */}
-      <ScmGrid />
+
 
       {/* Strategic Deployment Footer */}
       <footer className="bg-slate-900 border-t border-slate-800 py-12 px-8 md:px-12 w-full text-slate-300">

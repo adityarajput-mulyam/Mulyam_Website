@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import { motion, useScroll, useTransform, useMotionValue, useSpring, useMotionValueEvent } from "framer-motion";
-import { ArrowRight, Quote, Leaf, Cpu, Coins, ShieldCheck } from "lucide-react";
+import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from "framer-motion";
+import { Quote, Leaf, Cpu, Coins, ShieldCheck } from "lucide-react";
 
 // Import local WebP and PNG assets
 import farmParallax from "../assets/farm_parallax.png";
@@ -55,50 +55,6 @@ function WordReveal({ text, className }: { text: string; className?: string }) {
         </span>
       ))}
     </motion.h1>
-  );
-}
-
-// Magnetic Button Component
-function MagneticButton({ children, className, onClick }: { children: React.ReactNode; className?: string; onClick?: () => void }) {
-  const ref = useRef<HTMLButtonElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const springConfig = { damping: 15, elastic: 0.1, stiffness: 150 };
-  const springX = useSpring(x, springConfig);
-  const springY = useSpring(y, springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
-    const { clientX, clientY } = e;
-    const { left, top, width, height } = ref.current.getBoundingClientRect();
-    const centerX = left + width / 2;
-    const centerY = top + height / 2;
-    
-    const distanceX = clientX - centerX;
-    const distanceY = clientY - centerY;
-    
-    const strength = 0.28;
-    x.set(distanceX * strength);
-    y.set(distanceY * strength);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.button
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ x: springX, y: springY }}
-      className={className}
-      onClick={onClick}
-    >
-      {children}
-    </motion.button>
   );
 }
 
@@ -728,53 +684,6 @@ export default function About() {
           </div>
         </section>
 
-        {/* 6. CALL TO ACTION (CTA) / JOIN US */}
-        <section className="bg-white dark:bg-[#12161A] border-t border-slate-200/60 dark:border-slate-800/80 py-20 md:py-28 relative overflow-hidden" aria-label="Join our team">
-          {/* Subtle Ambient green glow */}
-          <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-[#00BD67]/5 blur-3xl pointer-events-none" />
-          <div className="absolute top-0 left-0 w-80 h-80 rounded-full bg-[#004B8B]/5 dark:bg-[#FFC400]/2 blur-3xl pointer-events-none" />
-
-          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <motion.h2 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="font-sans font-extrabold text-4xl sm:text-5xl md:text-6xl text-[#004B8B] dark:text-white tracking-tight uppercase leading-[1.1] mb-6"
-            >
-              Together, we can <span className="text-[#00BD67]">restore the planet.</span>
-            </motion.h2>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-sm md:text-base text-slate-500 dark:text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed font-light"
-            >
-              Join Mulyam in restructuring agricultural trade, scaling resource productivity, and making zero-waste food distribution a reality.
-            </motion.p>
-
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex justify-center"
-            >
-              {/* Magnetic CTA Button */}
-              <MagneticButton 
-                onClick={() => window.location.href = "mailto:careers@mulyam.in"}
-                className="group flex items-center gap-3 px-8 py-4 bg-[#00BD67] hover:bg-[#00BD67]/90 text-white font-bold text-sm uppercase tracking-widest rounded-xl shadow-lg hover:shadow-xl transition-colors duration-200 cursor-pointer"
-              >
-                <span>See Opportunities</span>
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">
-                  <ArrowRight className="h-4.5 w-4.5" />
-                </span>
-              </MagneticButton>
-            </motion.div>
-          </div>
-        </section>
 
       </div>
     </div>
