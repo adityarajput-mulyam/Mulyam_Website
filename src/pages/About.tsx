@@ -360,7 +360,7 @@ export default function About() {
               <span className="font-sans font-extrabold text-xs tracking-widest text-mulyam-green uppercase block mb-4">
                 Our Origins
               </span>
-              <h1 className="font-sans font-black text-4xl sm:text-5xl lg:text-6xl text-slate-900 dark:text-white leading-[1.1] tracking-tight mb-8">
+              <h1 className="font-sans font-black text-4xl sm:text-5xl lg:text-6xl text-mulyam-blue dark:text-white leading-[1.1] tracking-tight mb-8">
                 Roots of <span className="text-mulyam-green">Mulyam</span>
               </h1>
               
@@ -396,7 +396,7 @@ export default function About() {
                     />
                   </div>
                   <div className="pt-4 pb-1 text-center">
-                    <h3 className="font-sans font-extrabold text-base md:text-lg text-slate-900 dark:text-white leading-tight">Yogesh & Mahesh Kedari</h3>
+                    <h3 className="font-sans font-extrabold text-base md:text-lg text-mulyam-blue dark:text-white leading-tight">Yogesh & Mahesh Kedari</h3>
                     <p className="text-[10px] text-mulyam-green font-semibold tracking-wider mt-1 uppercase">Founders of Mulyam</p>
                   </div>
                 </div>
@@ -413,7 +413,7 @@ export default function About() {
         >
           {/* Section Header (Centered to establish the Central axis string visual start) */}
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-            <h2 className="font-sans font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white uppercase tracking-tight mb-3">
+            <h2 className="font-sans font-extrabold text-3xl sm:text-4xl text-mulyam-blue dark:text-white uppercase tracking-tight mb-3">
               What We Do
             </h2>
             <div className="h-1 w-12 bg-mulyam-green rounded-full mx-auto mb-4"></div>
@@ -514,7 +514,7 @@ export default function About() {
                           <div className={`p-2.5 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 transition-all duration-300 ${isActive ? "scale-110 rotate-3 border-mulyam-green/30" : ""}`}>
                             {node.icon}
                           </div>
-                          <h4 className="font-sans font-extrabold text-base text-slate-900 dark:text-white leading-tight">
+                          <h4 className="font-sans font-extrabold text-base text-mulyam-blue dark:text-white leading-tight">
                             {node.title}
                           </h4>
                         </div>
@@ -545,7 +545,7 @@ export default function About() {
                       <div className="p-2 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-100 dark:border-slate-800">
                         {node.icon}
                       </div>
-                      <h4 className="font-sans font-extrabold text-sm text-slate-900 dark:text-white leading-tight">
+                      <h4 className="font-sans font-extrabold text-sm text-mulyam-blue dark:text-white leading-tight">
                         {node.title}
                       </h4>
                     </div>
@@ -659,7 +659,7 @@ export default function About() {
           <div className="w-full mb-8">
             {/* Meet the Leadership Head */}
             <div className="text-center max-w-4xl mx-auto">
-              <h3 className="font-sans font-black text-4xl sm:text-5xl text-slate-900 dark:text-white uppercase tracking-tight">
+              <h3 className="font-sans font-black text-4xl sm:text-5xl text-mulyam-blue dark:text-white uppercase tracking-tight">
                 Meet Our Team
               </h3>
             </div>
@@ -701,7 +701,7 @@ export default function About() {
                     <div className="p-4 flex flex-col flex-grow">
                       <div className="flex items-start justify-between gap-2 mb-2">
                         <div>
-                          <h3 className="font-sans font-extrabold text-base md:text-lg text-slate-900 dark:text-white leading-tight">
+                          <h3 className="font-sans font-extrabold text-base md:text-lg text-mulyam-blue dark:text-white leading-tight">
                             {leader.name}
                           </h3>
                           <span className="text-[11px] text-mulyam-green font-semibold tracking-wider block mt-1">
@@ -764,7 +764,7 @@ export default function About() {
                     <div className="p-4 flex flex-col flex-grow">
                       <div className="flex items-start justify-between gap-1 mb-1">
                         <div>
-                          <h3 className="font-sans font-extrabold text-base text-slate-900 dark:text-white leading-tight">
+                          <h3 className="font-sans font-extrabold text-base text-mulyam-blue dark:text-white leading-tight">
                             {leader.name}
                           </h3>
                           <span className="text-[11px] text-mulyam-green font-semibold tracking-wide block mt-0.5">
@@ -807,7 +807,7 @@ export default function About() {
             {/* Left Side: Title and Locations List */}
             <div className="lg:col-span-5 flex flex-col justify-center h-full gap-4">
               <div>
-                <h2 className="font-sans font-black text-3xl sm:text-4xl text-slate-900 dark:text-white uppercase tracking-tight">
+                <h2 className="font-sans font-black text-3xl sm:text-4xl text-mulyam-blue dark:text-white uppercase tracking-tight">
                   Our Locations
                 </h2>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">

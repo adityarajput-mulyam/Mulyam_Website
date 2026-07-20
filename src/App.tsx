@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLenis } from "./hooks/useLenis";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Solutions from "./pages/Solutions";
 import Navbar from "./components/Navbar";
 import Preloader from "./components/Preloader";
 
@@ -31,6 +32,8 @@ function App() {
           <Home />
         ) : activeTab === "ABOUT US" ? (
           <About />
+        ) : activeTab === "SOLUTIONS" ? (
+          <Solutions />
         ) : (
           /* Fallback for other pages currently in planning/development */
           <div className="pt-32 pb-24 min-h-screen flex items-center justify-center bg-[#F9F9F6] dark:bg-[#0C0F12]">
