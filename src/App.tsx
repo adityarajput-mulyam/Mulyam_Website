@@ -9,6 +9,10 @@ import Preloader from "./components/Preloader";
 import mulyamLogo from "./assets/logos/mulyam_logo_transparent.png";
 import mulyamLogoEn from "./assets/logos/mulyam_logo_en.png";
 
+import MediaPage from "./pages/MediaPage";
+
+import ClickSpark from "./components/ClickSpark";
+
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -56,25 +60,35 @@ function AppContent() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F9F9F6] dark:bg-[#0C0F12] text-slate-800 dark:text-slate-100 transition-colors duration-300">
-      <ScrollToTop />
-      <Preloader />
-      <Navbar />
+    <ClickSpark
+      sparkColor="#00BD67"
+      sparkSize={12}
+      sparkRadius={20}
+      sparkCount={10}
+      duration={400}
+      easing="ease-out"
+      extraScale={1.2}
+    >
+      <div className="min-h-screen bg-[#F9F9F6] dark:bg-[#0C0F12] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+        <ScrollToTop />
+        <Preloader />
+        <Navbar />
 
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/about-us" element={<About />} />
-          <Route path="/solutions" element={<Solutions />} />
-          <Route path="/our-brands" element={<PagePlaceholder title="OUR BRANDS" />} />
-          <Route path="/media" element={<PagePlaceholder title="MEDIA" />} />
-          <Route path="/careers" element={<PagePlaceholder title="CAREERS" />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </main>
-    </div>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/about-us" element={<About />} />
+            <Route path="/solutions" element={<Solutions />} />
+            <Route path="/our-brands" element={<PagePlaceholder title="OUR BRANDS" />} />
+            <Route path="/media" element={<MediaPage />} />
+            <Route path="/careers" element={<PagePlaceholder title="CAREERS" />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </main>
+      </div>
+    </ClickSpark>
   );
 }
 
