@@ -1,6 +1,5 @@
-import React, { useState, useMemo } from "react";
-import { Search, ChevronDown, HelpCircle, PhoneCall, Mail, MessageSquare, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useState, useMemo } from "react";
+import { Search, ChevronDown, HelpCircle, PhoneCall, Mail, Sparkles } from "lucide-react";
 
 interface FAQItem {
   id: string;
