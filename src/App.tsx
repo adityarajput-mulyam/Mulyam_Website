@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Solutions from "./pages/Solutions";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Preloader from "./components/Preloader";
 import mulyamLogo from "./assets/logos/mulyam_logo_transparent.png";
 import mulyamLogoEn from "./assets/logos/mulyam_logo_en.png";
@@ -89,6 +90,7 @@ function AppContent() {
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </ClickSpark>
   );
