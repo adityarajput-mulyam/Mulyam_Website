@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Sun, Moon } from "lucide-react";
 import mulyamLogo from "../assets/mulyam_logo_transparent.png";
 
 interface NavbarProps {
@@ -9,14 +8,6 @@ interface NavbarProps {
 
 export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== "undefined") {
-      return document.documentElement.classList.contains("dark") || 
-             localStorage.getItem("theme") === "dark";
-    }
-    return false;
-  });
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -32,21 +23,9 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
 
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.add("theme-transition");
-    
-    if (isDarkMode) {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-
-    const timer = setTimeout(() => {
-      root.classList.remove("theme-transition");
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [isDarkMode]);
+    root.classList.remove("dark");
+    localStorage.removeItem("theme");
+  }, []);
 
   const menuItems = [
     "HOME",
@@ -79,9 +58,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
             <img 
               src={mulyamLogo} 
               alt="Mulyam Logo" 
-              className={`h-10 w-auto object-contain transition-all duration-300 ${
-                isDarkMode && !isSolidNavbar ? "brightness-125" : ""
-              }`} 
+              className="h-10 w-auto object-contain transition-all duration-300" 
             />
           </button>
         </div>
@@ -112,23 +89,6 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
 
         {/* Right side: Dark Mode Toggle & Get In Button */}
         <div className="flex items-center gap-4 transition-all duration-300">
-          {/* Dark Mode Toggle */}
-          <button
-            onClick={() => setIsDarkMode((prev) => !prev)}
-            className={`p-2 rounded-lg border transition-all duration-200 cursor-pointer flex items-center justify-center ${
-              isSolidNavbar
-                ? "border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-                : "border-white/20 bg-white/10 text-white hover:bg-white/20"
-            }`}
-            aria-label="Toggle theme"
-          >
-            {isDarkMode ? (
-              <Sun className="h-4.5 w-4.5 text-mulyam-yellow" />
-            ) : (
-              <Moon className="h-4.5 w-4.5" />
-            )}
-          </button>
-
           <a 
             href="mailto:connect@mulyam.in"
             className="px-5 py-2.5 bg-mulyam-green hover:bg-mulyam-green/90 text-white hover:text-mulyam-blue font-bold text-xs uppercase tracking-wider rounded-lg shadow-sm hover:shadow transition-all duration-200 cursor-pointer inline-block"
