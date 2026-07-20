@@ -38,7 +38,7 @@ export default function MediaCard({ item }: MediaCardProps) {
   const isVideo = item.badgeType.includes("Video");
 
   return (
-    <TiltedWrapper scaleOnHover={1.03} rotateAmplitude={10} className="w-full h-full">
+    <TiltedWrapper scaleOnHover={1.03} rotateAmplitude={8} className="w-full h-full">
       <a
         href={item.linkUrl}
         target="_blank"
@@ -76,8 +76,8 @@ export default function MediaCard({ item }: MediaCardProps) {
           </div>
         </div>
 
-        {/* Card Body & Content */}
-        <div className="flex-1 p-6 flex flex-col justify-between bg-white dark:bg-[#141B26] border-x border-b border-slate-200 dark:border-slate-800 rounded-b-xl shadow-[4px_4px_0px_0px_rgba(0,75,139,0.12)] group-hover:shadow-[8px_8px_0px_0px_#00BD67] group-hover:border-[#00BD67]/60 transition-all duration-300">
+        {/* Card Body & Content (Option B: Floating White Card with Soft Shadow) */}
+        <div className="flex-1 p-6 flex flex-col justify-between bg-white dark:bg-[#141B26] border border-slate-200/90 dark:border-slate-800/90 rounded-b-xl shadow-[0_8px_25px_-5px_rgba(0,0,0,0.08)] group-hover:shadow-[0_16px_36px_-6px_rgba(0,189,103,0.2)] group-hover:border-[#00BD67]/80 transition-all duration-300">
           
           <div>
             {/* Meta Row: Publisher Pill & Date */}
@@ -85,8 +85,8 @@ export default function MediaCard({ item }: MediaCardProps) {
               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#00BD67]/10 text-[#00BD67] dark:bg-[#00BD67]/20 border border-[#00BD67]/20">
                 {item.publisherPill}
               </span>
-              <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-medium">
-                <Calendar className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
+              <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
+                <Calendar className="w-3.5 h-3.5 opacity-70" />
                 <span>{item.date}</span>
               </div>
             </div>
@@ -104,7 +104,7 @@ export default function MediaCard({ item }: MediaCardProps) {
 
           {/* Footer Outline Button */}
           <div className="mt-6">
-            <div className="w-full py-2.5 px-4 rounded-lg border-2 border-[#00BD67] text-[#00BD67] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 group-hover:bg-[#00BD67] group-hover:text-white transition-all duration-300 shadow-sm">
+            <div className="w-full py-2.5 px-4 rounded-lg font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 border-2 border-[#00BD67] text-[#00BD67] group-hover:bg-[#00BD67] group-hover:text-white transition-all duration-300 shadow-sm">
               <span>{isVideo ? "WATCH VIDEO" : "READ ARTICLE"}</span>
               {isVideo ? (
                 <Play className="w-3.5 h-3.5 fill-current" />

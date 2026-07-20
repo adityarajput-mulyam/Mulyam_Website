@@ -203,7 +203,7 @@ export default function MediaPage() {
   }, [selectedFilter, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[#F9F9F6] dark:bg-[#0C0F12] pb-24 text-slate-800 dark:text-slate-100">
+    <div className="min-h-screen bg-[#EEF2F6] dark:bg-[#0A0D11] pb-24 text-slate-800 dark:text-slate-100 transition-colors duration-300">
       <MediaHeroWrapper
         selectedFilter={selectedFilter}
         setSelectedFilter={setSelectedFilter}
