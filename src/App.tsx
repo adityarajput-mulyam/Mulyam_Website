@@ -12,6 +12,7 @@ import mulyamLogoEn from "./assets/logos/mulyam_logo_en.png";
 
 import Brands from "./pages/Brands";
 import MediaPage from "./pages/MediaPage";
+import FAQ from "./pages/FAQ";
 
 import ClickSpark from "./components/ClickSpark";
 
@@ -86,6 +87,7 @@ function AppContent() {
             <Route path="/our-brands" element={<Brands />} />
             <Route path="/brands" element={<Brands />} />
             <Route path="/media" element={<MediaPage />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/careers" element={<PagePlaceholder title="CAREERS" />} />
             <Route path="*" element={<Home />} />
           </Routes>

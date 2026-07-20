@@ -122,9 +122,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://mulyam.in/faq" target="_blank" rel="noopener noreferrer" className="hover:text-[#00BD67] transition-colors">
+                <Link to="/faq" className="hover:text-[#00BD67] transition-colors">
                   FAQ
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
