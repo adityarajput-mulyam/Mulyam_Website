@@ -1,0 +1,22 @@
+.tilted-wrapper-figure {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.tilted-wrapper-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.tilted-wrapper-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+}
