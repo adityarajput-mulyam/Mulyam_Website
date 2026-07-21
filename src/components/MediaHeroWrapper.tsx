@@ -222,9 +222,9 @@ export default function MediaHeroWrapper({
           variants={actionDockVariants}
           className="sticky top-6 z-40 w-full max-w-4xl mx-auto"
         >
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-2 rounded-full border border-slate-200/90 dark:border-slate-800/90 bg-white/75 dark:bg-[#0C0F12]/80 backdrop-blur-xl shadow-xl shadow-slate-900/5 transition-all duration-300">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-3 sm:p-2 rounded-2xl sm:rounded-full border border-slate-200/90 dark:border-slate-800/90 bg-white/75 dark:bg-[#0C0F12]/80 backdrop-blur-xl shadow-xl shadow-slate-900/5 transition-all duration-300 w-full">
             {/* Category Pills */}
-            <nav className="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto no-scrollbar px-1 py-0.5">
+            <nav className="flex flex-wrap items-center justify-center gap-1.5 w-full sm:w-auto px-1 py-0.5">
               {filterTabs.map((tab) => {
                 const isActive = selectedFilter === tab;
                 let activeBgClass = "bg-[#004B8B] dark:bg-[#00BD67] text-white";

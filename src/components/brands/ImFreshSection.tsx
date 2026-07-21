@@ -137,7 +137,7 @@ export default function ImFreshSection() {
         
         {/* Section Header */}
         <div className="mb-12 text-center lg:text-left">
-          <span className="text-xs font-bold tracking-widest text-[#004B8B] uppercase bg-[#004B8B]/10 px-3.5 py-1.5 rounded-full border border-[#004B8B]/20">
+          <span className="inline-block text-xs font-bold tracking-widest text-[#004B8B] uppercase bg-[#004B8B]/10 px-3.5 py-1.5 rounded-full border border-[#004B8B]/20">
             PLATFORM 01 · CONSUMER & RETAIL BRAND
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-[#004B8B] tracking-tight mt-4">
@@ -213,7 +213,7 @@ export default function ImFreshSection() {
             {/* 1. Quality Standards That Define Excellence */}
             <div>
               <div className="mb-6">
-                <span className="text-[11px] font-extrabold tracking-widest text-[#00BD67] uppercase bg-[#00BD67]/10 px-3 py-1 rounded-full border border-[#00BD67]/20">
+                <span className="inline-block text-[11px] font-extrabold tracking-widest text-[#00BD67] uppercase bg-[#00BD67]/10 px-3 py-1 rounded-full border border-[#00BD67]/20">
                   BENCHMARKS OF FRESHNESS
                 </span>
                 <h3 className="text-2xl font-extrabold text-[#004B8B] tracking-tight mt-3">
@@ -257,7 +257,7 @@ export default function ImFreshSection() {
             {/* 2. Produce Range Showcase (Produce Grid) */}
             <div>
               <div className="mb-6">
-                <span className="text-[11px] font-extrabold tracking-widest text-[#004B8B] uppercase bg-[#004B8B]/10 px-3 py-1 rounded-full border border-[#004B8B]/20">
+                <span className="inline-block text-[11px] font-extrabold tracking-widest text-[#004B8B] uppercase bg-[#004B8B]/10 px-3 py-1 rounded-full border border-[#004B8B]/20">
                   OUR PRODUCE RANGE
                 </span>
                 <h3 className="text-2xl font-extrabold text-[#004B8B] tracking-tight mt-3">

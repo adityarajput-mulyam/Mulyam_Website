@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useCallback, useState } from 'react';
 
 interface ClickSparkProps {
   sparkColor?: string;
@@ -29,6 +29,7 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
   children
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [hasSparks, setHasSparks] = useState(false);
   const sparksRef = useRef<Spark[]>([]);
   const startTimeRef = useRef<number | null>(null);
 
@@ -122,6 +123,10 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
         return true;
       });
 
+      if (sparksRef.current.length === 0) {
+        setHasSparks(false);
+      }
+
       animationId = requestAnimationFrame(draw);
     };
 
@@ -133,9 +138,7 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
   }, [sparkColor, sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>): void => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
+    const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
@@ -148,15 +151,12 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
     }));
 
     sparksRef.current.push(...newSparks);
+    setHasSparks(true);
   };
 
   return (
     <div
-      style={{
-        width: '100%',
-        height: '100%',
-        position: 'relative'
-      }}
+      className="w-full min-h-screen relative"
       onClick={handleClick}
     >
       <canvas
@@ -165,7 +165,8 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
           position: 'absolute',
           inset: 0,
           pointerEvents: 'none',
-          zIndex: 9999
+          zIndex: 9999,
+          display: hasSparks ? 'block' : 'none'
         }}
       />
       {children}

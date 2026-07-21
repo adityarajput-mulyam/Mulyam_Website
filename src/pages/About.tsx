@@ -364,35 +364,23 @@ export default function About() {
           aria-label="Roots and Core Values"
         >
           {/* Faded Large Devanagari background watermark */}
-          <div className="absolute right-12 top-1/2 -translate-y-1/2 text-[14vw] font-black text-slate-200/20 dark:text-slate-800/10 pointer-events-none select-none font-sans leading-none z-0">
+          <div className="absolute right-12 top-1/2 -translate-y-1/2 text-[14vw] font-black text-slate-200/20 dark:text-slate-800/10 pointer-events-none select-none font-sans leading-none z-0 hidden lg:block">
             मूल्य
           </div>
 
           <div className="relative z-10 w-full max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Narrative: Roots of Mulyam */}
-            <div className="lg:col-span-7 flex flex-col items-start text-left">
+            {/* 1. Header (Title) - always on top on mobile, spans 7 cols on desktop */}
+            <div className="lg:col-span-7 flex flex-col items-start text-left order-1 lg:order-1">
               <span className="font-sans font-extrabold text-xs tracking-widest text-mulyam-green uppercase block mb-4">
                 Our Origins
               </span>
-              <h1 className="font-sans font-black text-4xl sm:text-5xl lg:text-6xl text-mulyam-blue dark:text-white leading-[1.1] tracking-tight mb-8">
+              <h1 className="font-sans font-black text-4xl sm:text-5xl lg:text-6xl text-mulyam-blue dark:text-white leading-[1.1] tracking-tight">
                 Roots of <span className="text-mulyam-green">Mulyam</span>
               </h1>
-              
-              <div className="space-y-6 text-slate-600 dark:text-slate-350 text-base md:text-lg font-light leading-relaxed max-w-2xl">
-                <p>
-                  Mulyam's story doesn't start in a boardroom; it begins in the fields of rural India. Founders and brothers, <span className="text-mulyam-blue dark:text-white font-semibold">Yogesh and Mahesh Kedari</span>, hail from a farming family. Since childhood, they witnessed firsthand the hard work that goes into agriculture and the persistent challenges farmers face—from unpredictable prices to post-harvest losses.
-                </p>
-                <p>
-                  After several years of gaining valuable corporate experience, they felt a strong pull to return to their roots. They decided to combine their professional expertise with their innate understanding of agriculture to tackle one of India's most critical problems: the inefficient supply chain for perishable commodities.
-                </p>
-                <p className="text-sm md:text-base text-slate-505 dark:text-slate-400 border-l-2 border-mulyam-green pl-4 italic">
-                  This is where the idea for Mulyam was born—a mission to restore <span className="text-mulyam-green font-semibold">"मूल्य"</span> or <span className="text-mulyam-green font-semibold">"value"</span> where it matters most: back to the soil and the hands that till it.
-                </p>
-              </div>
             </div>
 
-            {/* Right Side: Founders Photo with Editorial Layout */}
-            <div className="lg:col-span-5 flex justify-center w-full">
+            {/* 2. Right Side: Founders Photo with Editorial Layout - row-span-2 on desktop, order-2 on mobile */}
+            <div className="lg:col-span-5 flex justify-center w-full order-2 lg:order-2 lg:row-span-2 lg:self-center">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -415,6 +403,21 @@ export default function About() {
                   </div>
                 </div>
               </motion.div>
+            </div>
+
+            {/* 3. Left Narrative Content: Roots of Mulyam - order-3 on mobile */}
+            <div className="lg:col-span-7 flex flex-col items-start text-left order-3 lg:order-3">
+              <div className="space-y-6 text-slate-600 dark:text-slate-350 text-base md:text-lg font-light leading-relaxed max-w-2xl">
+                <p>
+                  Mulyam's story doesn't start in a boardroom; it begins in the fields of rural India. Founders and brothers, <span className="text-mulyam-blue dark:text-white font-semibold">Yogesh and Mahesh Kedari</span>, hail from a farming family. Since childhood, they witnessed firsthand the hard work that goes into agriculture and the persistent challenges farmers face—from unpredictable prices to post-harvest losses.
+                </p>
+                <p>
+                  After several years of gaining valuable corporate experience, they felt a strong pull to return to their roots. They decided to combine their professional expertise with their innate understanding of agriculture to tackle one of India's most critical problems: the inefficient supply chain for perishable commodities.
+                </p>
+                <p className="text-sm md:text-base text-slate-505 dark:text-slate-400 border-l-2 border-mulyam-green pl-4 italic">
+                  This is where the idea for Mulyam was born—a mission to restore <span className="text-mulyam-green font-semibold">"मूल्य"</span> or <span className="text-mulyam-green font-semibold">"value"</span> where it matters most: back to the soil and the hands that till it.
+                </p>
+              </div>
             </div>
           </div>
         </section>

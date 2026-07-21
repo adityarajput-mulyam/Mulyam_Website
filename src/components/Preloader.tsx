@@ -28,7 +28,7 @@ export default function Preloader() {
       {visible && (
         <motion.div
           className={`fixed inset-0 z-[100] bg-[#004B8B] flex items-center justify-center select-none ${
-            isLoaded ? "is-loaded" : ""
+            isLoaded ? "is-loaded pointer-events-none" : ""
           }`}
           initial={{ opacity: 1 }}
           exit={{ y: "-100%" }}

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 // Import custom category assets
@@ -19,6 +19,14 @@ import increasedBusinessIcon from "../assets/icons/increased_business.png";
 
 export default function Solutions() {
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -31,14 +39,23 @@ export default function Solutions() {
     mass: 0.8,
   });
 
-  const y2 = useTransform(smoothScrollYProgress, [0.15, 0.5], ["100%", "0%"]); 
-  const y3 = useTransform(smoothScrollYProgress, [0.64, 0.95], ["100%", "0%"]); 
+  const y2Val = useTransform(smoothScrollYProgress, [0.15, 0.5], ["100%", "0%"]); 
+  const y3Val = useTransform(smoothScrollYProgress, [0.64, 0.95], ["100%", "0%"]); 
 
-  const s1HeadingY = useTransform(smoothScrollYProgress, [0, 0.25], [0, -35]);
-  const s1HeadingOpacity = useTransform(smoothScrollYProgress, [0.05, 0.25], [1, 0]);
-  const s2HeadingY = useTransform(smoothScrollYProgress, [0.15, 0.38, 0.6, 0.85], [35, 0, 0, -35]);
-  const s2HeadingOpacity = useTransform(smoothScrollYProgress, [0.15, 0.32, 0.62, 0.82], [0, 1, 1, 0]);
-  const s3HeadingY = useTransform(smoothScrollYProgress, [0.64, 0.8], [28, 0]);
+  const y2 = isMobile ? "0%" : y2Val;
+  const y3 = isMobile ? "0%" : y3Val;
+
+  const s1HeadingYVal = useTransform(smoothScrollYProgress, [0, 0.25], [0, -35]);
+  const s1HeadingOpacityVal = useTransform(smoothScrollYProgress, [0.05, 0.25], [1, 0]);
+  const s2HeadingYVal = useTransform(smoothScrollYProgress, [0.15, 0.38, 0.6, 0.85], [35, 0, 0, -35]);
+  const s2HeadingOpacityVal = useTransform(smoothScrollYProgress, [0.15, 0.32, 0.62, 0.82], [0, 1, 1, 0]);
+  const s3HeadingYVal = useTransform(smoothScrollYProgress, [0.64, 0.8], [28, 0]);
+
+  const s1HeadingY = isMobile ? 0 : s1HeadingYVal;
+  const s1HeadingOpacity = isMobile ? 1 : s1HeadingOpacityVal;
+  const s2HeadingY = isMobile ? 0 : s2HeadingYVal;
+  const s2HeadingOpacity = isMobile ? 1 : s2HeadingOpacityVal;
+  const s3HeadingY = isMobile ? 0 : s3HeadingYVal;
 
   return (
     <div className="bg-[#F9F9F6] dark:bg-[#0C0F12] min-h-screen antialiased text-slate-900 dark:text-slate-100 transition-colors duration-300 relative border-t-0">
@@ -101,10 +118,10 @@ export default function Solutions() {
       </section>
 
       {/* Main Content Modules with Sticky Slide-like behavior */}
-      <section ref={containerRef} className="w-full relative z-10 h-[250vh] border-t border-slate-950 dark:border-slate-800 bg-[#F9F9F6] dark:bg-[#0C0F12]">
-        <div className="sticky top-16 w-full h-[calc(100vh-4rem)] overflow-hidden bg-transparent">
+      <section ref={containerRef} className="w-full relative z-10 h-auto lg:h-[250vh] border-t border-slate-950 dark:border-slate-800 bg-[#F9F9F6] dark:bg-[#0C0F12]">
+        <div className="relative lg:sticky lg:top-16 w-full min-h-screen lg:h-[calc(100vh-4rem)] lg:overflow-hidden bg-transparent">
           {/* Slide 1: Farmers */}
-          <div className="absolute inset-0 w-full h-full bg-white dark:bg-[#0E1216] overflow-hidden" style={{ contentVisibility: "auto", containIntrinsicSize: "100vh" }}>
+          <div className="relative lg:absolute lg:inset-0 w-full min-h-screen lg:h-full bg-white dark:bg-[#0E1216] py-16 lg:py-0 overflow-hidden" style={{ contentVisibility: "auto", containIntrinsicSize: "100vh" }}>
             <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800">
               <div className="lg:col-span-7 p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full text-left">
                 <motion.div style={{ y: s1HeadingY, opacity: s1HeadingOpacity }} className="flex flex-col gap-4">
@@ -153,7 +170,7 @@ export default function Solutions() {
                 </div>
               </div>
 
-              <div className="lg:col-span-5 relative h-full bg-slate-50 dark:bg-slate-900 flex lg:border-l border-slate-950 dark:border-slate-800 overflow-hidden">
+              <div className="lg:col-span-5 relative h-64 sm:h-80 lg:h-full bg-slate-50 dark:bg-slate-900 flex lg:border-l border-slate-950 dark:border-slate-800 overflow-hidden">
                 <img
                   src={farmerImage}
                   alt="Farmer crop yield"
@@ -167,19 +184,8 @@ export default function Solutions() {
           </div>
 
           {/* Slide 2: Buyers */}
-          <motion.div style={{ y: y2, contentVisibility: "auto", containIntrinsicSize: "100vh" }} className="absolute inset-0 w-full h-full bg-white dark:bg-[#0E1216] overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
+          <motion.div style={{ y: y2, contentVisibility: "auto", containIntrinsicSize: "100vh" }} className="relative lg:absolute lg:inset-0 w-full min-h-screen lg:h-full bg-white dark:bg-[#0E1216] py-16 lg:py-0 overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
             <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800">
-              <div className="lg:col-span-5 relative h-full bg-slate-50 dark:bg-slate-900 flex border-b lg:border-b-0 border-slate-950 dark:border-slate-800 overflow-hidden lg:order-1">
-                <img
-                  src={traderImage}
-                  alt="Fresh vegetables warehouse sorting"
-                  loading="lazy"
-                  decoding="async"
-                  fetchPriority="low"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
-
               <div className="lg:col-span-7 p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full text-left lg:border-l border-slate-950 dark:border-slate-800 lg:order-2">
                 <motion.div style={{ y: s2HeadingY, opacity: s2HeadingOpacity }} className="flex flex-col gap-4">
                   <span className="font-mono text-xs font-bold text-mulyam-green uppercase tracking-widest block mb-1">
@@ -226,11 +232,22 @@ export default function Solutions() {
                   </div>
                 </div>
               </div>
+
+              <div className="lg:col-span-5 relative h-64 sm:h-80 lg:h-full bg-slate-50 dark:bg-slate-900 flex border-b lg:border-b-0 border-slate-950 dark:border-slate-800 overflow-hidden lg:order-1">
+                <img
+                  src={traderImage}
+                  alt="Fresh vegetables warehouse sorting"
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
             </div>
           </motion.div>
 
           {/* Slide 3: Transporters */}
-          <motion.div style={{ y: y3, contentVisibility: "auto", containIntrinsicSize: "100vh" }} className="absolute inset-0 w-full h-full bg-white dark:bg-[#0E1216] overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
+          <motion.div style={{ y: y3, contentVisibility: "auto", containIntrinsicSize: "100vh" }} className="relative lg:absolute lg:inset-0 w-full min-h-screen lg:h-full bg-white dark:bg-[#0E1216] py-16 lg:py-0 overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
             <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800">
               <div className="lg:col-span-7 p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full text-left">
                 <motion.div style={{ y: s3HeadingY, opacity: 1 }} className="flex flex-col gap-4">
@@ -279,7 +296,7 @@ export default function Solutions() {
                 </div>
               </div>
 
-              <div className="lg:col-span-5 relative h-full bg-slate-50 dark:bg-slate-900 flex lg:border-l border-slate-950 dark:border-slate-800 overflow-hidden">
+              <div className="lg:col-span-5 relative h-64 sm:h-80 lg:h-full bg-slate-50 dark:bg-slate-900 flex lg:border-l border-slate-950 dark:border-slate-800 overflow-hidden">
                 <img
                   src={transporterImage}
                   alt="Logistics transportation"

@@ -1,10 +1,18 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import imFreshLogo from "../../assets/logos/imfresh.png";
 import imKisanLogo from "../../assets/logos/im_kisan.png";
 
 export default function EcosystemHero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Track scroll position as hero section scrolls up out of the viewport
   const { scrollYProgress } = useScroll({
@@ -16,8 +24,12 @@ export default function EcosystemHero() {
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 90, damping: 22 });
 
   // 1. CARDS SPLIT & ZOOM OUTWARD AS USER SCROLLS DOWN
-  const leftCardX = useTransform(smoothProgress, [0, 0.7], ["0%", "-160%"]);
-  const rightCardX = useTransform(smoothProgress, [0, 0.7], ["0%", "160%"]);
+  const leftCardXTransform = useTransform(smoothProgress, [0, 0.7], ["0%", "-160%"]);
+  const rightCardXTransform = useTransform(smoothProgress, [0, 0.7], ["0%", "160%"]);
+  
+  const leftCardX = isMobile ? "0%" : leftCardXTransform;
+  const rightCardX = isMobile ? "0%" : rightCardXTransform;
+  
   const cardScale = useTransform(smoothProgress, [0, 0.7], [1, 1.12]);
 
   // 2. CONNECTING LINE FADES OUT
@@ -58,12 +70,12 @@ export default function EcosystemHero() {
       </div>
 
       {/* --- CENTERED HERO CONTENT CONTAINER --- */}
-      <div className="w-full max-w-7xl mx-auto px-6 relative flex-1 flex items-center justify-between z-10 py-16">
+      <div className="w-full max-w-7xl mx-auto px-6 relative flex-1 flex flex-col lg:flex-row items-center justify-center lg:justify-between z-10 py-16 gap-8 lg:gap-0">
         
         {/* SVG CONNECTING BEZIER LINE */}
         <motion.svg 
           style={{ opacity: lineOpacity }}
-          className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible" 
+          className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible hidden lg:block" 
           viewBox="0 0 1200 400" 
           preserveAspectRatio="none"
         >

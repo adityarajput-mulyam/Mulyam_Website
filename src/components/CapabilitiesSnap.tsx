@@ -55,9 +55,9 @@ interface ReviewData {
   readonly body: string;
 }
 
-function ReviewCard({ rev }: { rev: ReviewData }) {
+function ReviewCard({ rev, className = "" }: { rev: ReviewData; className?: string }) {
   return (
-    <article className="min-w-[320px] max-w-[350px] bg-white border-2 border-slate-900 rounded-2xl p-6 flex-shrink-0 flex flex-col gap-4 transition-transform duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] hover:shadow-[6px_6px_0px_0px_rgba(15,23,42,1)]">
+    <article className={`w-[82vw] md:w-[350px] min-w-[280px] md:min-w-[320px] max-w-[350px] bg-white border-2 border-slate-900 rounded-2xl p-6 flex-shrink-0 flex flex-col gap-4 transition-transform duration-300 hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] hover:shadow-[6px_6px_0px_0px_rgba(15,23,42,1)] ${className}`}>
       {/* Author row */}
       <div className="flex items-center gap-3">
         <div
@@ -92,6 +92,14 @@ function ReviewCard({ rev }: { rev: ReviewData }) {
 
 export default function CapabilitiesSnap() {
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -99,20 +107,31 @@ export default function CapabilitiesSnap() {
   });
 
   const [isSlide2Active, setIsSlide2Active] = useState(false);
+  const [isSlide3Active, setIsSlide3Active] = useState(false);
 
   useEffect(() => {
     return scrollYProgress.on("change", (latest) => {
-      setIsSlide2Active(latest >= 0.28 && latest <= 0.82);
+      setIsSlide2Active(latest >= 0.2);
+      setIsSlide3Active(latest >= 0.55);
     });
   }, [scrollYProgress]);
 
-  const y2 = useTransform(scrollYProgress, [0.15, 0.5], ["100%", "0%"]);
-  const y3 = useTransform(scrollYProgress, [0.6, 0.95], ["100%", "0%"]);
+  const y2Val = useTransform(scrollYProgress, [0.2, 0.45], ["100%", "0%"]);
+  const y3Val = useTransform(scrollYProgress, [0.55, 0.8], ["100%", "0%"]);
+  
+  const y2 = isMobile ? "0%" : y2Val;
+  const y3 = isMobile ? "0%" : y3Val;
 
   // --- Scroll-bound Heading Animations ---
-  const s1HeadingY = useTransform(scrollYProgress, [0, 0.25], [0, -35]);
-  const s1HeadingOpacity = useTransform(scrollYProgress, [0.05, 0.25], [1, 0]);  const s2HeadingY = useTransform(scrollYProgress, [0.15, 0.38, 0.6, 0.85], [35, 0, 0, -35]);
-  const s2HeadingOpacity = useTransform(scrollYProgress, [0.15, 0.32, 0.62, 0.82], [0, 1, 1, 0]);
+  const s1HeadingYVal = useTransform(scrollYProgress, [0.15, 0.25], [0, -35]);
+  const s1HeadingOpacityVal = useTransform(scrollYProgress, [0.18, 0.25], [1, 0]);
+  const s2HeadingYVal = useTransform(scrollYProgress, [0.2, 0.35, 0.55, 0.75], [35, 0, 0, -35]);
+  const s2HeadingOpacityVal = useTransform(scrollYProgress, [0.2, 0.3, 0.57, 0.72], [0, 1, 1, 0]);
+
+  const s1HeadingY = isMobile ? 0 : s1HeadingYVal;
+  const s1HeadingOpacity = isMobile ? 1 : s1HeadingOpacityVal;
+  const s2HeadingY = isMobile ? 0 : s2HeadingYVal;
+  const s2HeadingOpacity = isMobile ? 1 : s2HeadingOpacityVal;
   const reviews: readonly ReviewData[] = [
     {
       initials: "SC",
@@ -151,15 +170,15 @@ export default function CapabilitiesSnap() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[250vh] bg-[#0a0a0a]"
+      className="relative w-full h-auto lg:h-[350vh] bg-[#0a0a0a]"
     >
       {/* Pinned Sticky Viewport Shell */}
-      <div className="sticky top-0 w-full h-screen overflow-hidden bg-transparent">
+      <div className="relative lg:sticky lg:top-0 w-full min-h-screen lg:h-screen lg:overflow-hidden bg-transparent">
         
         {/* ── Slide 1 — Clean White Sourcing Layer ──── */}
-        <div className="absolute inset-0 w-full h-full z-10 flex items-center justify-center px-6 overflow-hidden bg-white">
+        <div className={`relative lg:absolute lg:inset-0 w-full min-h-screen lg:h-full z-10 flex items-center justify-center py-16 lg:py-0 px-6 lg:overflow-hidden bg-white ${isMobile ? "pointer-events-auto" : "pointer-events-none"}`}>
 
-          <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+          <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative pointer-events-auto">
             
             {/* Left Column: Text & Specs */}
             <div className="flex flex-col gap-6">
@@ -199,9 +218,9 @@ export default function CapabilitiesSnap() {
             </div>
 
             {/* Right Column: Embedded YouTube Video */}
-            <div className="w-full aspect-video rounded-2xl overflow-hidden bg-neutral-900 border border-mulyam-blue/15 shadow-2xl">
+            <div className="w-full aspect-video rounded-2xl overflow-hidden bg-neutral-900 border border-mulyam-blue/15 shadow-2xl relative pointer-events-auto">
               <iframe
-                className="w-full h-full border-0"
+                className="w-full h-full border-0 pointer-events-auto"
                 src="https://www.youtube.com/embed/GLTLQU6xbII?start=27"
                 title="Mulyam Agritech Startup Explainer"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -214,8 +233,10 @@ export default function CapabilitiesSnap() {
 
         {/* ── Slide 2 — Clean Light Gray SCM Control Center Dashboard ──────── */}
         <motion.div
-          style={{ y: y2 }}
-          className="absolute inset-0 w-full h-full bg-slate-50 flex items-center justify-center z-20 px-6 shadow-[0_-30px_60px_rgba(0,0,0,0.12)]"
+          style={{ y: y2, display: isMobile ? "flex" : (isSlide2Active ? "flex" : "none") }}
+          className={`relative lg:absolute lg:inset-0 w-full min-h-screen lg:h-full bg-slate-50 flex items-center justify-center z-20 py-16 lg:py-0 px-6 shadow-[0_-30px_60px_rgba(0,0,0,0.12)] ${
+            isMobile ? "pointer-events-auto" : (isSlide2Active ? "pointer-events-auto" : "pointer-events-none")
+          }`}
           role="region"
           aria-label="Mulyam SCM Control Console"
         >
@@ -239,7 +260,7 @@ export default function CapabilitiesSnap() {
               <div className="grid grid-cols-2 gap-4 mt-2 max-w-md">
                 <div className="p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
                   <span className="font-sans font-black text-2xl text-mulyam-green block">
-                    <Counter value={4950} active={isSlide2Active} suffix="+ MT" />
+                    <Counter value={4950} active={isSlide2Active || isMobile} suffix="+ MT" />
                   </span>
                   <span className="text-[10px] font-bold tracking-widest text-slate-450 uppercase">
                     Monthly Volume
@@ -247,7 +268,7 @@ export default function CapabilitiesSnap() {
                 </div>
                 <div className="p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
                   <span className="font-sans font-black text-2xl text-mulyam-blue block">
-                    <Counter value={3000} active={isSlide2Active} suffix="+" />
+                    <Counter value={3000} active={isSlide2Active || isMobile} suffix="+" />
                   </span>
                   <span className="text-[10px] font-bold tracking-widest text-slate-450 uppercase">
                     Suppliers Network
@@ -255,7 +276,7 @@ export default function CapabilitiesSnap() {
                 </div>
                 <div className="p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
                   <span className="font-sans font-black text-2xl text-mulyam-green block">
-                    <Counter value={25} active={isSlide2Active} suffix="+" />
+                    <Counter value={25} active={isSlide2Active || isMobile} suffix="+" />
                   </span>
                   <span className="text-[10px] font-bold tracking-widest text-slate-450 uppercase">
                     Cities Covered
@@ -263,7 +284,7 @@ export default function CapabilitiesSnap() {
                 </div>
                 <div className="p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
                   <span className="font-sans font-black text-2xl text-mulyam-blue block">
-                    <Counter value={1000} active={isSlide2Active} suffix="+" />
+                    <Counter value={1000} active={isSlide2Active || isMobile} suffix="+" />
                   </span>
                   <span className="text-[10px] font-bold tracking-widest text-slate-450 uppercase">
                     Retailer Partners
@@ -315,25 +336,25 @@ export default function CapabilitiesSnap() {
                     strokeWidth="3.5"
                     strokeLinecap="round"
                     initial={{ pathLength: 0 }}
-                    animate={isSlide2Active ? { pathLength: 1 } : { pathLength: 0 }}
+                    animate={(isSlide2Active || isMobile) ? { pathLength: 1 } : { pathLength: 0 }}
                     transition={{ duration: 1.5, ease: "easeInOut" }}
                   />
                   <motion.circle cx="10" cy="110" r="4.5" fill="#004B8B"
                     style={{ transform: "none", transformOrigin: "50% 50%", transformBox: "fill-box" }}
                     initial={{ scale: 0 }}
-                    animate={isSlide2Active ? { scale: 1 } : { scale: 0 }}
+                    animate={(isSlide2Active || isMobile) ? { scale: 1 } : { scale: 0 }}
                     transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
                   />
                   <motion.circle cx="150" cy="65" r="4.5" fill="#004B8B"
                     style={{ transform: "none", transformOrigin: "50% 50%", transformBox: "fill-box" }}
                     initial={{ scale: 0 }}
-                    animate={isSlide2Active ? { scale: 1 } : { scale: 0 }}
+                    animate={(isSlide2Active || isMobile) ? { scale: 1 } : { scale: 0 }}
                     transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
                   />
                   <motion.circle cx="290" cy="20" r="5.5" fill="#00BD67"
                     style={{ transform: "none", transformOrigin: "50% 50%", transformBox: "fill-box" }}
                     initial={{ scale: 0 }}
-                    animate={isSlide2Active ? { scale: [1, 1.4, 1] } : { scale: 0 }}
+                    animate={(isSlide2Active || isMobile) ? { scale: [1, 1.4, 1] } : { scale: 0 }}
                     transition={{ 
                       scale: { delay: 1.4, type: "spring", stiffness: 200 },
                       default: { delay: 1.4 }
@@ -350,7 +371,7 @@ export default function CapabilitiesSnap() {
                 <div className="flex justify-between">
                   <span>[SCM ROOT ADAPTOR]</span>
                   <motion.span
-                    animate={isSlide2Active ? { opacity: [0.5, 1, 0.5] } : { opacity: 0.5 }}
+                    animate={(isSlide2Active || isMobile) ? { opacity: [0.5, 1, 0.5] } : { opacity: 0.5 }}
                     transition={{ repeat: Infinity, duration: 1.5 }}
                     className="text-slate-800 font-bold"
                   >
@@ -373,9 +394,12 @@ export default function CapabilitiesSnap() {
         <motion.div
           style={{
             y: y3,
+            display: isMobile ? "flex" : (isSlide3Active ? "flex" : "none"),
             background: "#ffffff",
           }}
-          className="absolute inset-0 w-full h-full flex flex-col justify-center z-30 px-6 overflow-hidden"
+          className={`relative lg:absolute lg:inset-0 w-full min-h-screen lg:h-full flex flex-col justify-center py-16 lg:py-0 px-6 overflow-hidden z-30 ${
+            isMobile ? "pointer-events-auto" : (isSlide3Active ? "pointer-events-auto" : "pointer-events-none")
+          }`}
           role="region"
           aria-label="Customer testimonials"
         >
@@ -419,32 +443,49 @@ export default function CapabilitiesSnap() {
               <div className="h-1.5 w-24 bg-mulyam-blue rounded-full mt-2" />
             </motion.div>
 
-             {/* Testimonials Marquee Track */}
+            {/* Testimonials Marquee Track */}
             <div className="w-full overflow-hidden relative mt-4">
-              {/* Fade Overlays — matching cream background */}
-              <div className="absolute top-0 bottom-0 left-0 w-16 md:w-32 z-10 pointer-events-none"
-                style={{ background: "linear-gradient(to right, #ffffff, transparent)" }} />
-              <div className="absolute top-0 bottom-0 right-0 w-16 md:w-32 z-10 pointer-events-none"
-                style={{ background: "linear-gradient(to left, #ffffff, transparent)" }} />
+              {/* Fade Overlays — only show on desktop */}
+              {!isMobile && (
+                <>
+                  <div className="absolute top-0 bottom-0 left-0 w-16 md:w-32 z-10 pointer-events-none"
+                    style={{ background: "linear-gradient(to right, #ffffff, transparent)" }} />
+                  <div className="absolute top-0 bottom-0 right-0 w-16 md:w-32 z-10 pointer-events-none"
+                    style={{ background: "linear-gradient(to left, #ffffff, transparent)" }} />
+                </>
+              )}
 
-              <div className="flex w-max gap-6 animate-marquee-reviews hover:[animation-play-state:paused] py-4">
+              <div className={`flex gap-6 ${
+                isMobile 
+                  ? "w-full overflow-x-auto snap-x snap-mandatory px-4 py-2 no-scrollbar" 
+                  : "w-max animate-marquee-reviews hover:[animation-play-state:paused] py-4"
+              }`}>
                 
                 {/* Track 1 */}
                 <div className="flex gap-6">
                   {reviews.map((rev, idx) => (
-                    <ReviewCard key={`rev-1-${idx}`} rev={rev} />
+                    <ReviewCard key={`rev-1-${idx}`} rev={rev} className={isMobile ? "snap-center" : ""} />
                   ))}
                 </div>
 
-                {/* Track 2: Duplicate for seamless loop */}
-                <div className="flex gap-6" aria-hidden="true">
-                  {reviews.map((rev, idx) => (
-                    <ReviewCard key={`rev-2-${idx}`} rev={rev} />
-                  ))}
-                </div>
+                {/* Track 2: Duplicate for seamless loop — only on desktop */}
+                {!isMobile && (
+                  <div className="flex gap-6" aria-hidden="true">
+                    {reviews.map((rev, idx) => (
+                      <ReviewCard key={`rev-2-${idx}`} rev={rev} />
+                    ))}
+                  </div>
+                )}
 
               </div>
             </div>
+
+            {isMobile && (
+              <div className="flex items-center justify-center gap-2 text-slate-550 dark:text-slate-400 text-[10px] font-extrabold tracking-widest uppercase mt-4 select-none">
+                <span>Swipe left / right to read</span>
+                <span className="text-mulyam-green text-xs">➔</span>
+              </div>
+            )}
 
           </div>
         </motion.div>

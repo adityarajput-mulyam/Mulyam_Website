@@ -1,10 +1,28 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import mulyamLogo from "../assets/logos/mulyam_logo_transparent.png";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,16 +111,61 @@ export default function Navbar() {
         </nav>
 
         {/* Right side: Dark Mode Toggle & Get In Button */}
-        <div className="flex items-center gap-4 transition-all duration-300">
+        <div className="flex items-center gap-3 transition-all duration-300">
           <a 
             href="mailto:connect@mulyam.in"
-            className="px-5 py-2.5 bg-mulyam-green hover:bg-mulyam-green/90 text-white hover:text-mulyam-blue font-bold text-xs uppercase tracking-wider rounded-lg shadow-sm hover:shadow transition-all duration-200 cursor-pointer inline-block"
+            className="px-4 py-2 sm:px-5 sm:py-2.5 bg-mulyam-green hover:bg-mulyam-green/90 text-white hover:text-mulyam-blue font-bold text-xs uppercase tracking-wider rounded-lg shadow-sm hover:shadow transition-all duration-200 cursor-pointer inline-block"
           >
             Get In
           </a>
+          
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className={`lg:hidden p-2 transition-colors cursor-pointer bg-transparent border-none outline-none ${
+              isSolidNavbar
+                ? "text-slate-700 dark:text-slate-200 hover:text-mulyam-green dark:hover:text-mulyam-green"
+                : "text-white hover:text-white/85"
+            }`}
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
 
       </div>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25 }}
+            className="absolute top-full left-0 w-full bg-white dark:bg-[#0C0F12] border-b border-slate-200/50 dark:border-slate-800/50 shadow-xl lg:hidden z-40 flex flex-col px-6 py-8 gap-4"
+          >
+            {menuItems.map((item) => {
+              const isActive =
+                item.path === "/home"
+                  ? location.pathname === "/" || location.pathname === "/home"
+                  : location.pathname === item.path ||
+                    (item.path === "/about-us" && location.pathname === "/about");
+              return (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`py-3 px-4 rounded-xl text-sm font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? "bg-mulyam-blue/10 dark:bg-mulyam-green/20 text-mulyam-blue dark:text-mulyam-green font-extrabold"
+                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-mulyam-blue dark:hover:text-mulyam-green"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
