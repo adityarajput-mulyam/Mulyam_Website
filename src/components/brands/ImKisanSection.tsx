@@ -46,8 +46,14 @@ export default function ImKisanSection() {
   ];
 
   return (
-    <section className="relative bg-[#F9F9F6] py-16 md:py-24 border-t border-slate-200/60">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative bg-gradient-to-b from-[#F4F9F6] via-[#F8FAF7] to-[#F4F8FA] pt-16 pb-6 md:pt-20 md:pb-8 border-t border-slate-200/60">
+      {/* Subtle Ambient Radial Glows Container */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-1/4 -right-20 w-80 h-80 bg-[#00BD67]/8 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 -left-20 w-80 h-80 bg-[#004B8B]/5 rounded-full blur-3xl pointer-events-none" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Section Identifier */}
         <div className="mb-12 text-center lg:text-left">
@@ -72,10 +78,10 @@ export default function ImKisanSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.8 }}
-              className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 shadow-[0_15px_40px_rgba(0,0,0,0.05)] text-center relative overflow-hidden"
+              className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 border-t-4 border-t-[#00BD67] shadow-[0_15px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_rgba(0,189,103,0.1)] transition-all duration-300 text-center relative overflow-hidden"
             >
               {/* Logo Container (100% Identical Classes to I'mFresh Card) */}
-              <div className="w-full h-24 sm:h-28 flex items-center justify-center p-2 rounded-2xl bg-white mb-4 overflow-hidden border border-slate-100">
+              <div className="w-full h-24 sm:h-28 flex items-center justify-center p-2 rounded-2xl bg-slate-50/70 mb-4 overflow-hidden border border-slate-100">
                 <img 
                   src={imKisanLogo} 
                   alt="ImKisan Logo" 
@@ -98,24 +104,24 @@ export default function ImKisanSection() {
                 </p>
               </div>
 
-              {/* Metric Badges */}
+              {/* Metric Badges with Brand Color Fills */}
               <div className="grid grid-cols-3 gap-2 text-center pt-4 border-t border-slate-100">
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                <div className="bg-[#00BD67]/10 p-2.5 rounded-xl border border-[#00BD67]/20">
                   <Award className="w-4 h-4 text-[#00BD67] mx-auto mb-1" />
                   <span className="text-xs font-extrabold text-[#004B8B] block">ICAR-DOGR</span>
-                  <span className="text-[10px] text-slate-500 font-semibold block">Co-Created</span>
+                  <span className="text-[10px] text-slate-600 font-semibold block">Co-Created</span>
                 </div>
 
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                <div className="bg-[#004B8B]/10 p-2.5 rounded-xl border border-[#004B8B]/20">
                   <Cloud className="w-4 h-4 text-[#004B8B] mx-auto mb-1" />
                   <span className="text-xs font-extrabold text-[#004B8B] block">ESDS Cloud</span>
-                  <span className="text-[10px] text-slate-500 font-semibold block">Architecture</span>
+                  <span className="text-[10px] text-slate-600 font-semibold block">Architecture</span>
                 </div>
 
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                  <Users className="w-4 h-4 text-[#FFC400] mx-auto mb-1" />
+                <div className="bg-[#FFC400]/15 p-2.5 rounded-xl border border-[#FFC400]/30">
+                  <Users className="w-4 h-4 text-[#B78100] mx-auto mb-1" />
                   <span className="text-xs font-extrabold text-[#004B8B] block">Multilingual</span>
-                  <span className="text-[10px] text-slate-500 font-semibold block">Advisory</span>
+                  <span className="text-[10px] text-slate-600 font-semibold block">Advisory</span>
                 </div>
               </div>
             </motion.div>
@@ -142,6 +148,7 @@ export default function ImKisanSection() {
                   viewport={{ once: false, margin: "-60px" }}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
                   className="group bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.07)] transition-all duration-300 relative overflow-hidden"
+                  style={{ borderLeftWidth: "4px", borderLeftColor: card.accentColor }}
                 >
                   <div className="flex items-center justify-between mb-4">
                     <span 

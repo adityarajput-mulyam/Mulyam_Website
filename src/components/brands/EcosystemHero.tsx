@@ -38,6 +38,10 @@ export default function EcosystemHero() {
   return (
     <section ref={containerRef} className="relative min-h-screen bg-[#F9F9F6] flex flex-col justify-between overflow-hidden pt-20 pb-0 z-10">
       
+      {/* --- AMBIENT BRAND COLOR GLOW BLOBS --- */}
+      <div className="absolute top-1/4 left-10 w-96 h-96 bg-[#004B8B]/10 rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#00BD67]/10 rounded-full blur-3xl pointer-events-none z-0" />
+
       {/* --- CUSTOM SVG BACKGROUND CANVAS --- */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
         <svg 
@@ -109,16 +113,16 @@ export default function EcosystemHero() {
           />
         </motion.svg>
 
-        {/* LEFT CARD: I'mFresh (SLIGHTLY REDUCED LOGO SCALE FOR ELEGANT BALANCE) */}
+        {/* LEFT CARD: I'mFresh (RETAIL ECOSYSTEM - NAVY TOP ACCENT) */}
         <motion.div 
           style={{ x: leftCardX, scale: cardScale }}
-          className="w-72 sm:w-[350px] relative z-10 bg-white/95 backdrop-blur-md p-5 sm:p-7 rounded-3xl border border-slate-200/90 shadow-[0_20px_50px_rgba(0,0,0,0.07)] flex flex-col items-center justify-center group"
+          className="w-72 sm:w-[350px] relative z-10 bg-white/95 backdrop-blur-md p-5 sm:p-7 rounded-3xl border border-slate-200/90 border-t-4 border-t-[#004B8B] shadow-[0_20px_50px_rgba(0,0,0,0.07)] hover:shadow-[0_25px_50px_rgba(0,75,139,0.12)] transition-shadow duration-300 flex flex-col items-center justify-center group"
         >
           <div className="absolute -top-3.5 left-8 bg-[#004B8B] text-white text-[10px] font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full shadow-sm z-20">
             RETAIL ECOSYSTEM
           </div>
           
-          <div className="w-full aspect-[4/3] flex items-center justify-center p-3 overflow-hidden rounded-2xl bg-white">
+          <div className="w-full aspect-[4/3] flex items-center justify-center p-3 overflow-hidden rounded-2xl bg-slate-50/60 border border-slate-100">
             <img 
               src={imFreshLogo} 
               alt="I'mFresh Logo" 
@@ -127,16 +131,16 @@ export default function EcosystemHero() {
           </div>
         </motion.div>
 
-        {/* RIGHT CARD: ImKisan (SLIGHTLY REDUCED LOGO SCALE FOR ELEGANT BALANCE) */}
+        {/* RIGHT CARD: ImKisan (GROWER ECOSYSTEM - EMERALD GREEN TOP ACCENT) */}
         <motion.div 
           style={{ x: rightCardX, scale: cardScale }}
-          className="w-72 sm:w-[350px] relative z-10 bg-white/95 backdrop-blur-md p-5 sm:p-7 rounded-3xl border border-slate-200/90 shadow-[0_20px_50px_rgba(0,0,0,0.07)] flex flex-col items-center justify-center group"
+          className="w-72 sm:w-[350px] relative z-10 bg-white/95 backdrop-blur-md p-5 sm:p-7 rounded-3xl border border-slate-200/90 border-t-4 border-t-[#00BD67] shadow-[0_20px_50px_rgba(0,0,0,0.07)] hover:shadow-[0_25px_50px_rgba(0,189,103,0.12)] transition-shadow duration-300 flex flex-col items-center justify-center group"
         >
           <div className="absolute -top-3.5 right-8 bg-[#00BD67] text-white text-[10px] font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full shadow-sm z-20">
             GROWER ECOSYSTEM
           </div>
           
-          <div className="w-full aspect-[4/3] flex items-center justify-center p-3 overflow-hidden rounded-2xl bg-white">
+          <div className="w-full aspect-[4/3] flex items-center justify-center p-3 overflow-hidden rounded-2xl bg-slate-50/60 border border-slate-100">
             <img 
               src={imKisanLogo} 
               alt="ImKisan Logo" 

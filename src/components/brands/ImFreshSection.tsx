@@ -39,7 +39,7 @@ function ParallaxProduceCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, margin: "-60px" }}
       transition={{ duration: 0.6 }}
-      className="group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col justify-between"
+      className="group bg-white/95 backdrop-blur-md rounded-3xl overflow-hidden border border-slate-200/90 hover:border-[#00BD67]/30 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,189,103,0.1)] transition-all duration-300 flex flex-col justify-between"
     >
       {/* Parallax Image Header */}
       <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-slate-100">
@@ -132,8 +132,14 @@ export default function ImFreshSection() {
   ];
 
   return (
-    <section className="relative bg-[#F9F9F6] py-16 md:py-24 border-t border-slate-200/60">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative bg-gradient-to-b from-[#F4F8FA] via-[#F9FBFA] to-[#F4F9F6] py-16 md:py-24 border-t border-slate-200/60">
+      {/* Subtle Background Ambient Radial Glow Container */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-1/3 -left-20 w-80 h-80 bg-[#004B8B]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 -right-20 w-80 h-80 bg-[#00BD67]/5 rounded-full blur-3xl pointer-events-none" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Section Header */}
         <div className="mb-12 text-center lg:text-left">
@@ -158,10 +164,10 @@ export default function ImFreshSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.8 }}
-              className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 shadow-[0_15px_40px_rgba(0,0,0,0.05)] text-center relative overflow-hidden"
+              className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 border-t-4 border-t-[#004B8B] shadow-[0_15px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_rgba(0,75,139,0.1)] transition-all duration-300 text-center relative overflow-hidden"
             >
               {/* Balanced Prominent Logo Container */}
-              <div className="w-full h-24 sm:h-28 flex items-center justify-center p-2 rounded-2xl bg-white mb-4 overflow-hidden border border-slate-100">
+              <div className="w-full h-24 sm:h-28 flex items-center justify-center p-2 rounded-2xl bg-slate-50/70 mb-4 overflow-hidden border border-slate-100">
                 <img 
                   src={imFreshLogo} 
                   alt="I'mFresh Logo" 
@@ -184,24 +190,24 @@ export default function ImFreshSection() {
                 </p>
               </div>
 
-              {/* Verified Metrics Grid */}
+              {/* Verified Metrics Grid with Brand Fills */}
               <div className="grid grid-cols-3 gap-2 text-center pt-4 border-t border-slate-100">
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                <div className="bg-[#00BD67]/10 p-2.5 rounded-xl border border-[#00BD67]/20">
                   <ShieldCheck className="w-4 h-4 text-[#00BD67] mx-auto mb-1" />
                   <span className="text-xs font-extrabold text-[#004B8B] block">100%</span>
-                  <span className="text-[10px] text-slate-500 font-semibold block">Assured</span>
+                  <span className="text-[10px] text-slate-600 font-semibold block">Assured</span>
                 </div>
 
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                <div className="bg-[#004B8B]/10 p-2.5 rounded-xl border border-[#004B8B]/20">
                   <Clock className="w-4 h-4 text-[#004B8B] mx-auto mb-1" />
                   <span className="text-xs font-extrabold text-[#004B8B] block">24/7</span>
-                  <span className="text-[10px] text-slate-500 font-semibold block">Monitoring</span>
+                  <span className="text-[10px] text-slate-600 font-semibold block">Monitoring</span>
                 </div>
 
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                  <MapPin className="w-4 h-4 text-[#FFC400] mx-auto mb-1" />
+                <div className="bg-[#FFC400]/15 p-2.5 rounded-xl border border-[#FFC400]/30">
+                  <MapPin className="w-4 h-4 text-[#B78100] mx-auto mb-1" />
                   <span className="text-xs font-extrabold text-[#004B8B] block">Pan-India</span>
-                  <span className="text-[10px] text-slate-500 font-semibold block">Presence</span>
+                  <span className="text-[10px] text-slate-600 font-semibold block">Presence</span>
                 </div>
               </div>
             </motion.div>
@@ -231,7 +237,7 @@ export default function ImFreshSection() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: false }}
                       transition={{ duration: 0.5, delay: idx * 0.1 }}
-                      className="bg-white/95 backdrop-blur-md rounded-2xl p-6 border border-slate-200/90 shadow-sm hover:shadow-md transition-all duration-300"
+                      className="bg-white/95 backdrop-blur-md rounded-2xl p-6 border border-slate-200/90 hover:border-[#004B8B]/30 shadow-sm hover:shadow-[0_15px_30px_rgba(0,75,139,0.08)] transition-all duration-300"
                     >
                       <div 
                         className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"

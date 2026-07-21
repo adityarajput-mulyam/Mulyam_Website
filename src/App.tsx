@@ -5,12 +5,14 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Solutions from "./pages/Solutions";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Preloader from "./components/Preloader";
 import mulyamLogo from "./assets/logos/mulyam_logo_transparent.png";
 import mulyamLogoEn from "./assets/logos/mulyam_logo_en.png";
 
 import Brands from "./pages/Brands";
 import MediaPage from "./pages/MediaPage";
+import FAQ from "./pages/FAQ";
 
 import ClickSpark from "./components/ClickSpark";
 
@@ -85,10 +87,12 @@ function AppContent() {
             <Route path="/our-brands" element={<Brands />} />
             <Route path="/brands" element={<Brands />} />
             <Route path="/media" element={<MediaPage />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/careers" element={<PagePlaceholder title="CAREERS" />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </ClickSpark>
   );

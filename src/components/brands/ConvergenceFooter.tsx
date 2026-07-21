@@ -41,7 +41,11 @@ export default function ConvergenceFooter() {
   ];
 
   return (
-    <section className="relative bg-[#F9F9F6] py-20 md:py-32 border-t border-slate-200/80 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-[#F4F8FA] via-[#F9FBFA] to-[#EFF5FA] pt-10 pb-16 md:pt-12 md:pb-24 border-t border-slate-200/80 overflow-hidden">
+      {/* Subtle Background Radial Glows */}
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#004B8B]/6 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#00BD67]/6 rounded-full blur-3xl pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Clean Solid Deep Navy Headline */}
@@ -76,49 +80,53 @@ export default function ConvergenceFooter() {
           </motion.p>
         </div>
 
-        {/* Standardized 4-Card Grid (Exact Equal Heights & Symmetric Layout) */}
+        {/* Standardized 4-Card Grid with Alternating Brand Accent Tops */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-20 items-stretch">
-          {stats.map((stat, idx) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col justify-between h-full min-h-[330px] group"
-            >
-              <div className="flex-1 flex flex-col justify-between">
-                {/* Vector Icon Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-14 h-14 rounded-2xl bg-[#F0F4F8] p-2.5 flex items-center justify-center border border-slate-100 shadow-inner shrink-0">
-                    <img 
-                      src={stat.icon} 
-                      alt={stat.iconAlt} 
-                      className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
-                    />
+          {stats.map((stat, idx) => {
+            const accentColor = idx % 2 === 0 ? "#004B8B" : "#00BD67";
+            return (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,75,139,0.09)] transition-all duration-300 flex flex-col justify-between h-full min-h-[330px] group"
+                style={{ borderTopWidth: "4px", borderTopColor: accentColor }}
+              >
+                <div className="flex-1 flex flex-col justify-between">
+                  {/* Vector Icon Header */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                      <img 
+                        src={stat.icon} 
+                        alt={stat.iconAlt} 
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <CheckCircle2 className="w-5 h-5 text-[#00BD67]" />
                   </div>
-                  <CheckCircle2 className="w-5 h-5 text-[#00BD67] shrink-0" />
+                  
+                  {/* Stat Number / Value */}
+                  <div className="mb-4">
+                    <h3 className={`${stat.isText ? 'text-2xl sm:text-3xl' : 'text-3xl sm:text-4xl'} font-extrabold text-[#004B8B] tracking-tight mb-2 h-10 flex items-center`}>
+                      {stat.value}
+                    </h3>
+                    <p className="text-xs font-bold text-slate-800 uppercase tracking-wide h-8 flex items-center">
+                      {stat.label}
+                    </p>
+                  </div>
                 </div>
-                
-                {/* Stat Number / Value */}
-                <div className="mb-4">
-                  <h3 className={`${stat.isText ? 'text-2xl sm:text-3xl' : 'text-3xl sm:text-4xl'} font-extrabold text-[#004B8B] tracking-tight mb-2 h-10 flex items-center`}>
-                    {stat.value}
-                  </h3>
-                  <p className="text-xs font-bold text-slate-800 uppercase tracking-wide h-8 flex items-center">
-                    {stat.label}
+
+                {/* Standardized Bottom Detail Box */}
+                <div className="pt-4 border-t border-slate-100 mt-4 h-16 flex items-center">
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    {stat.detail}
                   </p>
                 </div>
-              </div>
-
-              {/* Standardized Bottom Detail Box */}
-              <div className="pt-4 border-t border-slate-100 mt-4 h-16 flex items-center">
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  {stat.detail}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* CTA Card Banner */}
