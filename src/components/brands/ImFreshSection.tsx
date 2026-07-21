@@ -37,7 +37,7 @@ function ParallaxProduceCard({
       ref={cardRef}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, margin: "-60px" }}
+      viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.6 }}
       className="group bg-white/95 backdrop-blur-md rounded-3xl overflow-hidden border border-slate-200/90 hover:border-[#00BD67]/30 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,189,103,0.1)] transition-all duration-300 flex flex-col justify-between"
     >
@@ -162,7 +162,7 @@ export default function ImFreshSection() {
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.8 }}
               className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 border-t-4 border-t-[#004B8B] shadow-[0_15px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_rgba(0,75,139,0.1)] transition-all duration-300 text-center relative overflow-hidden"
             >
@@ -235,7 +235,7 @@ export default function ImFreshSection() {
                       key={item.title}
                       initial={{ opacity: 0, y: 25 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: false }}
+                      viewport={{ once: true, margin: "-40px" }}
                       transition={{ duration: 0.5, delay: idx * 0.1 }}
                       className="bg-white/95 backdrop-blur-md rounded-2xl p-6 border border-slate-200/90 hover:border-[#004B8B]/30 shadow-sm hover:shadow-[0_15px_30px_rgba(0,75,139,0.08)] transition-all duration-300"
                     >

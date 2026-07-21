@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 // Import custom category assets
 import hero1Image from "../assets/images/hero1.jpg";
@@ -25,6 +25,14 @@ export default function Solutions() {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
     handleResize();
     window.addEventListener("resize", handleResize);
+
+    // Preload heavy hero and slide images into memory immediately on mount
+    [hero1Image, hero2Image, farmerImage, traderImage, transporterImage].forEach((src) => {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = src;
+    });
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -33,23 +41,17 @@ export default function Solutions() {
     offset: ["start start", "end end"],
   });
 
-  const smoothScrollYProgress = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 24,
-    mass: 0.8,
-  });
-
-  const y2Val = useTransform(smoothScrollYProgress, [0.15, 0.5], ["100%", "0%"]); 
-  const y3Val = useTransform(smoothScrollYProgress, [0.64, 0.95], ["100%", "0%"]); 
+  const y2Val = useTransform(scrollYProgress, [0.15, 0.5], ["100%", "0%"]); 
+  const y3Val = useTransform(scrollYProgress, [0.64, 0.95], ["100%", "0%"]); 
 
   const y2 = isMobile ? "0%" : y2Val;
   const y3 = isMobile ? "0%" : y3Val;
 
-  const s1HeadingYVal = useTransform(smoothScrollYProgress, [0, 0.25], [0, -35]);
-  const s1HeadingOpacityVal = useTransform(smoothScrollYProgress, [0.05, 0.25], [1, 0]);
-  const s2HeadingYVal = useTransform(smoothScrollYProgress, [0.15, 0.38, 0.6, 0.85], [35, 0, 0, -35]);
-  const s2HeadingOpacityVal = useTransform(smoothScrollYProgress, [0.15, 0.32, 0.62, 0.82], [0, 1, 1, 0]);
-  const s3HeadingYVal = useTransform(smoothScrollYProgress, [0.64, 0.8], [28, 0]);
+  const s1HeadingYVal = useTransform(scrollYProgress, [0, 0.25], [0, -35]);
+  const s1HeadingOpacityVal = useTransform(scrollYProgress, [0.05, 0.25], [1, 0]);
+  const s2HeadingYVal = useTransform(scrollYProgress, [0.15, 0.38, 0.6, 0.85], [35, 0, 0, -35]);
+  const s2HeadingOpacityVal = useTransform(scrollYProgress, [0.15, 0.32, 0.62, 0.82], [0, 1, 1, 0]);
+  const s3HeadingYVal = useTransform(scrollYProgress, [0.64, 0.8], [28, 0]);
 
   const s1HeadingY = isMobile ? 0 : s1HeadingYVal;
   const s1HeadingOpacity = isMobile ? 1 : s1HeadingOpacityVal;
@@ -184,7 +186,7 @@ export default function Solutions() {
           </div>
 
           {/* Slide 2: Buyers */}
-          <motion.div style={{ y: y2, contentVisibility: "auto", containIntrinsicSize: "100vh" }} className="relative lg:absolute lg:inset-0 w-full min-h-screen lg:h-full bg-white dark:bg-[#0E1216] py-16 lg:py-0 overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
+          <motion.div style={{ y: y2, willChange: "transform", contentVisibility: "auto", containIntrinsicSize: "100vh" }} className="relative lg:absolute lg:inset-0 w-full min-h-screen lg:h-full bg-white dark:bg-[#0E1216] py-16 lg:py-0 overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
             <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800">
               <div className="lg:col-span-7 p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full text-left lg:border-l border-slate-950 dark:border-slate-800 lg:order-2">
                 <motion.div style={{ y: s2HeadingY, opacity: s2HeadingOpacity }} className="flex flex-col gap-4">
@@ -237,9 +239,9 @@ export default function Solutions() {
                 <img
                   src={traderImage}
                   alt="Fresh vegetables warehouse sorting"
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
-                  fetchPriority="low"
+                  fetchPriority="high"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
@@ -247,7 +249,7 @@ export default function Solutions() {
           </motion.div>
 
           {/* Slide 3: Transporters */}
-          <motion.div style={{ y: y3, contentVisibility: "auto", containIntrinsicSize: "100vh" }} className="relative lg:absolute lg:inset-0 w-full min-h-screen lg:h-full bg-white dark:bg-[#0E1216] py-16 lg:py-0 overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
+          <motion.div style={{ y: y3, willChange: "transform", contentVisibility: "auto", containIntrinsicSize: "100vh" }} className="relative lg:absolute lg:inset-0 w-full min-h-screen lg:h-full bg-white dark:bg-[#0E1216] py-16 lg:py-0 overflow-hidden shadow-[0_-30px_60px_rgba(0,0,0,0.12)]">
             <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 border-b border-slate-950 dark:border-slate-800">
               <div className="lg:col-span-7 p-8 lg:p-12 xl:p-16 flex flex-col justify-center h-full text-left">
                 <motion.div style={{ y: s3HeadingY, opacity: 1 }} className="flex flex-col gap-4">
@@ -300,9 +302,9 @@ export default function Solutions() {
                 <img
                   src={transporterImage}
                   alt="Logistics transportation"
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
-                  fetchPriority="low"
+                  fetchPriority="high"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>

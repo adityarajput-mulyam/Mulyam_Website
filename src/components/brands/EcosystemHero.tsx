@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import imFreshLogo from "../../assets/logos/imfresh.png";
 import imKisanLogo from "../../assets/logos/im_kisan.png";
 
@@ -20,20 +20,17 @@ export default function EcosystemHero() {
     offset: ["start start", "end start"],
   });
 
-  // Smooth spring dynamics
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 90, damping: 22 });
-
   // 1. CARDS SPLIT & ZOOM OUTWARD AS USER SCROLLS DOWN
-  const leftCardXTransform = useTransform(smoothProgress, [0, 0.7], ["0%", "-160%"]);
-  const rightCardXTransform = useTransform(smoothProgress, [0, 0.7], ["0%", "160%"]);
+  const leftCardXTransform = useTransform(scrollYProgress, [0, 0.7], ["0%", "-160%"]);
+  const rightCardXTransform = useTransform(scrollYProgress, [0, 0.7], ["0%", "160%"]);
   
   const leftCardX = isMobile ? "0%" : leftCardXTransform;
   const rightCardX = isMobile ? "0%" : rightCardXTransform;
   
-  const cardScale = useTransform(smoothProgress, [0, 0.7], [1, 1.12]);
+  const cardScale = useTransform(scrollYProgress, [0, 0.7], [1, 1.12]);
 
   // 2. CONNECTING LINE FADES OUT
-  const lineOpacity = useTransform(smoothProgress, [0, 0.35], [1, 0]);
+  const lineOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
 
   return (
     <section ref={containerRef} className="relative min-h-screen bg-[#F9F9F6] flex flex-col justify-between overflow-hidden pt-20 pb-0 z-10">
@@ -115,7 +112,7 @@ export default function EcosystemHero() {
 
         {/* LEFT CARD: I'mFresh (RETAIL ECOSYSTEM - NAVY TOP ACCENT) */}
         <motion.div 
-          style={{ x: leftCardX, scale: cardScale }}
+          style={{ x: leftCardX, scale: cardScale, willChange: "transform" }}
           className="w-72 sm:w-[350px] relative z-10 bg-white/95 backdrop-blur-md p-5 sm:p-7 rounded-3xl border border-slate-200/90 border-t-4 border-t-[#004B8B] shadow-[0_20px_50px_rgba(0,0,0,0.07)] hover:shadow-[0_25px_50px_rgba(0,75,139,0.12)] transition-shadow duration-300 flex flex-col items-center justify-center group"
         >
           <div className="absolute -top-3.5 left-8 bg-[#004B8B] text-white text-[10px] font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full shadow-sm z-20">
@@ -133,7 +130,7 @@ export default function EcosystemHero() {
 
         {/* RIGHT CARD: ImKisan (GROWER ECOSYSTEM - EMERALD GREEN TOP ACCENT) */}
         <motion.div 
-          style={{ x: rightCardX, scale: cardScale }}
+          style={{ x: rightCardX, scale: cardScale, willChange: "transform" }}
           className="w-72 sm:w-[350px] relative z-10 bg-white/95 backdrop-blur-md p-5 sm:p-7 rounded-3xl border border-slate-200/90 border-t-4 border-t-[#00BD67] shadow-[0_20px_50px_rgba(0,0,0,0.07)] hover:shadow-[0_25px_50px_rgba(0,189,103,0.12)] transition-shadow duration-300 flex flex-col items-center justify-center group"
         >
           <div className="absolute -top-3.5 right-8 bg-[#00BD67] text-white text-[10px] font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full shadow-sm z-20">
