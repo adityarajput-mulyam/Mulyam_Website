@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import { useLenis } from "./hooks/useLenis";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -23,15 +24,15 @@ function ScrollToTop() {
   useEffect(() => {
     if ((window as any).lenis) {
       (window as any).lenis.scrollTo(0, { immediate: true });
-    } else {
-      window.scrollTo(0, 0);
     }
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   return null;
 }
 
 function AppContent() {
+  const location = useLocation();
   useLenis();
 
   useEffect(() => {
@@ -58,19 +59,30 @@ function AppContent() {
         <Navbar />
 
         <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/about-us" element={<About />} />
-            <Route path="/solutions" element={<Solutions />} />
-            <Route path="/our-brands" element={<Brands />} />
-            <Route path="/brands" element={<Brands />} />
-            <Route path="/media" element={<MediaPage />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="*" element={<Home />} />
-          </Routes>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="w-full"
+            >
+              <Routes location={location}>
+                <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/about-us" element={<About />} />
+                <Route path="/solutions" element={<Solutions />} />
+                <Route path="/our-brands" element={<Brands />} />
+                <Route path="/brands" element={<Brands />} />
+                <Route path="/media" element={<MediaPage />} />
+                <Route path="/faq" element={<FAQ />} />
+                <Route path="/careers" element={<Careers />} />
+                <Route path="*" element={<Home />} />
+              </Routes>
+            </motion.div>
+          </AnimatePresence>
         </main>
         <Footer />
       </div>
