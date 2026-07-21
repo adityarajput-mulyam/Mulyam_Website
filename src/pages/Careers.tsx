@@ -11,8 +11,6 @@ import {
   GraduationCap, 
   Clock, 
   Briefcase,
-  Users,
-  TrendingUp,
   MapPin
 } from "lucide-react";
 

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useLenis } from "./hooks/useLenis";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -29,27 +29,6 @@ function ScrollToTop() {
   }, [pathname]);
 
   return null;
-}
-
-function PagePlaceholder({ title }: { title: string }) {
-  return (
-    <div className="pt-32 pb-24 min-h-screen flex items-center justify-center bg-[#F9F9F6] dark:bg-[#0C0F12]">
-      <div className="text-center max-w-md px-6">
-        <h1 className="text-4xl font-extrabold text-[#004B8B] dark:text-white tracking-tight uppercase mb-4">
-          {title}
-        </h1>
-        <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
-          This segment of the Mulyam platform is undergoing strategic expansion. Click below to return to the core operations page.
-        </p>
-        <Link 
-          to="/" 
-          className="px-6 py-3 bg-[#00BD67] hover:bg-[#00BD67]/90 text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer inline-block"
-        >
-          Return to Core Ops
-        </Link>
-      </div>
-    </div>
-  );
 }
 
 function AppContent() {
