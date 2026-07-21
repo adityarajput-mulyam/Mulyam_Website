@@ -111,7 +111,7 @@ const MEDIA_ITEMS: MediaItem[] = [
     description: "Official marketing video showcasing Mulyam's services and farmer success stories.",
     badgeType: "Marketing Video",
     duration: "3:45",
-    linkUrl: "https://youtube.com",
+    linkUrl: "https://www.youtube.com/watch?v=GLTLQU6xbII",
     headerBg: "bg-gradient-to-br from-[#990000] via-[#CC0000] to-[#800000]",
     headerLogo: (
       <div className="flex items-center justify-center">

@@ -218,14 +218,25 @@ export default function CapabilitiesSnap() {
             </div>
 
             {/* Right Column: Embedded YouTube Video */}
-            <div className="w-full aspect-video rounded-2xl overflow-hidden bg-neutral-900 border border-mulyam-blue/15 shadow-2xl relative pointer-events-auto">
-              <iframe
-                className="w-full h-full border-0 pointer-events-auto"
-                src="https://www.youtube.com/embed/GLTLQU6xbII?start=27"
-                title="Mulyam Agritech Startup Explainer"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+            <div className="w-full flex flex-col gap-2 relative pointer-events-auto z-20">
+              <div className="w-full aspect-video rounded-2xl overflow-hidden bg-neutral-900 border border-mulyam-blue/15 shadow-2xl relative">
+                <iframe
+                  className="w-full h-full border-0 relative z-10"
+                  src="https://www.youtube-nocookie.com/embed/GLTLQU6xbII?start=27&playsinline=1&enablejsapi=1&rel=0"
+                  title="Mulyam Agritech Startup Explainer"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+              <a
+                href="https://www.youtube.com/watch?v=GLTLQU6xbII"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="self-end inline-flex items-center gap-1.5 text-xs font-bold text-mulyam-blue hover:text-mulyam-green transition-colors px-1 py-0.5"
+              >
+                <span>Watch directly on YouTube</span>
+                <span className="text-sm">↗</span>
+              </a>
             </div>
 
           </div>
