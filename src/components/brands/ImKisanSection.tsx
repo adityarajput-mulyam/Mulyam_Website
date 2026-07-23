@@ -46,21 +46,21 @@ export default function ImKisanSection() {
   ];
 
   return (
-    <section className="relative bg-gradient-to-b from-[#F4F9F6] via-[#F8FAF7] to-[#F4F8FA] pt-16 pb-6 md:pt-20 md:pb-8 border-t border-slate-200/60">
+    <section className="relative bg-linear-to-b from-[#F4F9F6] via-[#F8FAF7] to-[#F4F8FA] pt-16 pb-6 md:pt-20 md:pb-8 border-t border-slate-200/60">
       {/* Subtle Ambient Radial Glows Container */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-1/4 -right-20 w-80 h-80 bg-[#00BD67]/8 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 -left-20 w-80 h-80 bg-[#004B8B]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/4 -right-20 w-80 h-80 bg-mulyam-green/8 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 -left-20 w-80 h-80 bg-mulyam-blue/5 rounded-full blur-3xl pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Section Identifier */}
         <div className="mb-12 text-center lg:text-left">
-          <span className="inline-block text-xs font-bold tracking-widest text-[#00BD67] uppercase bg-[#00BD67]/10 px-3.5 py-1.5 rounded-full border border-[#00BD67]/20">
+          <span className="inline-block text-xs font-bold tracking-widest text-mulyam-green uppercase bg-mulyam-green/10 px-3.5 py-1.5 rounded-full border border-mulyam-green/20">
             PLATFORM 02 · GROWER & AGRONOMY ECOSYSTEM
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-[#004B8B] tracking-tight mt-4">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-mulyam-blue tracking-tight mt-4">
             ImKisan · Empowering Every Acre
           </h2>
           <p className="text-slate-600 text-base md:text-lg max-w-2xl mt-2">
@@ -78,7 +78,7 @@ export default function ImKisanSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.8 }}
-              className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 border-t-4 border-t-[#00BD67] shadow-[0_15px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_rgba(0,189,103,0.1)] transition-all duration-300 text-center relative overflow-hidden"
+              className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 border-t-4 border-t-mulyam-green shadow-[0_15px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_rgba(0,189,103,0.1)] transition-all duration-300 text-center relative overflow-hidden"
             >
               {/* Logo Container (100% Identical Classes to I'mFresh Card) */}
               <div className="w-full h-24 sm:h-28 flex items-center justify-center p-2 rounded-2xl bg-slate-50/70 mb-4 overflow-hidden border border-slate-100">
@@ -90,7 +90,7 @@ export default function ImKisanSection() {
               </div>
 
               {/* Title */}
-              <h3 className="text-xl font-extrabold text-[#004B8B] tracking-tight mb-3">
+              <h3 className="text-xl font-extrabold text-mulyam-blue tracking-tight mb-3">
                 Digital Agri Advisory
               </h3>
               
@@ -106,21 +106,21 @@ export default function ImKisanSection() {
 
               {/* Metric Badges with Brand Color Fills */}
               <div className="grid grid-cols-3 gap-2 text-center pt-4 border-t border-slate-100">
-                <div className="bg-[#00BD67]/10 p-2.5 rounded-xl border border-[#00BD67]/20">
-                  <Award className="w-4 h-4 text-[#00BD67] mx-auto mb-1" />
-                  <span className="text-xs font-extrabold text-[#004B8B] block">ICAR-DOGR</span>
+                <div className="bg-mulyam-green/10 p-2.5 rounded-xl border border-mulyam-green/20">
+                  <Award className="w-4 h-4 text-mulyam-green mx-auto mb-1" />
+                  <span className="text-xs font-extrabold text-mulyam-blue block">ICAR-DOGR</span>
                   <span className="text-[10px] text-slate-600 font-semibold block">Co-Created</span>
                 </div>
 
-                <div className="bg-[#004B8B]/10 p-2.5 rounded-xl border border-[#004B8B]/20">
-                  <Cloud className="w-4 h-4 text-[#004B8B] mx-auto mb-1" />
-                  <span className="text-xs font-extrabold text-[#004B8B] block">ESDS Cloud</span>
+                <div className="bg-mulyam-blue/10 p-2.5 rounded-xl border border-mulyam-blue/20">
+                  <Cloud className="w-4 h-4 text-mulyam-blue mx-auto mb-1" />
+                  <span className="text-xs font-extrabold text-mulyam-blue block">ESDS Cloud</span>
                   <span className="text-[10px] text-slate-600 font-semibold block">Architecture</span>
                 </div>
 
-                <div className="bg-[#FFC400]/15 p-2.5 rounded-xl border border-[#FFC400]/30">
+                <div className="bg-mulyam-yellow/15 p-2.5 rounded-xl border border-mulyam-yellow/30">
                   <Users className="w-4 h-4 text-[#B78100] mx-auto mb-1" />
-                  <span className="text-xs font-extrabold text-[#004B8B] block">Multilingual</span>
+                  <span className="text-xs font-extrabold text-mulyam-blue block">Multilingual</span>
                   <span className="text-[10px] text-slate-600 font-semibold block">Advisory</span>
                 </div>
               </div>
@@ -130,10 +130,10 @@ export default function ImKisanSection() {
           {/* LEFT COLUMN: SCROLLING BENTO FEATURE CARDS (lg:order-1) */}
           <div className="lg:col-span-7 lg:order-1 flex flex-col gap-6 pb-12">
             <div className="mb-2">
-              <span className="inline-block text-[11px] font-extrabold tracking-widest text-[#00BD67] uppercase bg-[#00BD67]/10 px-3 py-1 rounded-full border border-[#00BD67]/20">
+              <span className="inline-block text-[11px] font-extrabold tracking-widest text-mulyam-green uppercase bg-mulyam-green/10 px-3 py-1 rounded-full border border-mulyam-green/20">
                 SCIENTIFIC CROP INTELLIGENCE
               </span>
-              <h3 className="text-2xl font-extrabold text-[#004B8B] tracking-tight mt-3">
+              <h3 className="text-2xl font-extrabold text-mulyam-blue tracking-tight mt-3">
                 Empowering Every Acre Through Data
               </h3>
             </div>
@@ -171,7 +171,7 @@ export default function ImKisanSection() {
                     </div>
                   </div>
 
-                  <h4 className="text-xl font-extrabold text-[#004B8B] tracking-tight mb-2">
+                  <h4 className="text-xl font-extrabold text-mulyam-blue tracking-tight mb-2">
                     {card.title}
                   </h4>
                   <p className="text-slate-600 text-sm leading-relaxed">

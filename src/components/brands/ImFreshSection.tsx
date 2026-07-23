@@ -39,7 +39,7 @@ function ParallaxProduceCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.6 }}
-      className="group bg-white/95 backdrop-blur-md rounded-3xl overflow-hidden border border-slate-200/90 hover:border-[#00BD67]/30 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,189,103,0.1)] transition-all duration-300 flex flex-col justify-between"
+      className="group bg-white/95 backdrop-blur-md rounded-3xl overflow-hidden border border-slate-200/90 hover:border-mulyam-green/30 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,189,103,0.1)] transition-all duration-300 flex flex-col justify-between"
     >
       {/* Parallax Image Header */}
       <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-slate-100">
@@ -47,7 +47,7 @@ function ParallaxProduceCard({
           src={produce.image} 
           alt={produce.title}
           style={{ y: imageY }} 
-          className="w-full h-[120%] object-cover absolute -top-[10%] left-0 transition-transform duration-700 group-hover:scale-105"
+          className="w-full h-[120%] object-cover absolute top-[-10%] left-0 transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute top-3 right-3">
           <span 
@@ -61,7 +61,7 @@ function ParallaxProduceCard({
 
       {/* Produce Info */}
       <div className="p-5">
-        <h4 className="text-lg font-extrabold text-[#004B8B] tracking-tight mb-1">
+        <h4 className="text-lg font-extrabold text-mulyam-blue tracking-tight mb-1">
           {produce.title}
         </h4>
         <p className="text-slate-600 text-xs leading-relaxed">
@@ -132,21 +132,21 @@ export default function ImFreshSection() {
   ];
 
   return (
-    <section className="relative bg-gradient-to-b from-[#F4F8FA] via-[#F9FBFA] to-[#F4F9F6] py-16 md:py-24 border-t border-slate-200/60">
+    <section className="relative bg-linear-to-b from-[#F4F8FA] via-[#F9FBFA] to-[#F4F9F6] py-16 md:py-24 border-t border-slate-200/60">
       {/* Subtle Background Ambient Radial Glow Container */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-1/3 -left-20 w-80 h-80 bg-[#004B8B]/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 -right-20 w-80 h-80 bg-[#00BD67]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/3 -left-20 w-80 h-80 bg-mulyam-blue/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 -right-20 w-80 h-80 bg-mulyam-green/5 rounded-full blur-3xl pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Section Header */}
         <div className="mb-12 text-center lg:text-left">
-          <span className="inline-block text-xs font-bold tracking-widest text-[#004B8B] uppercase bg-[#004B8B]/10 px-3.5 py-1.5 rounded-full border border-[#004B8B]/20">
+          <span className="inline-block text-xs font-bold tracking-widest text-mulyam-blue uppercase bg-mulyam-blue/10 px-3.5 py-1.5 rounded-full border border-mulyam-blue/20">
             PLATFORM 01 · CONSUMER & RETAIL BRAND
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-[#004B8B] tracking-tight mt-4">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-mulyam-blue tracking-tight mt-4">
             The I'mFresh Legacy
           </h2>
           <p className="text-slate-600 text-base md:text-lg max-w-2xl mt-2">
@@ -164,7 +164,7 @@ export default function ImFreshSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.8 }}
-              className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 border-t-4 border-t-[#004B8B] shadow-[0_15px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_rgba(0,75,139,0.1)] transition-all duration-300 text-center relative overflow-hidden"
+              className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 border-t-4 border-t-mulyam-blue shadow-[0_15px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_rgba(0,75,139,0.1)] transition-all duration-300 text-center relative overflow-hidden"
             >
               {/* Balanced Prominent Logo Container */}
               <div className="w-full h-24 sm:h-28 flex items-center justify-center p-2 rounded-2xl bg-slate-50/70 mb-4 overflow-hidden border border-slate-100">
@@ -176,7 +176,7 @@ export default function ImFreshSection() {
               </div>
 
               {/* The Story Behind I'mFresh Title */}
-              <h3 className="text-xl font-extrabold text-[#004B8B] tracking-tight mb-3">
+              <h3 className="text-xl font-extrabold text-mulyam-blue tracking-tight mb-3">
                 The Story Behind I'mFresh
               </h3>
               
@@ -192,21 +192,21 @@ export default function ImFreshSection() {
 
               {/* Verified Metrics Grid with Brand Fills */}
               <div className="grid grid-cols-3 gap-2 text-center pt-4 border-t border-slate-100">
-                <div className="bg-[#00BD67]/10 p-2.5 rounded-xl border border-[#00BD67]/20">
-                  <ShieldCheck className="w-4 h-4 text-[#00BD67] mx-auto mb-1" />
-                  <span className="text-xs font-extrabold text-[#004B8B] block">100%</span>
+                <div className="bg-mulyam-green/10 p-2.5 rounded-xl border border-mulyam-green/20">
+                  <ShieldCheck className="w-4 h-4 text-mulyam-green mx-auto mb-1" />
+                  <span className="text-xs font-extrabold text-mulyam-blue block">100%</span>
                   <span className="text-[10px] text-slate-600 font-semibold block">Assured</span>
                 </div>
 
-                <div className="bg-[#004B8B]/10 p-2.5 rounded-xl border border-[#004B8B]/20">
-                  <Clock className="w-4 h-4 text-[#004B8B] mx-auto mb-1" />
-                  <span className="text-xs font-extrabold text-[#004B8B] block">24/7</span>
+                <div className="bg-mulyam-blue/10 p-2.5 rounded-xl border border-mulyam-blue/20">
+                  <Clock className="w-4 h-4 text-mulyam-blue mx-auto mb-1" />
+                  <span className="text-xs font-extrabold text-mulyam-blue block">24/7</span>
                   <span className="text-[10px] text-slate-600 font-semibold block">Monitoring</span>
                 </div>
 
-                <div className="bg-[#FFC400]/15 p-2.5 rounded-xl border border-[#FFC400]/30">
+                <div className="bg-mulyam-yellow/15 p-2.5 rounded-xl border border-mulyam-yellow/30">
                   <MapPin className="w-4 h-4 text-[#B78100] mx-auto mb-1" />
-                  <span className="text-xs font-extrabold text-[#004B8B] block">Pan-India</span>
+                  <span className="text-xs font-extrabold text-mulyam-blue block">Pan-India</span>
                   <span className="text-[10px] text-slate-600 font-semibold block">Presence</span>
                 </div>
               </div>
@@ -219,10 +219,10 @@ export default function ImFreshSection() {
             {/* 1. Quality Standards That Define Excellence */}
             <div>
               <div className="mb-6">
-                <span className="inline-block text-[11px] font-extrabold tracking-widest text-[#00BD67] uppercase bg-[#00BD67]/10 px-3 py-1 rounded-full border border-[#00BD67]/20">
+                <span className="inline-block text-[11px] font-extrabold tracking-widest text-mulyam-green uppercase bg-mulyam-green/10 px-3 py-1 rounded-full border border-mulyam-green/20">
                   BENCHMARKS OF FRESHNESS
                 </span>
-                <h3 className="text-2xl font-extrabold text-[#004B8B] tracking-tight mt-3">
+                <h3 className="text-2xl font-extrabold text-mulyam-blue tracking-tight mt-3">
                   Quality Standards That Define Excellence
                 </h3>
               </div>
@@ -237,7 +237,7 @@ export default function ImFreshSection() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-40px" }}
                       transition={{ duration: 0.5, delay: idx * 0.1 }}
-                      className="bg-white/95 backdrop-blur-md rounded-2xl p-6 border border-slate-200/90 hover:border-[#004B8B]/30 shadow-sm hover:shadow-[0_15px_30px_rgba(0,75,139,0.08)] transition-all duration-300"
+                      className="bg-white/95 backdrop-blur-md rounded-2xl p-6 border border-slate-200/90 hover:border-mulyam-blue/30 shadow-sm hover:shadow-[0_15px_30px_rgba(0,75,139,0.08)] transition-all duration-300"
                     >
                       <div 
                         className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
@@ -248,7 +248,7 @@ export default function ImFreshSection() {
                       >
                         <Icon className="w-5 h-5" />
                       </div>
-                      <h4 className="text-base font-extrabold text-[#004B8B] mb-2">
+                      <h4 className="text-base font-extrabold text-mulyam-blue mb-2">
                         {item.title}
                       </h4>
                       <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
@@ -263,10 +263,10 @@ export default function ImFreshSection() {
             {/* 2. Produce Range Showcase (Produce Grid) */}
             <div>
               <div className="mb-6">
-                <span className="inline-block text-[11px] font-extrabold tracking-widest text-[#004B8B] uppercase bg-[#004B8B]/10 px-3 py-1 rounded-full border border-[#004B8B]/20">
+                <span className="inline-block text-[11px] font-extrabold tracking-widest text-mulyam-blue uppercase bg-mulyam-blue/10 px-3 py-1 rounded-full border border-mulyam-blue/20">
                   OUR PRODUCE RANGE
                 </span>
-                <h3 className="text-2xl font-extrabold text-[#004B8B] tracking-tight mt-3">
+                <h3 className="text-2xl font-extrabold text-mulyam-blue tracking-tight mt-3">
                   Farmgate Freshness Catalog
                 </h3>
                 <p className="text-slate-600 text-xs sm:text-sm mt-1">

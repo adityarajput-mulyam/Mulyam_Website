@@ -353,7 +353,7 @@ export default function About() {
     <div className="bg-[#F9F9F6] dark:bg-[#0C0F12] min-h-screen antialiased text-slate-800 dark:text-slate-200 transition-colors duration-300 relative">
       
       {/* Dynamic Grid Background Layer (Premium SaaS Aesthetic) */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:20px_28px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-size-[20px_28px] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0" />
 
       {/* Padding offset for the navigation bar */}
       <div className="pt-16 relative z-10">
@@ -389,8 +389,8 @@ export default function About() {
                 className="group relative w-full max-w-md"
               >
                 {/* Image Card Container */}
-                <div className="relative w-full bg-white dark:bg-[#12161A] border border-slate-200/80 dark:border-slate-800 rounded-[1.5rem] overflow-hidden shadow-2xl p-3">
-                  <div className="aspect-[4/3] w-full overflow-hidden rounded-[1rem] bg-slate-100 dark:bg-slate-900 relative">
+                <div className="relative w-full bg-white dark:bg-[#12161A] border border-slate-200/80 dark:border-slate-800 rounded-3xl overflow-hidden shadow-2xl p-3">
+                  <div className="aspect-4/3 w-full overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-900 relative">
                     <img 
                       src={foundersImage} 
                       alt="Mulyam Founders Yogesh and Mahesh Kedari" 
@@ -440,7 +440,7 @@ export default function About() {
           </div>
 
           {/* Desktop Central axis string timeline layout (Visible on lg screens and up) */}
-          <div className="hidden lg:block relative max-w-6xl mx-auto min-h-[720px]">
+          <div className="hidden lg:block relative max-w-6xl mx-auto min-h-180">
             
             {/* The Central String (Axis) */}
             <div className="absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 bg-slate-200 dark:bg-slate-800/80 z-0">
@@ -469,7 +469,7 @@ export default function About() {
                 const isActive = activeIndex >= idx;
 
                 return (
-                  <div key={idx} className="grid grid-cols-12 gap-8 items-center relative h-[135px]">
+                  <div key={idx} className="grid grid-cols-12 gap-8 items-center relative h-33.75">
                     
                     {/* Node Dot on the center string */}
                     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
@@ -486,7 +486,7 @@ export default function About() {
                     {/* SVG Connector Shoot Line */}
                     {isLeft ? (
                       /* Left-to-Right Connector (From center line to left card's right edge) */
-                      <div className="absolute left-[41.66%] right-[50%] h-[4px] -translate-y-1/2 top-1/2 z-10">
+                      <div className="absolute left-[41.66%] right-[50%] h-1 -translate-y-1/2 top-1/2 z-10">
                         <svg className="w-full h-full" viewBox="0 0 100 4" preserveAspectRatio="none">
                           <motion.line
                             x1="100" // center
@@ -503,7 +503,7 @@ export default function About() {
                       </div>
                     ) : (
                       /* Right-to-Left Connector (From center line to right card's left edge) */
-                      <div className="absolute left-[50%] right-[41.66%] h-[4px] -translate-y-1/2 top-1/2 z-10">
+                      <div className="absolute left-[50%] right-[41.66%] h-1 -translate-y-1/2 top-1/2 z-10">
                         <svg className="w-full h-full" viewBox="0 0 100 4" preserveAspectRatio="none">
                           <motion.line
                             x1="0" // center
@@ -528,7 +528,7 @@ export default function About() {
                         className="p-5 rounded-2xl bg-white dark:bg-[#12161A] border-2 shadow-md dark:shadow-none transition-colors duration-300 flex flex-col justify-center select-none"
                       >
                         <div className="flex items-center gap-3.5 mb-3">
-                          <div className={`w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 flex items-center justify-center shrink-0 shadow-sm transition-all duration-300 ${isActive ? "scale-105 border-[#00BD67]" : ""}`}>
+                          <div className={`w-10 h-10 rounded-2xl bg-mulyam-green/10 dark:bg-mulyam-green/20 border border-mulyam-green/30 flex items-center justify-center shrink-0 shadow-sm transition-all duration-300 ${isActive ? "scale-105 border-mulyam-green" : ""}`}>
                             {node.icon}
                           </div>
                           <h4 className="font-sans font-extrabold text-base text-mulyam-blue dark:text-white leading-tight">
@@ -554,12 +554,12 @@ export default function About() {
               {timelineNodes.map((node, idx) => (
                 <div key={idx} className="relative">
                   {/* Dot */}
-                  <div className="absolute left-[-30px] top-1.5 w-3.5 h-3.5 rounded-full bg-mulyam-green border-4 border-white dark:border-[#0C0F12] shadow-[0_0_6px_rgba(0,189,103,0.3)]" />
+                  <div className="absolute -left-7.5 top-1.5 w-3.5 h-3.5 rounded-full bg-mulyam-green border-4 border-white dark:border-[#0C0F12] shadow-[0_0_6px_rgba(0,189,103,0.3)]" />
                   
                   {/* Card content */}
                   <div className="p-5 rounded-xl bg-white dark:bg-[#12161A] border border-slate-200/60 dark:border-slate-800 shadow-sm">
                     <div className="flex items-center gap-3 mb-2.5">
-                      <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 flex items-center justify-center shrink-0 shadow-sm">
+                      <div className="w-10 h-10 rounded-2xl bg-mulyam-green/10 dark:bg-mulyam-green/20 border border-mulyam-green/30 flex items-center justify-center shrink-0 shadow-sm">
                         {node.icon}
                       </div>
                       <h4 className="font-sans font-extrabold text-sm text-mulyam-blue dark:text-white leading-tight">
@@ -704,7 +704,7 @@ export default function About() {
                     className="group bg-white dark:bg-[#12161A] border-2 border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,75,139,1)] dark:shadow-[4px_4px_0px_0px_rgba(18,22,26,1)] transition-all duration-300 flex flex-col h-full"
                   >
                     {/* Headshot container with experience pill */}
-                    <div className="aspect-[4/3] w-full overflow-hidden bg-slate-100 dark:bg-slate-900 relative">
+                    <div className="aspect-4/3 w-full overflow-hidden bg-slate-100 dark:bg-slate-900 relative">
                       <img 
                         src={leader.image} 
                         alt={`Portrait of ${leader.name}`} 
@@ -716,7 +716,7 @@ export default function About() {
                     </div>
 
                     {/* Content Panel */}
-                    <div className="p-4 flex flex-col flex-grow">
+                    <div className="p-4 flex flex-col grow">
                       <div className="flex items-start justify-between gap-2 mb-1">
                         <div>
                           <h3 className="font-sans font-extrabold text-base md:text-lg text-mulyam-blue dark:text-white leading-tight">
@@ -740,7 +740,7 @@ export default function About() {
                         </a>
                       </div>
                       
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 font-light leading-relaxed mt-2 flex-grow">
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 font-light leading-relaxed mt-2 grow">
                         {leader.roleDesc}
                       </p>
 
@@ -778,7 +778,7 @@ export default function About() {
                     className="group bg-white dark:bg-[#12161A] border-2 border-slate-200 dark:border-slate-800/80 rounded-xl overflow-hidden shadow-[3px_3px_0px_0px_rgba(0,75,139,1)] dark:shadow-[3px_3px_0px_0px_rgba(18,22,26,1)] transition-all duration-300 flex flex-col h-full"
                   >
                     {/* Headshot container with experience pill */}
-                    <div className="aspect-[4/3] w-full overflow-hidden bg-slate-100 dark:bg-slate-900 relative">
+                    <div className="aspect-4/3 w-full overflow-hidden bg-slate-100 dark:bg-slate-900 relative">
                       <img 
                         src={leader.image} 
                         alt={`Portrait of ${leader.name}`} 
@@ -790,7 +790,7 @@ export default function About() {
                     </div>
 
                     {/* Content Panel */}
-                    <div className="p-4 flex flex-col flex-grow">
+                    <div className="p-4 flex flex-col grow">
                       <div className="flex items-start justify-between gap-1 mb-1">
                         <div>
                           <h3 className="font-sans font-extrabold text-base text-mulyam-blue dark:text-white leading-tight">
@@ -814,7 +814,7 @@ export default function About() {
                         </a>
                       </div>
                       
-                      <p className="text-[10px] text-slate-500 dark:text-slate-400 font-light leading-relaxed mt-2 flex-grow">
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400 font-light leading-relaxed mt-2 grow">
                         {leader.roleDesc}
                       </p>
 
@@ -880,7 +880,7 @@ export default function About() {
 
             {/* Right Side: Map Container */}
             <div className="lg:col-span-7 flex items-center justify-center h-full py-4 lg:py-8">
-              <div className="relative w-full h-[50vh] lg:h-full min-h-[350px] border border-slate-200/60 dark:border-slate-800/80 rounded-3xl overflow-hidden shadow-xl bg-slate-50 dark:bg-slate-900">
+              <div className="relative w-full h-[50vh] lg:h-full min-h-87.5 border border-slate-200/60 dark:border-slate-800/80 rounded-3xl overflow-hidden shadow-xl bg-slate-50 dark:bg-slate-900">
                 <div ref={mapContainerRef} className="w-full h-full z-0" />
               </div>
             </div>

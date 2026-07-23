@@ -146,7 +146,7 @@ export default function MediaHeroWrapper({
       {/* Requirement 1: Interactive Ambient Canvas */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {/* Dot Grid Pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:28px_28px] opacity-60 dark:opacity-40" />
+        <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] bg-size-[28px_28px] opacity-60 dark:opacity-40" />
 
         {/* Dynamic Cursor Spotlight */}
         <motion.div
@@ -155,7 +155,7 @@ export default function MediaHeroWrapper({
         />
 
         {/* Ambient Top Glow Spheres */}
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-r from-[#004B8B]/10 via-[#00BD67]/10 to-transparent blur-3xl pointer-events-none" />
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-150 h-75 bg-linear-to-r from-mulyam-blue/10 via-mulyam-green/10 to-transparent blur-3xl pointer-events-none" />
       </div>
 
       {/* Requirement 3: Master Staggered Entrance Container */}
@@ -169,11 +169,11 @@ export default function MediaHeroWrapper({
         <motion.div variants={statusRowVariants} className="mb-6">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-slate-200/80 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md text-xs font-sans font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 shadow-sm">
             <span className="relative flex h-2.5 w-2.5 items-center justify-center">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00BD67] opacity-75" />
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#00BD67] shadow-[0_0_8px_#00BD67]" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-mulyam-green opacity-75" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-mulyam-green shadow-[0_0_8px_#00BD67]" />
             </span>
             <span className="font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
-              <Newspaper className="w-3.5 h-3.5 text-[#00BD67]" />
+              <Newspaper className="w-3.5 h-3.5 text-mulyam-green" />
               Live Coverage
             </span>
             <span className="text-slate-300 dark:text-slate-700">|</span>
@@ -190,7 +190,7 @@ export default function MediaHeroWrapper({
         {/* Component 2: Masked Hero Headline */}
         <motion.h1
           variants={headlineContainerVariants}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#004B8B] dark:text-white uppercase leading-[1.08] max-w-5xl mb-6"
+          className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-mulyam-blue dark:text-white uppercase leading-[1.08] max-w-5xl mb-6"
         >
           {headlineWords.map((wordObj, index) => (
             <span
@@ -200,7 +200,7 @@ export default function MediaHeroWrapper({
               <motion.span
                 variants={maskedWordVariants}
                 className={`inline-block ${
-                  wordObj.highlight ? "text-[#00BD67]" : ""
+                  wordObj.highlight ? "text-mulyam-green" : ""
                 }`}
               >
                 {wordObj.text}
@@ -278,8 +278,8 @@ export default function MediaHeroWrapper({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search press coverage..."
-                className="w-full pl-9 pr-12 py-2 text-xs rounded-full bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200/50 dark:border-slate-800/50 focus:border-[#00BD67] dark:focus:border-[#00BD67] text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none transition-all duration-200 shadow-inner"
-              />
+                className="w-full pl-9 pr-12 py-2 text-xs rounded-full bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200/50 dark:border-slate-800/50 focus:border-mulyam-green dark:focus:border-mulyam-green text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none transition-all duration-200 shadow-inner"
+              /> 
               <kbd className="absolute right-3 hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-sans font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 shadow-xs pointer-events-none">
                 /
               </kbd>

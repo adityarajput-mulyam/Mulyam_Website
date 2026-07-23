@@ -27,7 +27,7 @@ export default function Preloader() {
     <AnimatePresence>
       {visible && (
         <motion.div
-          className={`fixed inset-0 z-[100] bg-[#004B8B] flex items-center justify-center select-none ${
+          className={`fixed inset-0 z-100 bg-mulyam-blue flex items-center justify-center select-none ${
             isLoaded ? "is-loaded pointer-events-none" : ""
           }`}
           initial={{ opacity: 1 }}
@@ -143,7 +143,7 @@ export default function Preloader() {
           `}</style>
 
           {/* 1. Gooey Loading Dots (wrapped so we can fade out) */}
-          <div className="gooey-dots-wrap relative flex items-center justify-center w-48 h-48 [filter:url(#gooey-filter)]">
+          <div className="gooey-dots-wrap relative flex items-center justify-center w-48 h-48 filter-[url(#gooey-filter)]">
             <div className="gooey-dot bg-[#00ffff]" style={{ animationDelay: "0s" }} />
             <div className="gooey-dot bg-[#00bd67]" style={{ animationDelay: "-1s" }} />
             <div className="gooey-dot bg-[#ffc400]" style={{ animationDelay: "-2s" }} />
