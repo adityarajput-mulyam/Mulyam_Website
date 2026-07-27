@@ -1,5 +1,7 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 import distributionIcon from "../../assets/icons/distribution.png";
@@ -99,7 +101,7 @@ export default function ConvergenceFooter() {
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
                       <img 
-                        src={stat.icon} 
+                        src={stat.icon.src} 
                         alt={stat.iconAlt} 
                         className="w-full h-full object-contain"
                       />
@@ -160,7 +162,7 @@ export default function ConvergenceFooter() {
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
             </a>
             <Link
-              to="/solutions"
+              href="/solutions"
               className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl border border-white/20 transition-all duration-200 text-center cursor-pointer"
             >
               View Solutions

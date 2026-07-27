@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { MapPin, Phone, Mail, Send, Check } from "lucide-react";
 import mulyamLogo from "../assets/logos/mulyam_logo_transparent.png";
 
@@ -25,9 +27,9 @@ export default function Footer() {
           
           {/* Column 1: Brand & Contact Info (lg:col-span-5) */}
           <div className="lg:col-span-5 space-y-6">
-            <Link to="/" className="inline-block">
+            <Link href="/" className="inline-block">
               <img
-                src={mulyamLogo}
+                src={mulyamLogo.src}
                 alt="Mulyam Logo"
                 className="h-12 w-auto object-contain brightness-110"
               />
@@ -78,22 +80,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs md:text-sm text-slate-400">
               <li>
-                <Link to="/home" className="hover:text-[#00BD67] transition-colors">
+                <Link href="/home" className="hover:text-[#00BD67] transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about-us" className="hover:text-[#00BD67] transition-colors">
+                <Link href="/about-us" className="hover:text-[#00BD67] transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/solutions" className="hover:text-[#00BD67] transition-colors">
+                <Link href="/solutions" className="hover:text-[#00BD67] transition-colors">
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/solutions" className="hover:text-[#00BD67] transition-colors">
+                <Link href="/solutions" className="hover:text-[#00BD67] transition-colors">
                   Features
                 </Link>
               </li>
@@ -107,12 +109,12 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs md:text-sm text-slate-400">
               <li>
-                <Link to="/about-us" className="hover:text-[#00BD67] transition-colors">
+                <Link href="/about-us" className="hover:text-[#00BD67] transition-colors">
                   Sustainable Approach
                 </Link>
               </li>
               <li>
-                <Link to="/media" className="hover:text-[#00BD67] transition-colors">
+                <Link href="/media" className="hover:text-[#00BD67] transition-colors">
                   Insights
                 </Link>
               </li>
@@ -122,7 +124,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <Link to="/faq" className="hover:text-[#00BD67] transition-colors">
+                <Link href="/faq" className="hover:text-[#00BD67] transition-colors">
                   FAQ
                 </Link>
               </li>

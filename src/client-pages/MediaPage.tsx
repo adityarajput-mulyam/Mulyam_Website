@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useMemo } from "react";
 import { Download, Mail } from "lucide-react";
 import MediaCard, { type MediaItem } from "../components/MediaCard";

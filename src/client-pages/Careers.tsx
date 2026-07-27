@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -151,7 +153,7 @@ export default function Careers() {
             {/* Circle 1 - Top Left */}
             <div className="absolute top-2 left-2 sm:left-4 w-44 h-44 sm:w-56 sm:h-56 rounded-full border-4 border-white bg-white shadow-xl overflow-hidden z-10 hover:z-30 hover:scale-105 transition-all duration-300 group">
               <img 
-                src={leaderYogesh} 
+                src={leaderYogesh.src} 
                 alt="Mulyam Leadership" 
                 className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-300"
               />
@@ -160,7 +162,7 @@ export default function Careers() {
             {/* Circle 2 - Top Right (Primary overlap) */}
             <div className="absolute top-14 right-2 sm:right-2 w-48 h-48 sm:w-60 sm:h-60 rounded-full border-4 border-white bg-white shadow-2xl overflow-hidden z-20 hover:scale-105 transition-all duration-300 group">
               <img 
-                src={foundersImage} 
+                src={foundersImage.src} 
                 alt="Mulyam Founders" 
                 className="w-full h-full object-cover object-center grayscale-[10%] group-hover:grayscale-0 transition-all duration-300"
               />
@@ -169,7 +171,7 @@ export default function Careers() {
             {/* Circle 3 - Bottom Center Offset */}
             <div className="absolute bottom-2 left-1/4 w-40 h-40 sm:w-52 sm:h-52 rounded-full border-4 border-white bg-white shadow-xl overflow-hidden z-10 hover:z-30 hover:scale-105 transition-all duration-300 group">
               <img 
-                src={leaderMahesh} 
+                src={leaderMahesh.src} 
                 alt="Mulyam Operations" 
                 className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-300"
               />

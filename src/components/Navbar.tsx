@@ -1,5 +1,8 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import mulyamLogo from "../assets/logos/mulyam_logo_transparent.png";
@@ -7,7 +10,13 @@ import mulyamLogo from "../assets/logos/mulyam_logo_transparent.png";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const location = { pathname };
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -52,7 +61,8 @@ export default function Navbar() {
     { name: "CAREERS", path: "/careers" },
   ];
 
-  const isSolidNavbar = isScrolled || (location.pathname !== "/" && location.pathname !== "/home");
+  // Use false on server + initial client paint to avoid hydration mismatch
+  const isSolidNavbar = mounted && (isScrolled || (location.pathname !== "/" && location.pathname !== "/home"));
 
   return (
     <header
@@ -68,11 +78,11 @@ export default function Navbar() {
         {/* Transparent Logo on the left with clear space padding — always normal colored, no filters */}
         <div className="flex items-center">
           <Link 
-            to="/" 
+            href="/" 
             className="group flex items-center gap-3 cursor-pointer border-none bg-transparent p-0"
           >
             <img 
-              src={mulyamLogo} 
+              src={mulyamLogo.src} 
               alt="Mulyam Logo" 
               loading="eager"
               decoding="async"
@@ -93,7 +103,7 @@ export default function Navbar() {
             return (
               <Link
                 key={item.name}
-                to={item.path}
+                href={item.path}
                 className={`px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
                   isSolidNavbar
                     ? isActive
@@ -152,7 +162,7 @@ export default function Navbar() {
               return (
                 <Link
                   key={item.name}
-                  to={item.path}
+                  href={item.path}
                   className={`py-3 px-4 rounded-xl text-sm font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
                     isActive
                       ? "bg-mulyam-blue/10 dark:bg-mulyam-green/20 text-mulyam-blue dark:text-mulyam-green font-extrabold"

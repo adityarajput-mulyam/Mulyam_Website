@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { 
@@ -169,7 +171,7 @@ export default function ImFreshSection() {
               {/* Balanced Prominent Logo Container */}
               <div className="w-full h-24 sm:h-28 flex items-center justify-center p-2 rounded-2xl bg-slate-50/70 mb-4 overflow-hidden border border-slate-100">
                 <img 
-                  src={imFreshLogo} 
+                  src={imFreshLogo.src} 
                   alt="I'mFresh Logo" 
                   className="h-full w-auto object-contain mix-blend-multiply scale-95 transition-transform duration-500 hover:scale-105"
                 />

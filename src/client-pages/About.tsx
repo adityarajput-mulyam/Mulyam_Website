@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from "framer-motion";
 import { Quote, TrendingUp, Calendar, Activity } from "lucide-react";
@@ -328,22 +330,22 @@ export default function About() {
 
   const timelineNodes = [
     {
-      icon: <img src={distributionIcon} className="h-6 w-6 object-contain" alt="Distribution" />,
+      icon: <img src={distributionIcon.src} className="h-6 w-6 object-contain" alt="Distribution" />,
       title: "Restructuring Ag-Trade Distribution",
       desc: <>We eliminate highly fragmented intermediary networks, securing <span className="text-mulyam-yellow font-semibold">fair value distribution</span> directly for farm-gate growers.</>
     },
     {
-      icon: <img src={seedlingIcon} className="h-6 w-6 object-contain" alt="Sourcing" />,
+      icon: <img src={seedlingIcon.src} className="h-6 w-6 object-contain" alt="Sourcing" />,
       title: "Direct Sourcing Assurance",
       desc: <>By cutting intermediate traders, we link institutional demand straight to growers, executing strict <span className="text-mulyam-yellow font-semibold">multi-stage quality checks</span>.</>
     },
     {
-      icon: <img src={technologyIcon} className="h-6 w-6 object-contain" alt="Technology" />,
+      icon: <img src={technologyIcon.src} className="h-6 w-6 object-contain" alt="Technology" />,
       title: "Tech-Driven Logistics Engine",
       desc: <>Our customized SaaS coordinates real-time dispatch, route optimization, and tracking to keep post-harvest losses <span className="text-mulyam-yellow font-semibold">below 5%</span>.</>
     },
     {
-      icon: <img src={financeIcon} className="h-6 w-6 object-contain" alt="Finance" />,
+      icon: <img src={financeIcon.src} className="h-6 w-6 object-contain" alt="Finance" />,
       title: "Trade Finance & Credit Solutions",
       desc: <>We clear liquidity bottlenecks for farmers and retailers alike by providing <span className="text-mulyam-yellow font-semibold">transparent credit terms</span>.</>
     }
@@ -392,7 +394,7 @@ export default function About() {
                 <div className="relative w-full bg-white dark:bg-[#12161A] border border-slate-200/80 dark:border-slate-800 rounded-[1.5rem] overflow-hidden shadow-2xl p-3">
                   <div className="aspect-[4/3] w-full overflow-hidden rounded-[1rem] bg-slate-100 dark:bg-slate-900 relative">
                     <img 
-                      src={foundersImage} 
+                      src={foundersImage.src} 
                       alt="Mulyam Founders Yogesh and Mahesh Kedari" 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     />
@@ -589,7 +591,7 @@ export default function About() {
           >
             <div 
               className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${farmParallax})` }}
+              style={{ backgroundImage: `url(${farmParallax.src})` }}
             />
             {/* Ambient Dark Overlay */}
             <div className="absolute inset-0 bg-black/75 dark:bg-black/80" />
@@ -706,7 +708,7 @@ export default function About() {
                     {/* Headshot container with experience pill */}
                     <div className="aspect-[4/3] w-full overflow-hidden bg-slate-100 dark:bg-slate-900 relative">
                       <img 
-                        src={leader.image} 
+                        src={typeof leader.image === 'string' ? leader.image : leader.image.src} 
                         alt={`Portrait of ${leader.name}`} 
                         className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-103" 
                       />
@@ -780,7 +782,7 @@ export default function About() {
                     {/* Headshot container with experience pill */}
                     <div className="aspect-[4/3] w-full overflow-hidden bg-slate-100 dark:bg-slate-900 relative">
                       <img 
-                        src={leader.image} 
+                        src={typeof leader.image === 'string' ? leader.image : leader.image.src} 
                         alt={`Portrait of ${leader.name}`} 
                         className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-103" 
                       />

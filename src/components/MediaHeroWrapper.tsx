@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useEffect } from "react";
 import { motion, useMotionValue, useMotionTemplate, useSpring, type Variants } from "framer-motion";
 import { Search, Newspaper } from "lucide-react";

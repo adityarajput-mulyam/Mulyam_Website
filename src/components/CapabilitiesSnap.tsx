@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -367,7 +369,7 @@ export default function CapabilitiesSnap() {
                     initial={{ scale: 0 }}
                     animate={(isSlide2Active || isMobile) ? { scale: [1, 1.4, 1] } : { scale: 0 }}
                     transition={{ 
-                      scale: { delay: 1.4, type: "spring", stiffness: 200 },
+                      scale: { delay: 1.4, type: "keyframes", duration: 0.6 },
                       default: { delay: 1.4 }
                     }}
                   />
