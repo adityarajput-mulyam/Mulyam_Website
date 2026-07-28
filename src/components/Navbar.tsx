@@ -29,6 +29,13 @@ export default function Navbar() {
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
+    setMounted(true);
+    if (typeof window !== "undefined" && window.scrollY > 50) {
+      setIsScrolled(true);
+    }
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setIsScrolled(true);
@@ -37,6 +44,7 @@ export default function Navbar() {
       }
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -51,7 +59,7 @@ export default function Navbar() {
     { name: "HOME", path: "/" },
     { name: "ABOUT US", path: "/about" },
     { name: "SOLUTIONS", path: "/solutions" },
-    { name: "OUR BRANDS", path: "/our-brands" },
+    { name: "OUR BRANDS", path: "/brands" },
     { name: "MEDIA", path: "/media" },
     { name: "CAREERS", path: "/careers" },
   ];
@@ -63,7 +71,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isSolidNavbar
-          ? "bg-white/85 dark:bg-[#0C0F12]/85 backdrop-blur-md py-3 md:py-4 shadow-md border-b border-slate-200/50 dark:border-slate-800/50"
+          ? "bg-white/80 backdrop-blur-md py-3 md:py-4 shadow-sm border-b border-slate-200/50"
           : "bg-linear-to-b from-black/50 to-transparent py-4 md:py-6"
       }`}
     >
@@ -90,10 +98,11 @@ export default function Navbar() {
         <nav className="hidden lg:flex items-center gap-1 transition-all duration-300">
           {menuItems.map((item) => {
             const isActive =
-              item.path === "/home"
+              item.path === "/"
                 ? pathname === "/" || pathname === "/home"
                 : pathname === item.path ||
-                  (item.path === "/about" && (pathname === "/about" || pathname === "/about-us"));
+                  (item.path === "/about" && pathname === "/about-us") ||
+                  (item.path === "/brands" && pathname === "/our-brands");
             return (
               <Link
                 key={item.name}
@@ -101,8 +110,8 @@ export default function Navbar() {
                 className={`px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
                   isSolidNavbar
                     ? isActive
-                      ? "bg-mulyam-blue/10 dark:bg-mulyam-green/20 text-mulyam-blue dark:text-mulyam-green font-extrabold"
-                      : "text-slate-600 dark:text-slate-300 hover:text-mulyam-blue dark:hover:text-mulyam-green hover:bg-slate-100 dark:hover:bg-slate-800"
+                      ? "bg-[#edf4fc] text-mulyam-blue font-extrabold"
+                      : "text-slate-600 hover:text-mulyam-blue hover:bg-slate-100"
                     : isActive
                       ? "bg-white/20 text-white font-extrabold"
                       : "text-white/90 hover:text-white hover:bg-white/10"
@@ -149,18 +158,19 @@ export default function Navbar() {
           >
             {menuItems.map((item) => {
               const isActive =
-                item.path === "/home"
+                item.path === "/"
                   ? pathname === "/" || pathname === "/home"
                   : pathname === item.path ||
-                    (item.path === "/about" && (pathname === "/about" || pathname === "/about-us"));
+                    (item.path === "/about" && pathname === "/about-us") ||
+                    (item.path === "/brands" && pathname === "/our-brands");
               return (
                 <Link
                   key={item.name}
                   href={item.path}
                   className={`py-3 px-4 rounded-xl text-sm font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? "bg-mulyam-blue/10 dark:bg-mulyam-green/20 text-mulyam-blue dark:text-mulyam-green font-extrabold"
-                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-mulyam-blue dark:hover:text-mulyam-green"
+                      ? "bg-[#edf4fc] text-mulyam-blue font-extrabold"
+                      : "text-slate-600 hover:bg-slate-50 hover:text-mulyam-blue"
                   }`}
                 >
                   {item.name}
