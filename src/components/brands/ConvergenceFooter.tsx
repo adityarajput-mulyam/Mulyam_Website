@@ -44,10 +44,10 @@ export default function ConvergenceFooter() {
   ];
 
   return (
-    <section className="relative bg-gradient-to-b from-[#F4F8FA] via-[#F9FBFA] to-[#EFF5FA] pt-10 pb-16 md:pt-12 md:pb-24 border-t border-slate-200/80 overflow-hidden">
+    <section className="relative bg-linear-to-b from-[#F4F8FA] via-[#F9FBFA] to-[#EFF5FA] pt-10 pb-16 md:pt-12 md:pb-24 border-t border-slate-200/80 overflow-hidden">
       {/* Subtle Background Radial Glows */}
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#004B8B]/6 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#00BD67]/6 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-mulyam-blue/6 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-mulyam-green/6 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
@@ -57,7 +57,7 @@ export default function ConvergenceFooter() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
-            className="text-xs font-extrabold tracking-widest text-[#004B8B] uppercase bg-white px-4 py-1.5 rounded-full border border-slate-200 shadow-sm inline-block mb-4"
+            className="text-xs font-extrabold tracking-widest text-mulyam-blue uppercase bg-white px-4 py-1.5 rounded-full border border-slate-200 shadow-sm inline-block mb-4"
           >
             ECOSYSTEM SCALE & IMPACT
           </motion.span>
@@ -67,7 +67,7 @@ export default function ConvergenceFooter() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-extrabold text-[#004B8B] tracking-tight mb-4"
+            className="text-3xl sm:text-5xl font-extrabold text-mulyam-blue tracking-tight mb-4"
           >
             One Integrated Supply Chain
           </motion.h2>
@@ -94,25 +94,25 @@ export default function ConvergenceFooter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,75,139,0.09)] transition-all duration-300 flex flex-col justify-between h-full min-h-[330px] group"
+                className="bg-white/95 backdrop-blur-md rounded-3xl p-7 border border-slate-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,75,139,0.09)] transition-all duration-300 flex flex-col justify-between h-full min-h-82.5 group"
                 style={{ borderTopWidth: "4px", borderTopColor: accentColor }}
               >
                 <div className="flex-1 flex flex-col justify-between">
                   {/* Vector Icon Header */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                    <div className="w-10 h-10 rounded-2xl bg-mulyam-green/10 dark:bg-mulyam-green/20 border border-mulyam-green/30 p-2 flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
                       <Image 
                         src={stat.icon} 
                         alt={stat.iconAlt} 
                         className="w-full h-full object-contain"
                       />
                     </div>
-                    <CheckCircle2 className="w-5 h-5 text-[#00BD67]" />
+                    <CheckCircle2 className="w-5 h-5 text-mulyam-green" />
                   </div>
                   
                   {/* Stat Number / Value */}
                   <div className="mb-4">
-                    <h3 className={`${stat.isText ? 'text-2xl sm:text-3xl' : 'text-3xl sm:text-4xl'} font-extrabold text-[#004B8B] tracking-tight mb-2 h-10 flex items-center`}>
+                    <h3 className={`${stat.isText ? 'text-2xl sm:text-3xl' : 'text-3xl sm:text-4xl'} font-extrabold text-mulyam-blue tracking-tight mb-2 h-10 flex items-center`}>
                       {stat.value}
                     </h3>
                     <p className="text-xs font-bold text-slate-800 uppercase tracking-wide h-8 flex items-center">
@@ -137,13 +137,13 @@ export default function ConvergenceFooter() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
-          className="bg-gradient-to-br from-[#004B8B] via-[#003B6F] to-[#002A50] rounded-3xl p-8 sm:p-14 text-white shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8"
+          className="bg-linear-to-br from-mulyam-blue via-[#003B6F] to-[#002A50] rounded-3xl p-8 sm:p-14 text-white shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8"
         >
           {/* Subtle background glow circle */}
-          <div className="absolute -right-20 -top-20 w-80 h-80 bg-[#00BD67]/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -right-20 -top-20 w-80 h-80 bg-mulyam-green/20 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-2xl text-center lg:text-left relative z-10">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#00BD67] bg-white/10 px-3.5 py-1 rounded-full border border-white/20 inline-block mb-4">
+            <span className="text-xs font-bold uppercase tracking-widest text-mulyam-green bg-white/10 px-3.5 py-1 rounded-full border border-white/20 inline-block mb-4">
               Join the Ecosystem
             </span>
             <h3 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-3">
@@ -157,7 +157,7 @@ export default function ConvergenceFooter() {
           <div className="flex flex-col sm:flex-row gap-4 shrink-0 relative z-10 w-full sm:w-auto">
             <a
               href="mailto:connect@mulyam.in"
-              className="px-8 py-4 bg-[#00BD67] hover:bg-[#00BD67]/90 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer"
+              className="px-8 py-4 bg-mulyam-green hover:bg-mulyam-green/90 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer"
             >
               <span>Partner With Us</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />

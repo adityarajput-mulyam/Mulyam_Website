@@ -64,7 +64,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isSolidNavbar
           ? "bg-white/85 dark:bg-[#0C0F12]/85 backdrop-blur-md py-3 md:py-4 shadow-md border-b border-slate-200/50 dark:border-slate-800/50"
-          : "bg-gradient-to-b from-black/50 to-transparent py-4 md:py-6"
+          : "bg-linear-to-b from-black/50 to-transparent py-4 md:py-6"
       }`}
     >
       {/* 2X boundary clear-space layout wrapper */}
