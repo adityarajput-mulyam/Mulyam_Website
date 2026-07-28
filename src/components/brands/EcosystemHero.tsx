@@ -1,5 +1,8 @@
+"use client";
+
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import imFreshLogo from "../../assets/logos/imfresh.png";
 import imKisanLogo from "../../assets/logos/im_kisan.png";
 
@@ -120,7 +123,7 @@ export default function EcosystemHero() {
           </div>
           
           <div className="w-full aspect-4/3 flex items-center justify-center p-3 overflow-hidden rounded-2xl bg-slate-50/60 border border-slate-100">
-            <img 
+            <Image 
               src={imFreshLogo} 
               alt="I'mFresh Logo" 
               className="w-full h-full object-contain mix-blend-multiply scale-95 transition-transform duration-500 group-hover:scale-105"
@@ -138,7 +141,7 @@ export default function EcosystemHero() {
           </div>
           
           <div className="w-full aspect-4/3 flex items-center justify-center p-3 overflow-hidden rounded-2xl bg-slate-50/60 border border-slate-100">
-            <img 
+            <Image 
               src={imKisanLogo} 
               alt="ImKisan Logo" 
               className="w-full h-full object-contain mix-blend-multiply scale-95 transition-transform duration-500 group-hover:scale-105"

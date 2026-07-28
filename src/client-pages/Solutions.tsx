@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -30,7 +32,7 @@ export default function Solutions() {
     [hero1Image, hero2Image, farmerImage, traderImage, transporterImage].forEach((src) => {
       const img = new Image();
       img.decoding = "async";
-      img.src = src;
+      img.src = src.src;
     });
 
     return () => window.removeEventListener("resize", handleResize);
@@ -68,7 +70,7 @@ export default function Solutions() {
           {/* Left Hero half: Farmer */}
           <div className="relative w-full h-full overflow-hidden group">
             <img 
-              src={hero1Image} 
+              src={hero1Image.src} 
               alt="Vibrant agricultural fields" 
               loading="eager"
               decoding="async"
@@ -80,7 +82,7 @@ export default function Solutions() {
           {/* Right Hero half: Trader Sourcing */}
           <div className="relative w-full h-full border-l border-slate-950 dark:border-slate-800 overflow-hidden group">
             <img 
-              src={hero2Image} 
+              src={hero2Image.src} 
               alt="Fresh produce storage logistics" 
               loading="eager"
               decoding="async"
@@ -142,7 +144,7 @@ export default function Solutions() {
                 <div className="space-y-6 max-w-2xl">
                   <div className="flex gap-4 items-start">
                     <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
-                      <img src={handshakeIcon} alt="Direct market linkage" className="w-full h-full object-contain" />
+                      <img src={handshakeIcon.src} alt="Direct market linkage" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Direct market linkage with assured offtake</h4>
@@ -152,7 +154,7 @@ export default function Solutions() {
 
                   <div className="flex gap-4 items-start">
                     <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
-                      <img src={pricingIcon} alt="Fair and transparent pricing" className="w-full h-full object-contain" />
+                      <img src={pricingIcon.src} alt="Fair and transparent pricing" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Fair & Transparent Pricing</h4>
@@ -162,7 +164,7 @@ export default function Solutions() {
 
                   <div className="flex gap-4 items-start">
                     <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
-                      <img src={mobileTransferIcon} alt="Hassle free payment terms" className="w-full h-full object-contain" />
+                      <img src={mobileTransferIcon.src} alt="Hassle free payment terms" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Hassle-free Payment terms</h4>
@@ -174,7 +176,7 @@ export default function Solutions() {
 
               <div className="lg:col-span-5 relative h-64 sm:h-80 lg:h-full bg-slate-50 dark:bg-slate-900 flex lg:border-l border-slate-950 dark:border-slate-800 overflow-hidden">
                 <img
-                  src={farmerImage}
+                  src={farmerImage.src}
                   alt="Farmer crop yield"
                   loading="eager"
                   decoding="async"
@@ -205,7 +207,7 @@ export default function Solutions() {
                 <div className="space-y-6 max-w-2xl">
                   <div className="flex gap-4 items-start">
                     <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
-                      <img src={qualityAssuranceIcon} alt="Consistent quality" className="w-full h-full object-contain" />
+                      <img src={qualityAssuranceIcon.src} alt="Consistent quality" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Consistent Quality</h4>
@@ -215,7 +217,7 @@ export default function Solutions() {
 
                   <div className="flex gap-4 items-start">
                     <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
-                      <img src={distributionIcon} alt="Traceability" className="w-full h-full object-contain" />
+                      <img src={distributionIcon.src} alt="Traceability" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Traceability</h4>
@@ -225,7 +227,7 @@ export default function Solutions() {
 
                   <div className="flex gap-4 items-start">
                     <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
-                      <img src={supplyLogisticsIcon} alt="Reliable and efficient supply" className="w-full h-full object-contain" />
+                      <img src={supplyLogisticsIcon.src} alt="Reliable and efficient supply" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Reliable & Efficient Supply</h4>
@@ -237,7 +239,7 @@ export default function Solutions() {
 
               <div className="lg:col-span-5 relative h-64 sm:h-80 lg:h-full bg-slate-50 dark:bg-slate-900 flex border-b lg:border-b-0 border-slate-950 dark:border-slate-800 overflow-hidden lg:order-1">
                 <img
-                  src={traderImage}
+                  src={traderImage.src}
                   alt="Fresh vegetables warehouse sorting"
                   loading="eager"
                   decoding="async"
@@ -268,7 +270,7 @@ export default function Solutions() {
                 <div className="space-y-6 max-w-2xl">
                   <div className="flex gap-4 items-start">
                     <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
-                      <img src={streamlineDeliveryIcon} alt="Streamlined deliveries" className="w-full h-full object-contain" />
+                      <img src={streamlineDeliveryIcon.src} alt="Streamlined deliveries" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Streamlined Deliveries</h4>
@@ -278,7 +280,7 @@ export default function Solutions() {
 
                   <div className="flex gap-4 items-start">
                     <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
-                      <img src={routeIcon} alt="Optimized routes" className="w-full h-full object-contain" />
+                      <img src={routeIcon.src} alt="Optimized routes" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Optimized Routes</h4>
@@ -288,7 +290,7 @@ export default function Solutions() {
 
                   <div className="flex gap-4 items-start">
                     <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm">
-                      <img src={increasedBusinessIcon} alt="Increased business" className="w-full h-full object-contain" />
+                      <img src={increasedBusinessIcon.src} alt="Increased business" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <h4 className="font-sans font-bold text-base md:text-lg text-slate-900 dark:text-white">Increased Business</h4>
@@ -300,7 +302,7 @@ export default function Solutions() {
 
               <div className="lg:col-span-5 relative h-64 sm:h-80 lg:h-full bg-slate-50 dark:bg-slate-900 flex lg:border-l border-slate-950 dark:border-slate-800 overflow-hidden">
                 <img
-                  src={transporterImage}
+                  src={transporterImage.src}
                   alt="Logistics transportation"
                   loading="eager"
                   decoding="async"

@@ -175,7 +175,7 @@ export function LogoReveal({ state, className }: LogoRevealProps) {
         className="flex items-center justify-center"
       >
         <img
-          src={mulyamLogoEn}
+          src={mulyamLogoEn.src}
           alt="Mulyam Logo"
           loading="eager"
           decoding="async"

@@ -1,6 +1,9 @@
+"use client";
+
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { MapPin, Phone, Mail, Send, Check } from "lucide-react";
+import Image from "next/image";
 import mulyamLogo from "../assets/logos/mulyam_logo_transparent.png";
 
 export default function Footer() {
@@ -25,8 +28,8 @@ export default function Footer() {
           
           {/* Column 1: Brand & Contact Info (lg:col-span-5) */}
           <div className="lg:col-span-5 space-y-6">
-            <Link to="/" className="inline-block">
-              <img
+            <Link href="/" className="inline-block">
+              <Image
                 src={mulyamLogo}
                 alt="Mulyam Logo"
                 className="h-12 w-auto object-contain brightness-110"
@@ -41,7 +44,7 @@ export default function Footer() {
             <div className="space-y-3 pt-2 text-xs md:text-sm text-slate-300">
               {/* Location */}
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-[#00BD67] shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-mulyam-green shrink-0 mt-0.5" />
                 <span className="leading-snug text-slate-300">
                   Office: 922, 9th Floor, Solitaire Business Hub, Balewadi Highstreet, Baner, Pune - 411045
                 </span>
@@ -49,7 +52,7 @@ export default function Footer() {
 
               {/* Phone */}
               <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#00BD67] shrink-0" />
+                <Phone className="w-4 h-4 text-mulyam-green shrink-0" />
                 <a
                   href="tel:+919890255532"
                   className="hover:text-white transition-colors text-slate-300 font-medium"
@@ -60,7 +63,7 @@ export default function Footer() {
 
               {/* Email */}
               <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-[#00BD67] shrink-0" />
+                <Mail className="w-4 h-4 text-mulyam-green shrink-0" />
                 <a
                   href="mailto:info@mulyam.in"
                   className="hover:text-white transition-colors text-slate-300 font-medium"
@@ -78,22 +81,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs md:text-sm text-slate-400">
               <li>
-                <Link to="/home" className="hover:text-[#00BD67] transition-colors">
+                <Link href="/home" className="hover:text-mulyam-green transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about-us" className="hover:text-[#00BD67] transition-colors">
+                              <Link href="/about" className="hover:text-mulyam-green transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/solutions" className="hover:text-[#00BD67] transition-colors">
+                <Link href="/solutions" className="hover:text-mulyam-green transition-colors">
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/solutions" className="hover:text-[#00BD67] transition-colors">
+                <Link href="/solutions" className="hover:text-mulyam-green transition-colors">
                   Features
                 </Link>
               </li>
@@ -107,22 +110,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs md:text-sm text-slate-400">
               <li>
-                <Link to="/about-us" className="hover:text-[#00BD67] transition-colors">
+                              <Link href="/about" className="hover:text-mulyam-green transition-colors">
                   Sustainable Approach
                 </Link>
               </li>
               <li>
-                <Link to="/media" className="hover:text-[#00BD67] transition-colors">
+                <Link href="/media" className="hover:text-mulyam-green transition-colors">
                   Insights
                 </Link>
               </li>
               <li>
-                <a href="mailto:info@mulyam.in" className="hover:text-[#00BD67] transition-colors">
+                <a href="mailto:info@mulyam.in" className="hover:text-mulyam-green transition-colors">
                   Contact
                 </a>
               </li>
               <li>
-                <Link to="/faq" className="hover:text-[#00BD67] transition-colors">
+                <Link href="/faq" className="hover:text-mulyam-green transition-colors">
                   FAQ
                 </Link>
               </li>
@@ -144,13 +147,13 @@ export default function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="w-full bg-[#1E232A] text-white placeholder-slate-500 text-xs md:text-sm px-4 py-2.5 rounded-lg border border-slate-700/80 focus:outline-none focus:border-[#00BD67] transition-colors"
+                    className="w-full bg-[#1E232A] text-white placeholder-slate-500 text-xs md:text-sm px-4 py-2.5 rounded-lg border border-slate-700/80 focus:outline-none focus:border-mulyam-green transition-colors"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-[#00BD67] hover:bg-[#00BD67]/90 text-white font-extrabold text-xs md:text-sm py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 uppercase tracking-wider transition-all duration-200 shadow-md cursor-pointer"
+                  className="w-full bg-mulyam-green hover:bg-mulyam-green/90 text-white font-extrabold text-xs md:text-sm py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 uppercase tracking-wider transition-all duration-200 shadow-md cursor-pointer"
                 >
                   {subscribed ? (
                     <>
@@ -179,7 +182,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="YouTube"
-                  className="w-9 h-9 rounded-lg bg-[#1E232A] hover:bg-[#00BD67] text-slate-400 hover:text-white flex items-center justify-center transition-all duration-200 border border-slate-700/80 group"
+                  className="w-9 h-9 rounded-lg bg-[#1E232A] hover:bg-mulyam-green text-slate-400 hover:text-white flex items-center justify-center transition-all duration-200 border border-slate-700/80 group"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -192,7 +195,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
-                  className="w-9 h-9 rounded-lg bg-[#1E232A] hover:bg-[#00BD67] text-slate-400 hover:text-white flex items-center justify-center transition-all duration-200 border border-slate-700/80 group"
+                  className="w-9 h-9 rounded-lg bg-[#1E232A] hover:bg-mulyam-green text-slate-400 hover:text-white flex items-center justify-center transition-all duration-200 border border-slate-700/80 group"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.77a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/>

@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { 
@@ -9,6 +11,7 @@ import {
   Clock,
   MapPin
 } from "lucide-react";
+import Image from "next/image";
 import imFreshLogo from "../../assets/logos/imfresh.png";
 
 // Parallax Produce Card Sub-component
@@ -168,7 +171,7 @@ export default function ImFreshSection() {
             >
               {/* Balanced Prominent Logo Container */}
               <div className="w-full h-24 sm:h-28 flex items-center justify-center p-2 rounded-2xl bg-slate-50/70 mb-4 overflow-hidden border border-slate-100">
-                <img 
+                <Image 
                   src={imFreshLogo} 
                   alt="I'mFresh Logo" 
                   className="h-full w-auto object-contain mix-blend-multiply scale-95 transition-transform duration-500 hover:scale-105"

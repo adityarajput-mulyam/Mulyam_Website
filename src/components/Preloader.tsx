@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import mulyamLogoEn from "../assets/logos/mulyam_logo_en.png";
@@ -5,8 +7,10 @@ import mulyamLogoEn from "../assets/logos/mulyam_logo_en.png";
 export default function Preloader() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Phase 1: Let the gooey loader swirl for 0.8s, then trigger the reveal sequence
     const tLoad = setTimeout(() => {
       setIsLoaded(true);
@@ -22,6 +26,8 @@ export default function Preloader() {
       clearTimeout(tDismiss);
     };
   }, []);
+
+  if (!mounted) return null;
 
   return (
     <AnimatePresence>
@@ -170,7 +176,7 @@ export default function Preloader() {
           {/* 3. Spring-loaded Mulyam logo image */}
           <div className="logo-wrapper">
             <img
-              src={mulyamLogoEn}
+              src={mulyamLogoEn.src}
               alt="Mulyam Logo"
               loading="eager"
               decoding="async"

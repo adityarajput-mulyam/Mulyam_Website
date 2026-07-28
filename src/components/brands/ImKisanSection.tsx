@@ -7,6 +7,7 @@ import {
   Users,
   Award
 } from "lucide-react";
+import Image from "next/image";
 import imKisanLogo from "../../assets/logos/im_kisan.png";
 
 export default function ImKisanSection() {
@@ -82,7 +83,7 @@ export default function ImKisanSection() {
             >
               {/* Logo Container (100% Identical Classes to I'mFresh Card) */}
               <div className="w-full h-24 sm:h-28 flex items-center justify-center p-2 rounded-2xl bg-slate-50/70 mb-4 overflow-hidden border border-slate-100">
-                <img 
+                <Image 
                   src={imKisanLogo} 
                   alt="ImKisan Logo" 
                   className="h-full w-auto object-contain mix-blend-multiply scale-95 transition-transform duration-500 hover:scale-105"
