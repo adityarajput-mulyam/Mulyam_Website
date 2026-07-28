@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { MapPin, Phone, Mail, Send, Check } from "lucide-react";
+import Image from "next/image";
 import mulyamLogo from "../assets/logos/mulyam_logo_transparent.png";
 
 export default function Footer() {
@@ -28,8 +29,8 @@ export default function Footer() {
           {/* Column 1: Brand & Contact Info (lg:col-span-5) */}
           <div className="lg:col-span-5 space-y-6">
             <Link href="/" className="inline-block">
-              <img
-                src={mulyamLogo.src}
+              <Image
+                src={mulyamLogo}
                 alt="Mulyam Logo"
                 className="h-12 w-auto object-contain brightness-110"
               />
@@ -85,7 +86,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/about-us" className="hover:text-[#00BD67] transition-colors">
+                              <Link href="/about" className="hover:text-[#00BD67] transition-colors">
                   About Us
                 </Link>
               </li>
@@ -109,7 +110,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs md:text-sm text-slate-400">
               <li>
-                <Link href="/about-us" className="hover:text-[#00BD67] transition-colors">
+                              <Link href="/about" className="hover:text-[#00BD67] transition-colors">
                   Sustainable Approach
                 </Link>
               </li>

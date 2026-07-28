@@ -50,16 +50,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" suppressHydrationWarning className={poppins.variable}>
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
         <meta name="theme-color" content="#004B8B" />
       </head>
-      <body className="antialiased min-h-screen bg-[#F9F9F6] dark:bg-[#0C0F12] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+      <body suppressHydrationWarning className="antialiased min-h-screen bg-[#F9F9F6] dark:bg-[#0C0F12] text-slate-800 dark:text-slate-100 transition-colors duration-300">
         <ClientProviders>
           <Navbar />
-          <main>{children}</main>
+          <main suppressHydrationWarning>{children}</main>
           <Footer />
         </ClientProviders>
         <Script

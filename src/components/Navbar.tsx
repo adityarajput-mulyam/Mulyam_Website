@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import mulyamLogo from "../assets/logos/mulyam_logo_transparent.png";
 
 export default function Navbar() {
@@ -12,15 +13,9 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
-  const location = { pathname };
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   useEffect(() => {
     setIsMobileMenuOpen(false);
-  }, [location]);
+  }, [pathname]);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -53,8 +48,8 @@ export default function Navbar() {
   }, []);
 
   const menuItems = [
-    { name: "HOME", path: "/home" },
-    { name: "ABOUT US", path: "/about-us" },
+    { name: "HOME", path: "/" },
+    { name: "ABOUT US", path: "/about" },
     { name: "SOLUTIONS", path: "/solutions" },
     { name: "OUR BRANDS", path: "/our-brands" },
     { name: "MEDIA", path: "/media" },
@@ -62,7 +57,7 @@ export default function Navbar() {
   ];
 
   // Use false on server + initial client paint to avoid hydration mismatch
-  const isSolidNavbar = mounted && (isScrolled || (location.pathname !== "/" && location.pathname !== "/home"));
+  const isSolidNavbar = mounted && (isScrolled || (pathname !== "/" && pathname !== "/home"));
 
   return (
     <header
@@ -81,12 +76,11 @@ export default function Navbar() {
             href="/" 
             className="group flex items-center gap-3 cursor-pointer border-none bg-transparent p-0"
           >
-            <img 
-              src={mulyamLogo.src} 
+            <Image 
+              src={mulyamLogo} 
               alt="Mulyam Logo" 
               loading="eager"
-              decoding="async"
-              fetchPriority="high"
+              priority
               className="h-10 w-auto object-contain transition-all duration-300" 
             />
           </Link>
@@ -97,9 +91,9 @@ export default function Navbar() {
           {menuItems.map((item) => {
             const isActive =
               item.path === "/home"
-                ? location.pathname === "/" || location.pathname === "/home"
-                : location.pathname === item.path ||
-                  (item.path === "/about-us" && location.pathname === "/about");
+                ? pathname === "/" || pathname === "/home"
+                : pathname === item.path ||
+                  (item.path === "/about" && (pathname === "/about" || pathname === "/about-us"));
             return (
               <Link
                 key={item.name}
@@ -156,9 +150,9 @@ export default function Navbar() {
             {menuItems.map((item) => {
               const isActive =
                 item.path === "/home"
-                  ? location.pathname === "/" || location.pathname === "/home"
-                  : location.pathname === item.path ||
-                    (item.path === "/about-us" && location.pathname === "/about");
+                  ? pathname === "/" || pathname === "/home"
+                  : pathname === item.path ||
+                    (item.path === "/about" && (pathname === "/about" || pathname === "/about-us"));
               return (
                 <Link
                   key={item.name}

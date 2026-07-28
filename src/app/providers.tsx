@@ -30,7 +30,9 @@ export function ClientProviders({ children }: { children: React.ReactNode }) {
       extraScale={1.2}
     >
       <Preloader />
-      {children}
+      <div suppressHydrationWarning className="w-full">
+        {children}
+      </div>
     </ClickSpark>
   );
 }

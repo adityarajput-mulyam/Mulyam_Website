@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 
 import distributionIcon from "../../assets/icons/distribution.png";
 import logisticsIcon from "../../assets/icons/supply_logistics.png";
@@ -100,8 +101,8 @@ export default function ConvergenceFooter() {
                   {/* Vector Icon Header */}
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-10 h-10 rounded-2xl bg-[#00BD67]/10 dark:bg-[#00BD67]/20 border border-[#00BD67]/30 p-2 flex items-center justify-center shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
-                      <img 
-                        src={stat.icon.src} 
+                      <Image 
+                        src={stat.icon} 
                         alt={stat.iconAlt} 
                         className="w-full h-full object-contain"
                       />
